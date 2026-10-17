@@ -14,47 +14,37 @@ button,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}but
 .shell{position:relative;z-index:1;width:min(760px,100%);margin:0 auto;padding:clamp(14px,4vw,32px);min-height:100vh;display:flex;flex-direction:column;justify-content:center}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.brand{font-size:13px;color:var(--muted);letter-spacing:.04em}.counter{font-size:12px;background:#fff9;border:1px solid var(--line);padding:8px 12px;border-radius:99px;white-space:nowrap}.track{height:5px;background:#eadfeb;border-radius:99px;overflow:hidden;margin-bottom:16px}.track>div{height:100%;background:linear-gradient(90deg,#e79abb,#b7a4ee);width:12.5%;transition:width .3s ease}
 .panel{background:var(--card);border:1px solid #fff;box-shadow:var(--shadow);border-radius:28px;padding:clamp(22px,5vw,42px);backdrop-filter:blur(12px);min-height:410px;display:flex;flex-direction:column;animation:enter .28s ease both}.eyebrow{color:#bd7299;text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:800;margin:0 0 13px}h1,h2{font-weight:750;line-height:1.17;letter-spacing:-.035em;margin:0 0 16px}h1{font-size:clamp(31px,7vw,49px)}h2{font-size:clamp(26px,5vw,36px)}p{line-height:1.75;color:#71647c;margin:0 0 15px;font-size:15px}.hero-emoji{font-size:42px;margin-bottom:15px}.soft-note{padding:14px 16px;background:#fff7fc;border:1px solid var(--line);border-radius:18px;margin:8px 0 18px;color:#6d5a75;line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:22px}.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:750;font-size:14px;transition:transform .16s,filter .16s;background:linear-gradient(110deg,#d978a5,#b49be8);color:white;box-shadow:0 7px 18px #d6a2c44d}.btn:hover{filter:saturate(1.08);transform:translateY(-1px)}.btn:active{transform:scale(.98)}.btn.secondary{background:#fff;border:1px solid var(--line);color:#7a6484;box-shadow:none}.btn:disabled{opacity:.4;cursor:not-allowed}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:14px}.nav .btn{min-width:112px}.footnote{text-align:center;font-size:11px;color:#9a8ba2;margin-top:15px}
 .mood-grid,.gift-grid,.smile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:10px 0 15px}.choice,.gift{background:#fffafc;border:1px solid var(--line);border-radius:20px;padding:17px 13px;text-align:left;color:var(--ink);min-height:100px;transition:transform .18s,border-color .18s,background .18s}.choice:hover,.gift:hover{transform:translateY(-2px);border-color:#d8b5db;background:#fff}.choice .emoji,.gift .emoji{display:block;font-size:27px;margin-bottom:8px}.choice strong,.gift strong{display:block;font-size:14px;margin-bottom:4px}.choice small,.gift small{color:var(--muted);font-size:12px}.message{display:none;background:#fff7fc;border:1px solid #f0d9e7;padding:17px;border-radius:18px;line-height:1.8;color:#6c5977;margin:12px 0;animation:pop .25s ease}.message.show{display:block}.gift{min-height:120px;text-align:center}.gift.opened{background:#fff0f7;border-color:#e4b4ce}.gift.opened .emoji{animation:pop .3s ease}.breath-wrap{text-align:center;padding:12px 0}.breath-orb{width:118px;height:118px;border-radius:50%;margin:12px auto 18px;background:radial-gradient(circle at 35% 30%,#fff,#edc7e5 65%,#cbbdf6);box-shadow:0 0 0 13px #f8e7f2aa;display:grid;place-items:center;animation:breathe 5s ease-in-out infinite}.breath-orb span{font-size:30px}.tiny{font-size:12px;color:#9a8ba2}.thoughts{width:100%;min-height:140px;resize:vertical;border:1px solid var(--line);background:#fffdfd;border-radius:18px;padding:15px;color:var(--ink);line-height:1.65}.privacy{font-size:12px;background:#f7f2ff;padding:12px 14px;border-radius:14px;margin:10px 0 15px;color:#766888;line-height:1.6}.final-heart{font-size:54px;margin:3px 0 17px;animation:pop .5s ease}.letter-controls{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 14px}.letter-content{display:none}.letter-content.open{display:block}.letter-paragraph{margin:0 0 16px;line-height:1.85;color:#51435f}.letter-final{padding:16px 18px;border:1px solid #d8c5f5;background:linear-gradient(135deg,#f6efffdd,#fff7fddd);border-radius:18px;box-shadow:0 0 0 0 #c8a8ff;animation:letterGlow 2.8s ease-in-out infinite alternate;font-weight:750;color:#6c4b91}.letter-final[hidden]{display:none}@keyframes letterGlow{to{box-shadow:0 0 24px 2px #c6a4f766}}.sprinkle{position:fixed;pointer-events:none;z-index:9;font-size:22px;animation:rise 1.3s ease-out forwards}@keyframes rise{to{transform:translateY(-100px) rotate(35deg);opacity:0}}
-/* Purple glass panels: let the starry sky show through instead of hiding it behind white cards. */
-.panel{background:rgba(48,24,77,.52);border:1px solid rgba(255,255,255,.58);box-shadow:0 18px 55px rgba(19,7,38,.24),inset 0 1px 0 rgba(255,255,255,.18);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.panel h1,.panel h2{color:#fff7ff;text-shadow:0 1px 12px rgba(30,8,54,.22)}
-.panel p{color:#f0e7fb}
-.panel .eyebrow{color:#ffd0ec;text-shadow:0 1px 8px rgba(35,8,50,.35)}
-.panel .soft-note,.panel .message{background:rgba(235,216,255,.20);border:1px solid rgba(255,255,255,.32);color:#fff5ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
-.panel .choice,.panel .gift{background:rgba(245,231,255,.16);border:1px solid rgba(255,255,255,.34);color:#fff7ff;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
-.panel .choice:hover,.panel .gift:hover{background:rgba(248,230,255,.27);border-color:rgba(255,255,255,.62)}
-.panel .choice small,.panel .gift small,.panel .tiny{color:#eadcf8}
-.panel .gift.opened{background:rgba(237,174,221,.28);border-color:#ffd2f0}
-.panel .thoughts{background:rgba(255,248,255,.92);border-color:rgba(255,255,255,.75)}
-.panel .privacy{background:rgba(222,203,255,.22);color:#fff4ff;border:1px solid rgba(255,255,255,.24)}
-.panel .letter-paragraph{color:#f6edff}
-.panel .letter-final{background:linear-gradient(135deg,rgba(211,177,255,.28),rgba(255,206,238,.22));border-color:rgba(255,255,255,.48);color:#fff7ff}
-.counter{background:rgba(246,235,255,.23);border-color:rgba(255,255,255,.35);color:#fff8ff;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.brand{color:#f2e4ff;text-shadow:0 1px 8px rgba(30,8,54,.5)}
-.track{background:rgba(255,255,255,.35)}
-.footnote{color:#eee0ff;text-shadow:0 1px 8px rgba(30,8,54,.6)}
-.btn.secondary{background:rgba(244,229,255,.22);border:1px solid rgba(255,255,255,.55);color:#fff6ff;box-shadow:none;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 @media(max-width:480px){body{background-attachment:scroll;background-position:center center}.shell{padding:14px}.panel{min-height:0;border-radius:24px;padding:24px 19px}.mood-grid,.gift-grid,.smile-grid{gap:8px}.choice,.gift{padding:14px 10px}.nav .btn{min-width:0;flex:1;padding:12px 10px}.topline{margin-top:4px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
-/* Final Premium Purple Glass polish: retain the original content and layout. */
-:root{--ink:#fff7ff;--muted:#eadcf8;--card:rgba(48,24,77,.48);--line:rgba(255,255,255,.34);--shadow:0 18px 55px rgba(19,7,38,.26)}
-html{background:#211338}
-body{background-color:#211338;background-image:linear-gradient(180deg,rgba(21,8,40,.12),rgba(27,10,49,.18)),url('purple-sky.jpg');background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
-.floaties{z-index:2;opacity:.78}.floaties span{color:#fff1ff;text-shadow:0 0 12px rgba(255,255,255,.9),0 0 24px rgba(204,147,255,.65)}
-.shell{isolation:isolate}.brand{color:#f1ddff;text-shadow:0 1px 10px rgba(31,8,48,.75)}
-.counter{background:rgba(232,208,255,.22);border:1px solid rgba(255,255,255,.5);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 20px rgba(185,126,255,.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.track{background:rgba(255,255,255,.28);box-shadow:0 0 12px rgba(205,155,255,.18)}.track>div{background:linear-gradient(90deg,#ff83c7,#bb8cff,#f8c7ff);box-shadow:0 0 12px rgba(227,158,255,.65)}
-.panel{position:relative;background:rgba(47,21,78,.46);border:1px solid rgba(255,255,255,.62);box-shadow:0 18px 55px rgba(15,4,33,.3),inset 0 1px 0 rgba(255,255,255,.18),0 0 24px rgba(169,105,255,.15);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.panel:before{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(215,174,255,.16),0 0 15px rgba(178,113,255,.12)}
-.panel h1,.panel h2{color:#fff8ff;text-shadow:0 2px 14px rgba(28,5,49,.5)}.panel p{color:#f7efff;text-shadow:0 1px 8px rgba(25,4,45,.25)}.panel .eyebrow{color:#ffc8ec;text-shadow:0 1px 10px rgba(30,4,48,.55)}
-.panel .soft-note,.panel .message,.panel .privacy,.panel .letter-final{background:rgba(213,177,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 16px rgba(177,115,255,.08);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
-.panel .choice,.panel .gift{background:rgba(225,197,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}.panel .choice:hover,.panel .gift:hover,.panel .gift.opened{background:rgba(247,211,255,.25);border-color:rgba(255,218,255,.78);box-shadow:0 0 18px rgba(201,135,255,.2)}.panel .choice small,.panel .gift small{color:#e8d6ff}
-.panel .thoughts{background:rgba(30,12,52,.36);border:1px solid rgba(255,255,255,.48);color:#fff8ff}.panel .thoughts::placeholder{color:#e1c9f5}.panel .privacy{font-size:12px}
-.btn{background:linear-gradient(110deg,#f05cae,#a875f4);border:1px solid rgba(255,255,255,.28);box-shadow:0 7px 22px rgba(181,91,224,.28),inset 0 1px 0 rgba(255,255,255,.25);text-shadow:0 1px 4px rgba(58,14,70,.18)}.btn.secondary{background:rgba(225,201,255,.17);border:1px solid rgba(255,255,255,.55);color:#fff5ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 16px rgba(177,115,255,.08);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.footnote{color:#f0dcff;text-shadow:0 1px 9px rgba(25,5,45,.85)}.breath-orb{background:radial-gradient(circle at 35% 30%,#fff8ff,#e7b6ff 58%,#8b69d6);box-shadow:0 0 0 13px rgba(225,188,255,.15),0 0 28px rgba(208,150,255,.32)}
-.letter-paragraph{color:#f7efff}.letter-final{color:#fff7ff;animation:letterGlow 2.8s ease-in-out infinite alternate}
-@media(max-width:480px){.panel{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}}
-@media(prefers-reduced-motion:reduce){}
+/* PREMIUM PURPLE GLASS OVERRIDES — CSS ONLY; original content and JS retained */
+:root{--ink:#fbf5ff;--muted:#e2d1ff;--pink:#ff9edb;--rose:#f56fc2;--lav:#d9c3ff;--cream:#fffaf1;--card:rgba(65,29,112,.43);--line:rgba(226,190,255,.58);--shadow:0 0 0 1px rgba(224,185,255,.12),0 18px 55px rgba(30,5,66,.28),0 0 28px rgba(181,112,255,.20)}
+html{min-height:100%;background:#160925}
+body{color:var(--ink);background:#211338 url('purple-sky.jpg') center center/cover fixed no-repeat}
+.brand,.footnote,.tiny{color:#f0ddff;text-shadow:0 1px 10px #32104f}
+.counter{background:rgba(104,63,164,.45);color:#fff;border:1px solid rgba(235,204,255,.72);box-shadow:0 0 18px rgba(187,118,255,.22),inset 0 1px 0 #ffffff33;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.track{background:rgba(242,225,255,.62);border:1px solid #ffffff55;box-shadow:0 2px 12px #260a4a55}
+.track>div{background:linear-gradient(90deg,#ff83cb,#a879ff);box-shadow:0 0 12px #ff9edb88}
+.panel{position:relative;overflow:hidden;background:rgba(65,29,112,.43);border:1px solid rgba(236,207,255,.76);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.18);backdrop-filter:blur(8px) saturate(130%);-webkit-backdrop-filter:blur(8px) saturate(130%)}
+.panel:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(135deg,rgba(255,255,255,.10),transparent 36%,rgba(188,131,255,.07))}
+.panel>*{position:relative}
+.eyebrow{color:#ff9edb;text-shadow:0 0 12px #ff75d755}
+h1,h2{color:#fff8ff;text-shadow:0 2px 18px rgba(35,8,70,.32)}
+p,.letter-paragraph{color:#f1e5ff;text-shadow:0 1px 10px rgba(26,5,53,.22)}
+.soft-note{background:rgba(183,139,255,.19);border:1px solid rgba(230,203,255,.55);color:#fff4ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 8px 24px rgba(29,7,63,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn{border:1px solid rgba(255,224,255,.34);background:linear-gradient(110deg,rgba(255,104,193,.96),rgba(154,99,255,.96));box-shadow:0 7px 22px rgba(220,95,221,.28),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn:hover{box-shadow:0 9px 26px rgba(220,95,221,.36),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn.secondary{background:rgba(151,111,219,.34);border:1px solid rgba(229,198,255,.74);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.19),0 5px 20px rgba(39,8,81,.15);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.choice,.gift{background:rgba(106,66,164,.34);border:1px solid rgba(227,198,255,.57);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.13);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.choice:hover,.gift:hover{border-color:rgba(255,215,255,.9);background:rgba(148,91,209,.45)}
+.choice small,.gift small{color:#e4d0ff}
+.gift.opened{background:rgba(238,126,202,.3);border-color:#ffb7e8}
+.message{background:rgba(168,120,224,.27);border-color:rgba(240,210,255,.62);color:#fff4ff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.thoughts{border-color:rgba(234,203,255,.65);background:rgba(42,17,78,.48);color:#fff7ff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.thoughts::placeholder{color:#d9c2ef}
+.privacy{background:rgba(174,138,225,.24);border:1px solid rgba(232,204,255,.42);color:#f0e4ff;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.letter-final{border-color:rgba(224,194,255,.72);background:linear-gradient(135deg,rgba(181,145,255,.32),rgba(255,155,219,.18));color:#fff4ff}
+@media(max-width:480px){body{background-attachment:scroll;background-position:center center}.panel{backdrop-filter:blur(7px) saturate(125%);-webkit-backdrop-filter:blur(7px) saturate(125%)}}
 
 </style>
 </head>
