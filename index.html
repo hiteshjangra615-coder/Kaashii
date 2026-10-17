@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff2f8">
+<title>Kaashi ke liye — ek chhoti si safe jagah 💗</title>
+<style>
+:root{--ink:#51435f;--muted:#85758e;--pink:#f7c7dd;--rose:#d96b9c;--lav:#e5dcff;--cream:#fffaf1;--card:rgba(255,255,255,.82);--line:#f0dce9;--shadow:0 18px 55px rgba(114,77,123,.12)}
+*{box-sizing:border-box}html{min-height:100%;background:#fff7fb}body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,sans-serif;background:#211338 url('purple-sky.jpg') center center/cover fixed no-repeat;overflow-x:hidden}
+button,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,textarea:focus-visible{outline:3px solid #b88cdb;outline-offset:3px}
+.floaties{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;opacity:.65}.floaties span{position:absolute;animation:drift 11s ease-in-out infinite;font-size:clamp(15px,3vw,24px)}.floaties span:nth-child(1){left:7%;top:14%}.floaties span:nth-child(2){right:9%;top:24%;animation-delay:-3s}.floaties span:nth-child(3){left:12%;bottom:14%;animation-delay:-5s}.floaties span:nth-child(4){right:13%;bottom:12%;animation-delay:-7s}.floaties span:nth-child(5){left:48%;top:8%;animation-delay:-2s}
+@keyframes drift{50%{transform:translateY(-12px) rotate(8deg)}}@keyframes enter{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}@keyframes pop{0%{transform:scale(.94)}60%{transform:scale(1.035)}100%{transform:scale(1)}}@keyframes breathe{0%,100%{transform:scale(.9);opacity:.78}50%{transform:scale(1.12);opacity:1}}
+.shell{position:relative;z-index:1;width:min(760px,100%);margin:0 auto;padding:clamp(14px,4vw,32px);min-height:100vh;display:flex;flex-direction:column;justify-content:center}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.brand{font-size:13px;color:var(--muted);letter-spacing:.04em}.counter{font-size:12px;background:#fff9;border:1px solid var(--line);padding:8px 12px;border-radius:99px;white-space:nowrap}.track{height:5px;background:#eadfeb;border-radius:99px;overflow:hidden;margin-bottom:16px}.track>div{height:100%;background:linear-gradient(90deg,#e79abb,#b7a4ee);width:12.5%;transition:width .3s ease}
+.panel{background:var(--card);border:1px solid #fff;box-shadow:var(--shadow);border-radius:28px;padding:clamp(22px,5vw,42px);backdrop-filter:blur(12px);min-height:410px;display:flex;flex-direction:column;animation:enter .28s ease both}.eyebrow{color:#bd7299;text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:800;margin:0 0 13px}h1,h2{font-weight:750;line-height:1.17;letter-spacing:-.035em;margin:0 0 16px}h1{font-size:clamp(31px,7vw,49px)}h2{font-size:clamp(26px,5vw,36px)}p{line-height:1.75;color:#71647c;margin:0 0 15px;font-size:15px}.hero-emoji{font-size:42px;margin-bottom:15px}.soft-note{padding:14px 16px;background:#fff7fc;border:1px solid var(--line);border-radius:18px;margin:8px 0 18px;color:#6d5a75;line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:22px}.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:750;font-size:14px;transition:transform .16s,filter .16s;background:linear-gradient(110deg,#d978a5,#b49be8);color:white;box-shadow:0 7px 18px #d6a2c44d}.btn:hover{filter:saturate(1.08);transform:translateY(-1px)}.btn:active{transform:scale(.98)}.btn.secondary{background:#fff;border:1px solid var(--line);color:#7a6484;box-shadow:none}.btn:disabled{opacity:.4;cursor:not-allowed}.nav{display:flex;justify-content:space-between;gap:12px;margin-top:14px}.nav .btn{min-width:112px}.footnote{text-align:center;font-size:11px;color:#9a8ba2;margin-top:15px}
+.mood-grid,.gift-grid,.smile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:10px 0 15px}.choice,.gift{background:#fffafc;border:1px solid var(--line);border-radius:20px;padding:17px 13px;text-align:left;color:var(--ink);min-height:100px;transition:transform .18s,border-color .18s,background .18s}.choice:hover,.gift:hover{transform:translateY(-2px);border-color:#d8b5db;background:#fff}.choice .emoji,.gift .emoji{display:block;font-size:27px;margin-bottom:8px}.choice strong,.gift strong{display:block;font-size:14px;margin-bottom:4px}.choice small,.gift small{color:var(--muted);font-size:12px}.message{display:none;background:#fff7fc;border:1px solid #f0d9e7;padding:17px;border-radius:18px;line-height:1.8;color:#6c5977;margin:12px 0;animation:pop .25s ease}.message.show{display:block}.gift{min-height:120px;text-align:center}.gift.opened{background:#fff0f7;border-color:#e4b4ce}.gift.opened .emoji{animation:pop .3s ease}.breath-wrap{text-align:center;padding:12px 0}.breath-orb{width:118px;height:118px;border-radius:50%;margin:12px auto 18px;background:radial-gradient(circle at 35% 30%,#fff,#edc7e5 65%,#cbbdf6);box-shadow:0 0 0 13px #f8e7f2aa;display:grid;place-items:center;animation:breathe 5s ease-in-out infinite}.breath-orb span{font-size:30px}.tiny{font-size:12px;color:#9a8ba2}.thoughts{width:100%;min-height:140px;resize:vertical;border:1px solid var(--line);background:#fffdfd;border-radius:18px;padding:15px;color:var(--ink);line-height:1.65}.privacy{font-size:12px;background:#f7f2ff;padding:12px 14px;border-radius:14px;margin:10px 0 15px;color:#766888;line-height:1.6}.final-heart{font-size:54px;margin:3px 0 17px;animation:pop .5s ease}.letter-controls{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 14px}.letter-content{display:none}.letter-content.open{display:block}.letter-paragraph{margin:0 0 16px;line-height:1.85;color:#51435f}.letter-final{padding:16px 18px;border:1px solid #d8c5f5;background:linear-gradient(135deg,#f6efffdd,#fff7fddd);border-radius:18px;box-shadow:0 0 0 0 #c8a8ff;animation:letterGlow 2.8s ease-in-out infinite alternate;font-weight:750;color:#6c4b91}.letter-final[hidden]{display:none}@keyframes letterGlow{to{box-shadow:0 0 24px 2px #c6a4f766}}.sprinkle{position:fixed;pointer-events:none;z-index:9;font-size:22px;animation:rise 1.3s ease-out forwards}@keyframes rise{to{transform:translateY(-100px) rotate(35deg);opacity:0}}
+/* Purple glass panels: let the starry sky show through instead of hiding it behind white cards. */
+.panel{background:rgba(48,24,77,.52);border:1px solid rgba(255,255,255,.58);box-shadow:0 18px 55px rgba(19,7,38,.24),inset 0 1px 0 rgba(255,255,255,.18);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.panel h1,.panel h2{color:#fff7ff;text-shadow:0 1px 12px rgba(30,8,54,.22)}
+.panel p{color:#f0e7fb}
+.panel .eyebrow{color:#ffd0ec;text-shadow:0 1px 8px rgba(35,8,50,.35)}
+.panel .soft-note,.panel .message{background:rgba(235,216,255,.20);border:1px solid rgba(255,255,255,.32);color:#fff5ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.panel .choice,.panel .gift{background:rgba(245,231,255,.16);border:1px solid rgba(255,255,255,.34);color:#fff7ff;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.panel .choice:hover,.panel .gift:hover{background:rgba(248,230,255,.27);border-color:rgba(255,255,255,.62)}
+.panel .choice small,.panel .gift small,.panel .tiny{color:#eadcf8}
+.panel .gift.opened{background:rgba(237,174,221,.28);border-color:#ffd2f0}
+.panel .thoughts{background:rgba(255,248,255,.92);border-color:rgba(255,255,255,.75)}
+.panel .privacy{background:rgba(222,203,255,.22);color:#fff4ff;border:1px solid rgba(255,255,255,.24)}
+.panel .letter-paragraph{color:#f6edff}
+.panel .letter-final{background:linear-gradient(135deg,rgba(211,177,255,.28),rgba(255,206,238,.22));border-color:rgba(255,255,255,.48);color:#fff7ff}
+.counter{background:rgba(246,235,255,.23);border-color:rgba(255,255,255,.35);color:#fff8ff;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.brand{color:#f2e4ff;text-shadow:0 1px 8px rgba(30,8,54,.5)}
+.track{background:rgba(255,255,255,.35)}
+.footnote{color:#eee0ff;text-shadow:0 1px 8px rgba(30,8,54,.6)}
+.btn.secondary{background:rgba(244,229,255,.22);border:1px solid rgba(255,255,255,.55);color:#fff6ff;box-shadow:none;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+@media(max-width:480px){body{background-attachment:scroll;background-position:center center}.shell{padding:14px}.panel{min-height:0;border-radius:24px;padding:24px 19px}.mood-grid,.gift-grid,.smile-grid{gap:8px}.choice,.gift{padding:14px 10px}.nav .btn{min-width:0;flex:1;padding:12px 10px}.topline{margin-top:4px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Final Premium Purple Glass polish: retain the original content and layout. */
+:root{--ink:#fff7ff;--muted:#eadcf8;--card:rgba(48,24,77,.48);--line:rgba(255,255,255,.34);--shadow:0 18px 55px rgba(19,7,38,.26)}
+html{background:#211338}
+body{background-color:#211338;background-image:linear-gradient(180deg,rgba(21,8,40,.12),rgba(27,10,49,.18)),url('purple-sky.jpg');background-position:center center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
+.floaties{z-index:2;opacity:.78}.floaties span{color:#fff1ff;text-shadow:0 0 12px rgba(255,255,255,.9),0 0 24px rgba(204,147,255,.65)}
+.shell{isolation:isolate}.brand{color:#f1ddff;text-shadow:0 1px 10px rgba(31,8,48,.75)}
+.counter{background:rgba(232,208,255,.22);border:1px solid rgba(255,255,255,.5);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 0 20px rgba(185,126,255,.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.track{background:rgba(255,255,255,.28);box-shadow:0 0 12px rgba(205,155,255,.18)}.track>div{background:linear-gradient(90deg,#ff83c7,#bb8cff,#f8c7ff);box-shadow:0 0 12px rgba(227,158,255,.65)}
+.panel{position:relative;background:rgba(47,21,78,.46);border:1px solid rgba(255,255,255,.62);box-shadow:0 18px 55px rgba(15,4,33,.3),inset 0 1px 0 rgba(255,255,255,.18),0 0 24px rgba(169,105,255,.15);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.panel:before{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(215,174,255,.16),0 0 15px rgba(178,113,255,.12)}
+.panel h1,.panel h2{color:#fff8ff;text-shadow:0 2px 14px rgba(28,5,49,.5)}.panel p{color:#f7efff;text-shadow:0 1px 8px rgba(25,4,45,.25)}.panel .eyebrow{color:#ffc8ec;text-shadow:0 1px 10px rgba(30,4,48,.55)}
+.panel .soft-note,.panel .message,.panel .privacy,.panel .letter-final{background:rgba(213,177,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff7ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 16px rgba(177,115,255,.08);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.panel .choice,.panel .gift{background:rgba(225,197,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}.panel .choice:hover,.panel .gift:hover,.panel .gift.opened{background:rgba(247,211,255,.25);border-color:rgba(255,218,255,.78);box-shadow:0 0 18px rgba(201,135,255,.2)}.panel .choice small,.panel .gift small{color:#e8d6ff}
+.panel .thoughts{background:rgba(30,12,52,.36);border:1px solid rgba(255,255,255,.48);color:#fff8ff}.panel .thoughts::placeholder{color:#e1c9f5}.panel .privacy{font-size:12px}
+.btn{background:linear-gradient(110deg,#f05cae,#a875f4);border:1px solid rgba(255,255,255,.28);box-shadow:0 7px 22px rgba(181,91,224,.28),inset 0 1px 0 rgba(255,255,255,.25);text-shadow:0 1px 4px rgba(58,14,70,.18)}.btn.secondary{background:rgba(225,201,255,.17);border:1px solid rgba(255,255,255,.55);color:#fff5ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 16px rgba(177,115,255,.08);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.footnote{color:#f0dcff;text-shadow:0 1px 9px rgba(25,5,45,.85)}.breath-orb{background:radial-gradient(circle at 35% 30%,#fff8ff,#e7b6ff 58%,#8b69d6);box-shadow:0 0 0 13px rgba(225,188,255,.15),0 0 28px rgba(208,150,255,.32)}
+.letter-paragraph{color:#f7efff}.letter-final{color:#fff7ff;animation:letterGlow 2.8s ease-in-out infinite alternate}
+@media(max-width:480px){.panel{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}}
+@media(prefers-reduced-motion:reduce){}
+
+</style>
+</head>
+<body>
+<div class="floaties" aria-hidden="true"><span>♡</span><span>✦</span><span>🌷</span><span>♡</span><span>✧</span></div>
+<main class="shell">
+  <div class="topline"><div class="brand">a little corner of gentleness 🌷</div><div class="counter" id="counter">Chapter 1 of 8</div></div>
+  <div class="track" role="progressbar" aria-label="Journey progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1" id="progress"><div id="bar"></div></div>
+  <section class="panel" id="panel" aria-live="polite"></section>
+  <div class="nav"><button class="btn secondary" id="prev" type="button">← Previous</button><button class="btn" id="next" type="button">Next →</button></div>
+  <div class="footnote">A small reminder, with no pressure to feel any particular way. 💗</div>
+</main>
+<script>
+(() => {
+const chapters = [
+{label:"A soft beginning", render:()=>`
+<div class="eyebrow">a tiny pause, just for you</div><div class="hero-emoji">🌷☁️</div>
+<h1>Kaashi, welcome to your little corner. 💗</h1>
+<p>Yeh koi aisi jagah nahi jahan aapko khush dikhna ho, sab explain karna ho, ya har baat ka answer pata hona chahiye.</p>
+<p>Bas kuch chhote messages, cute surprises aur thodi si narmi — jab aapka mann ho.</p>
+<div class="soft-note">Aap jaisa mehsoos kar rahi hain, woh matter karta hai. Aapko abhi kuch prove karne ki zaroorat nahi. 🌙</div>
+<div class="actions"><button class="btn" data-action="sparkle">A little sparkle ✨</button></div>`},
+{label:"A letter for you",render:()=>`
+<div class="eyebrow">opened with care 💌</div><h2>Kaashi ke naam ek chhota sa letter</h2>
+<p>Kabhi-kabhi life mein itni saari baatein ek saath ho jaati hain ki samajh hi nahi aata pehle kis cheez ko sambhalein. Agar aap bhi aisa feel kar rahi hain, toh aapko har cheez akele sort out karne ki zaroorat nahi.</p>
+<p>Aapko har waqt strong rehna, sabke saamne theek dikhna, ya jaldi se better feel karna zaroori nahi hai. Thak jaana, confuse hona, ro lena — feelings ka hona aapki weakness nahi.</p>
+<p>Aapki baat important hai, chahe woh poori tarah words mein na bhi aa paaye. Kabhi share karna chahein, toh jitna comfortable lage utna hi kehna kaafi hai. Aur agar abhi baat nahi karni, woh bhi bilkul okay hai. 🤍</p>
+<div class="soft-note">Aaj bas agla chhota step kaafi hai. Poori life ka solution aaj hi dhoondhna zaroori nahi.</div>`},
+{label:"Mood check-in",render:()=>`
+<div class="eyebrow">what kind of moment is it?</div><h2>Kaashi, abhi dil kaisa feel kar raha hai? 🫂</h2><p>Koi right ya wrong answer nahi. Jo option thoda sa bhi aapke kareeb lage, us par tap kar sakti hain.</p>
+<div class="mood-grid">
+<button class="choice" data-mood="heavy"><span class="emoji">🌧️</span><strong>Dil heavy hai</strong><small>Bas thoda comfort</small></button>
+<button class="choice" data-mood="tired"><span class="emoji">🧸</span><strong>Bahut thak gayi hoon</strong><small>Rest ki permission</small></button>
+<button class="choice" data-mood="alone"><span class="emoji">🌙</span><strong>Akela feel ho raha hai</strong><small>Ek gentle reminder</small></button>
+<button class="choice" data-mood="happy"><span class="emoji">🍓</span><strong>Kuch cute chahiye</strong><small>Little smile corner</small></button>
+</div><div class="message" id="moodMessage" role="status"></div>`},
+{label:"Tiny surprise gifts",render:()=>`
+<div class="eyebrow">tap to unwrap 🎁</div><h2>Chhote-chhote gifts, sirf aapke liye</h2><p>Har box mein ek alag baat chhupi hai. Aap sab khol sakti hain, ya bas apna favourite choose kar sakti hain.</p>
+<div class="gift-grid">
+<button class="gift" data-gift="0"><span class="emoji">💌</span><strong>Kind words</strong><small>tap to open</small></button>
+<button class="gift" data-gift="1"><span class="emoji">🍪</span><strong>Cookie break</strong><small>tap to open</small></button>
+<button class="gift" data-gift="2"><span class="emoji">🌟</span><strong>Star reminder</strong><small>tap to open</small></button>
+<button class="gift" data-gift="3"><span class="emoji">🐣</span><strong>Tiny giggle</strong><small>tap to open</small></button>
+<button class="gift" data-gift="4"><span class="emoji">🌷</span><strong>Soft day</strong><small>tap to open</small></button>
+<button class="gift" data-gift="5"><span class="emoji">🫶</span><strong>Care note</strong><small>tap to open</small></button>
+</div><div class="message" id="giftMessage" role="status"></div>`},
+{label:"Peaceful care corner",render:()=>`
+<div class="eyebrow">slow down, if you want 🌙</div><h2>Abhi bas ek chhota sa pause</h2><p>Aap chahein toh is soft circle ke saath aaram se saans lene ki rhythm follow kar sakti hain. Koi target nahi, koi perfect technique nahi — uncomfortable lage toh normal breathing par laut aayein.</p>
+<div class="breath-wrap"><div class="breath-orb" aria-hidden="true"><span>☁️</span></div><p><strong>Saans andar… aur dheere se bahar.</strong></p><p class="tiny">Circle sirf ek gentle visual hai. Apni natural pace par hi rahein.</p></div>
+<div class="soft-note">🌷 Paani ka ek sip, shoulders ko relax karna, ya kuch der aaram — inmein se ek chhoti cheez bhi kaafi hai. Rest earn karna nahi padta.</div>`},
+{label:"Cute smile corner",render:()=>`
+<div class="eyebrow">one tiny dose of cute 🧸</div><h2>Ek chhoti si baat sunengi, Kaashi?</h2><p>Yeh button har tap par ek naya, pyaara sa reminder laayega. Smile aaye toh lovely; na aaye toh bhi koi problem nahi. 💗</p>
+<div class="soft-note" id="randomLine" role="status">Aapki presence ki apni ek alag si value hai. ✨</div>
+<div class="actions"><button class="btn" data-action="random">Ek aur pyaari baat 🌸</button><button class="btn secondary" data-action="sparkle">Tiny sparkle ✨</button></div>`},
+{label:"Your thoughts",render:()=>`
+<div class="eyebrow">a private little page 📝</div><h2>Aapke thoughts ke liye jagah</h2><p>Agar mann ho, toh jo bhi dimag mein chal raha hai yahan likh sakti hain. Isse kisi ko dikhane ya perfect words mein likhne ki zaroorat nahi.</p>
+<textarea class="thoughts" id="thoughts" placeholder="Jo mann mein aaye, yahan likh sakti hain…" aria-label="Your thoughts"></textarea>
+<div class="privacy"><strong>Privacy note:</strong> Yeh text sirf is page ke khule rehne tak browser memory mein rehta hai. Is website ka code ise kahin send ya save nahi karta. Page refresh ya close karne par text clear ho jaata hai. Shared device par likhne se pehle is baat ka dhyan rakhein.</div>
+<div class="actions"><button class="btn secondary" data-action="clearThoughts">Clear thoughts</button><button class="btn" data-action="saveNotice">Keep on this page</button></div><div class="message" id="thoughtMessage" role="status"></div>`},
+ {label:"One last gentle note",render:()=>`
+<div class="eyebrow">before you go 💜</div><div class="final-heart">💌</div><h2>Kaashi, this last one is a little different…</h2>
+<p>Ek chhota sa letter hai. Jab aap ready hon, tab kholiye — koi jaldi nahi. 🌙</p>
+<div class="letter-controls"><button class="btn" data-action="openLetter">Tap to open your letter 💌</button><button class="btn secondary" data-action="skipLetter" hidden>Show the whole letter</button></div>
+<div class="letter-content" id="letterContent" aria-live="polite">
+<h2>Kaashi, please read this slowly… 💜</h2>
+<div id="letterParagraphs"></div>
+<p class="letter-final" id="letterFinal" hidden>You deserve gentle days, genuine smiles, peaceful moments, and reasons to look forward to tomorrow. 💜</p>
+</div>
+<div class="actions"><button class="btn secondary" data-action="restart">Start again ↻</button><button class="btn secondary" data-action="sparkle">A final sparkle ✨</button></div>`}
+];
+let index=0;
+const panel=document.getElementById('panel'), counter=document.getElementById('counter'), bar=document.getElementById('bar'), progress=document.getElementById('progress'), prev=document.getElementById('prev'), next=document.getElementById('next');
+const gifts=[
+"Kaashi, aapko har waqt sab kuch sambhalne ki zaroorat nahi. Aap bhi care deserve karti hain. 💌",
+"Official tiny reminder: paani ka sip aur ek snack break approved hai. Cookie committee ne unanimous decision diya hai. 🍪😂",
+"Aapki value kisi ek difficult din, ek result, ya kisi aur ke behaviour se decide nahi hoti. 🌟",
+"Ek chhota sa penguin aapko yaad dilane aaya hai: aaj bas waddling pace par chalna bhi progress hai. 🐧",
+"Aapko har din productive ya cheerful hona zaroori nahi. Soft day bhi valid day hai. 🌷",
+"Aapki baat sunne layak hai. Aap jitna share karna chahein, utna hi kaafi hai. 🫶"
+];
+const lines=[
+"Aapko sab kuch aaj hi solve karna zaroori nahi. 🌷","Aapka rest bhi important hai, sirf responsibilities nahi. ☁️",
+"Reminder: aap kisi ke liye burden nahi hain sirf isliye ki aapka din difficult hai. 💗","Aapko apni feelings ko justify karne ki zaroorat nahi. 🌙",
+"Ek tiny virtual cupcake aapke naam… calories nahi, sirf cuteness. 🧁","Aapko aaj bas apne saath thoda gentle rehna hai. 🫶",
+"Plot twist: aapko abhi sab answers pata hona bilkul zaroori nahi. ✨","Aapki worth ko aaj ka mood decide nahi karta. 🌼"
+];
+const moodText={
+heavy:"Kaashi, agar dil heavy hai toh aapko abhi sab kuch explain karne ki zaroorat nahi. Jo feel ho raha hai, use thodi jagah dijiye. Ek-ek moment karke chalna bhi theek hai. 🤍",
+tired:"Aap thak gayi hain toh rest lena bilkul allowed hai. Aapko har waqt strong rehne ki zaroorat nahi. Agar ho sake toh ek sip paani lijiye, shoulders relax kijiye, aur apne aap se thoda softly baat kijiye. 🌙",
+alone:"Akela feel hona sach mein heavy ho sakta hai. Aapko apni baat share karne ke liye perfect words nahi chahiye. Kisi safe aur bharosemand insaan ko chhota sa message bhejna chahein toh bhej sakti hain — aur abhi sirf quiet rehna chahein toh woh bhi okay hai. 🫂",
+happy:"Aaj cute mode activated! 🐣 Imagine ek chhota sa strawberry wearing a tiny hat, jo full confidence se bol raha hai: 'Main fruit salad ka CEO hoon.' 🍓 Aapko ek chhoti si smile mile toh bonus; warna next strawberry meeting kal. 😂"
+};
+const letterParagraphs = [
+`Kaashi,`,
+`Pata hai, zindagi mein kabhi-kabhi itni saari cheezein ek saath chal rahi hoti hain ki insaan ko khud samajh nahi aata ki woh pehle kis cheez ko sambhale. Kabhi ghar ki baatein, kabhi future ki tension, kabhi aisi pareshaniyan jinhe kisi ko samjhana bhi mushkil lagta hai.`,
+`Aur sabse ajeeb baat pata hai kya hai? Duniya aksar bas yahi poochti hai ki sab theek hai ya nahi, lekin har baar koi itna waqt nahi deta ki insaan sach mein bata sake ki uske andar kya chal raha hai.`,
+`Isliye aaj aapko yeh nahi kehna ki bas smile kar lijiye, sab theek ho jayega. Kyunki sirf itna keh dene se har pareshani khatam nahi hoti. Main bas chahta hoon ki aapko yaad rahe — aapki pareshaniyan sach hain, aapki feelings bhi important hain, aur aapko har baar yeh dikhane ki zaroorat nahi ki aap sab kuch sambhaal sakti hain.`,
+`Agar kabhi kisi din kuch karne ka mann na ho, toh khud ko thoda waqt dijiye. Agar kisi din future bahut confusing lage, toh poori zindagi ka answer aaj hi dhoondhne ki zaroorat nahi. Ek chhota sa step bhi step hota hai. Aapko har cheez ek hi din mein theek nahi karni.`,
+`Aur Kaashi, please apni achhai ko un bure dino ke hisaab se mat naapna. Kisi din aap udaas hon, thak jaayein ya khud par doubt karein, toh iska matlab yeh nahi ki aap mein kuch kami hai. Aap bhi ek insaan hain — aapko bhi aaram, samajh aur thodi si khushi milni chahiye.`,
+`Ek din jab aap peeche mudkar aaj ke waqt ko dekhein, toh umeed hai aapko sirf yeh yaad na aaye ki kitni mushkilein thi. Shayad yeh bhi yaad aaye ki dheere-dheere aapne kitni cheezein seekhin, kitne chhote moments mein muskuraayi, aur kitni baar phir se ek naya din shuru kiya.`,
+`Aur jab kabhi aapka mann kare, toh bina kisi pressure ke apni baat keh sakti hain. Har baat ka solution dena zaroori nahi hota; kabhi-kabhi bas dhyaan se sunna bhi kaafi hota hai.`,
+`Aapki kahaani abhi chal rahi hai. Yeh mushkil waqt aapki poori kahaani nahi hai, aur aaj ka din aapke aane wale saare dino ka faisla nahi karta.`,
+`Jab bhi sab kuch thoda zyada lage, ek pal ke liye rukiyega, gehri saans lijiye aur khud ke saath thoda naram rahiye.`
+];
+let letterTimer = null;
+let letterStarted = false;
+let letterComplete = false;
+function clearLetterTimer(){ if(letterTimer!==null){clearTimeout(letterTimer);letterTimer=null;} }
+function finishLetter(){
+ clearLetterTimer();
+ const holder=document.getElementById('letterParagraphs');
+ const finalLine=document.getElementById('letterFinal');
+ if(!holder||!finalLine)return;
+ holder.innerHTML='';
+ letterParagraphs.forEach((text,i)=>{const p=document.createElement('p');p.className='letter-paragraph';p.textContent=text;holder.appendChild(p);});
+ finalLine.hidden=false;letterComplete=true;
+ const skip=document.querySelector('[data-action="skipLetter"]');if(skip)skip.hidden=true;
+ sprinkle(['✦','✧','💜','✨']);
+}
+function startLetter(){
+ if(letterStarted||letterComplete)return;
+ letterStarted=true;
+ const content=document.getElementById('letterContent');
+ const holder=document.getElementById('letterParagraphs');
+ const open=document.querySelector('[data-action="openLetter"]');
+ const skip=document.querySelector('[data-action="skipLetter"]');
+ if(!content||!holder)return;
+ content.classList.add('open');if(open)open.disabled=true;if(skip)skip.hidden=false;
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){finishLetter();return;}
+ let paragraphIndex=0;
+ function typeParagraph(){
+  if(!document.getElementById('letterContent')){clearLetterTimer();return;}
+  if(paragraphIndex>=letterParagraphs.length){
+   const finalLine=document.getElementById('letterFinal');if(finalLine)finalLine.hidden=false;
+   letterComplete=true;if(skip)skip.hidden=true;sprinkle(['✦','✧','💜','✨']);return;
+  }
+  const p=document.createElement('p');p.className='letter-paragraph';holder.appendChild(p);
+  const text=letterParagraphs[paragraphIndex];let charIndex=0;
+  function typeChar(){
+   if(!document.getElementById('letterContent')){clearLetterTimer();return;}
+   if(charIndex<text.length){p.textContent+=text.charAt(charIndex++);letterTimer=setTimeout(typeChar,9);}
+   else {paragraphIndex++;letterTimer=setTimeout(typeParagraph,420);}
+  }
+  typeChar();
+ }
+ typeParagraph();
+}
+function render(){
+ clearLetterTimer();letterStarted=false;letterComplete=false;
+ const c=chapters[index]; panel.innerHTML=c.render(); panel.setAttribute('aria-label',c.label);
+ counter.textContent=`Chapter ${index+1} of ${chapters.length}`;bar.style.width=((index+1)/chapters.length*100)+'%';progress.setAttribute('aria-valuenow',index+1);
+ prev.disabled=index===0;next.textContent=index===chapters.length-1?'Back to start ↻':'Next →';
+}
+function go(n){index=Math.max(0,Math.min(chapters.length-1,n));render();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+prev.addEventListener('click',()=>go(index-1));next.addEventListener('click',()=>go(index===chapters.length-1?0:index+1));
+panel.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.mood){const el=document.getElementById('moodMessage');el.textContent=moodText[b.dataset.mood];el.classList.add('show');return;}
+ if(b.dataset.gift!==undefined){const n=Number(b.dataset.gift), el=document.getElementById('giftMessage');el.textContent=gifts[n];el.classList.add('show');b.classList.add('opened');b.querySelector('small').textContent='opened with care 💗';sprinkle(['💗','✨','🌷']);return;}
+ if(b.dataset.action==='openLetter'){startLetter();return;}
+  if(b.dataset.action==='skipLetter'){finishLetter();return;}
+  if(b.dataset.action==='random'){let line=lines[Math.floor(Math.random()*lines.length)];const el=document.getElementById('randomLine');if(lines.length>1&&el.textContent===line)line=lines[(lines.indexOf(line)+1)%lines.length];el.textContent=line;el.animate?.([{opacity:.3,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:220});}
+ if(b.dataset.action==='sparkle')sprinkle(['💗','✨','🌸','♡']);
+ if(b.dataset.action==='clearThoughts'){document.getElementById('thoughts').value='';const m=document.getElementById('thoughtMessage');m.textContent='Text clear ho gaya. 🌷';m.classList.add('show');}
+ if(b.dataset.action==='saveNotice'){const m=document.getElementById('thoughtMessage');m.textContent='Yeh text isi page par tab tak rahega jab tak aap page refresh ya close nahi karti. Kahin send ya permanently save nahi hota. 🤍';m.classList.add('show');}
+ if(b.dataset.action==='restart')go(0);
+});
+function sprinkle(chars){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<12;i++){const s=document.createElement('span');s.className='sprinkle';s.textContent=chars[Math.floor(Math.random()*chars.length)];s.style.left=(8+Math.random()*84)+'vw';s.style.top=(48+Math.random()*30)+'vh';document.body.appendChild(s);setTimeout(()=>s.remove(),1400);}}
+document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'&&index<chapters.length-1)go(index+1);if(e.key==='ArrowLeft'&&index>0)go(index-1);});
+render();
+})();
+</script>
+</body>
+</html>
