@@ -1,5 +1,5 @@
-KAASHII — CURSIVE HEADINGS UPDATE
+KAASHII — PINK TITLES AND HEADINGS
 
-This update applies the Allura cursive font to h1 and h2 headings throughout the 8 chapters in index.html. Heading sizes are kept clearly readable on mobile and desktop. Other page content, colors, background, buttons, navigation, animations, and JavaScript are preserved from the supplied source file.
+Only the h1/h2 heading color was changed to pink (#ff9edb). Font, size, layout, content, buttons, navigation, animations, and background references are otherwise unchanged from the provided cursive-headings version.
 
-To apply: replace the repository's index.html with this index.html. Keep your existing purple-sky.jpg if it is already in the repository. Make a backup of the current file before committing.
+Replace the repository index.html with this index.html. Keep purple-sky.jpg in the repository root.
