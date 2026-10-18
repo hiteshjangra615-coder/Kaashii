@@ -662,7 +662,7 @@ panel.addEventListener('click',e=>{
 });
 function sprinkle(chars){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<12;i++){const s=document.createElement('span');s.className='sprinkle';s.textContent=chars[Math.floor(Math.random()*chars.length)];s.style.left=(8+Math.random()*84)+'vw';s.style.top=(48+Math.random()*30)+'vh';document.body.appendChild(s);setTimeout(()=>s.remove(),1400);}}
 document.addEventListener('keydown',e=>{if(!document.body.classList.contains('opened'))return;if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'&&index<chapters.length-1)go(index+1);if(e.key==='ArrowLeft'&&index>0)go(index-1);});
-window.__kassuEnter=()=>playTurn('next');
+window.__kassuEnter=()=>{if(index===0)render();playTurn('next');};
 render();playTurn('next');
 })();
 </script>
@@ -726,7 +726,7 @@ render();playTurn('next');
   document.body.classList.add('opened');cover.classList.add('gone');
   const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);
   const bl=document.createElement('div');bl.className='bloom';document.body.appendChild(bl);setTimeout(()=>bl.remove(),2200);
-  if(window.__kassuEnter)setTimeout(window.__kassuEnter,500);
+  if(window.__kassuEnter)setTimeout(window.__kassuEnter,900);
   tryPlay();
   snd.hidden=!ok;
  });
