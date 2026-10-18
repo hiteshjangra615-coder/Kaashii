@@ -343,6 +343,18 @@ h1.hero-h{font-size:clamp(40px,10.5vw,56px);line-height:1.08;animation:heroGlow 
 @keyframes fxDown{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.95}85%{opacity:.9}100%{transform:translate(var(--sx,20px),112vh) rotate(260deg);opacity:0}}
 @keyframes fxUp{0%{transform:translate(0,0) scale(.7);opacity:0}12%{opacity:.9}100%{transform:translate(var(--sx,-18px),-112vh) scale(1.1);opacity:0}}
 @media(prefers-reduced-motion:reduce){.fxrain{display:none}.panel[data-ch] .choice,.panel[data-ch] .gift,.panel[data-ch] .breath-orb,.panel[data-ch] .thoughts{animation:none}}
+
+/* ==========================================================
+   FIX: chapter 1 intro animation waits for the cover to be tapped.
+   Before the tap (body not .opened) every intro animation is paused at
+   its start; the moment "Tap to begin" is pressed they all begin.
+   ========================================================== */
+body:not(.opened) .hw,
+body:not(.opened) .hl,
+body:not(.opened) .hero-hint,
+body:not(.opened) .hero-orb,
+body:not(.opened) .hero-orb::before,
+body:not(.opened) .hero-orb i{animation-play-state:paused!important}
 </style>
 </head>
 <body>
