@@ -359,6 +359,7 @@ body:not(.opened) .hero-orb i{animation-play-state:paused!important}
 .song-card{margin:12px 0 4px;padding:14px 14px 12px;border-radius:18px;text-align:center;background:rgba(183,139,255,.19);border:1px solid rgba(230,203,255,.55);animation:pop .3s ease}.song-card[hidden]{display:none}.song-title{font-weight:700;margin-bottom:10px;color:#fff4ff}.song-title span{font-weight:500;opacity:.8;font-size:13px}.song-embed{width:100%;height:152px;border:0;border-radius:12px;display:block}.song-note{font-size:12px;margin-top:8px;opacity:.85}
 html,body{touch-action:pan-y pinch-zoom}
 
+.letter-dm[hidden]{display:none!important}
 .letter-dm{display:flex;flex-direction:column;align-items:center;gap:10px}
 .dm-hint{font-size:13px;color:#ffd6f1;letter-spacing:.04em}
 .letter-dm .dm-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 26px;font-size:16px;border-radius:999px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;animation:dmFloat 2.6s ease-in-out infinite;box-shadow:0 6px 0 rgba(120,60,170,.55),0 12px 28px rgba(220,95,221,.4),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .12s ease,box-shadow .12s ease}
@@ -459,8 +460,8 @@ const chapters = [
 <div id="letterParagraphs"></div>
 <p class="letter-final" id="letterFinal" hidden>You deserve gentle days, genuine smiles, peaceful moments, and reasons to look forward to tomorrow. 💜</p>
 <p class="letter-promise" id="letterPromise" hidden>Jab bhi mann ho, ya kuch bhaari lage, kuch samajh nahi aaye ya achha na lage, mujhse baat kar sakti ho. Main hoon sunne ke liye 💌</p>
-<p class="letter-sign" id="letterSign" hidden>— tumhara dost,<span>Hitesh</span></p>
 <p class="letter-wish" id="letterWish" hidden>Ek shooting star guzra hai… ek chhoti si wish maang lijiye. 🌠</p>
+<p class="letter-sign" id="letterSign" hidden>— tumhara dost,<span>Hitesh</span></p>
 <div class="letter-dm" id="letterDM" hidden><span class="dm-hint">Yahan tap karo 👇</span><a class="btn dm-btn" id="dmBtn" href="https://ig.me/m/silent_person5454" target="_blank" rel="noopener" role="button" aria-label="Instagram par message kholo"><span class="dm-label">Main yahin hoon 💌</span><span class="dm-arrow" aria-hidden="true">➜</span></a></div>
 </div>
 <div class="actions"><button class="btn secondary" data-action="restart">Start again ↻</button><button class="btn secondary" data-action="sparkle">A final sparkle ✨</button></div>`}
@@ -512,11 +513,11 @@ function heartOfStars(){
   const sx=(Math.random()-.5)*vw*1.3, sy=(Math.random()-.5)*vh*1.1, size=8+Math.random()*9;
   const el=document.createElement('i');el.className='hstar';el.style.width=el.style.height=size+'px';el.style.margin=(-size/2)+'px 0 0 '+(-size/2)+'px';
   box.appendChild(el);
-  el.animate([{transform:`translate(${sx}px,${sy}px) scale(.3) rotate(0deg)`,opacity:0},{transform:`translate(${ex}px,${ey}px) scale(1) rotate(90deg)`,opacity:1}],{duration:1700,delay:i*40,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'});
+  el.animate([{transform:`translate(${sx}px,${sy}px) scale(.3) rotate(0deg)`,opacity:0},{transform:`translate(${ex}px,${ey}px) scale(1) rotate(90deg)`,opacity:1}],{duration:1200,delay:i*25,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'});
  }
- endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.07)'},{transform:'scale(1)'}],{duration:1400,easing:'ease-in-out'});},3300));
- endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:1400,fill:'forwards'});a.onfinish=()=>box.remove();},5200));
- endTimers.push(setTimeout(()=>box.remove(),7000));
+ endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.07)'},{transform:'scale(1)'}],{duration:1000,easing:'ease-in-out'});},2300));
+ endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:900,fill:'forwards'});a.onfinish=()=>box.remove();},3500));
+ endTimers.push(setTimeout(()=>box.remove(),4800));
 }
 function revealEl(id){const el=document.getElementById(id);if(!el)return;el.hidden=false;el.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)el.scrollIntoView({behavior:'smooth',block:'center'});}
 function endingSequence(){
@@ -525,11 +526,12 @@ function endingSequence(){
  const at=(ms,fn)=>endTimers.push(setTimeout(()=>{if(document.getElementById('letterContent'))fn();},ms));
  at(300,()=>sprinkle(['✦','✧','💜','✨']));
  at(1200,()=>revealEl('letterPromise'));
- at(3200,()=>revealEl('letterSign'));
- at(5000,heartOfStars);
- at(9200,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);});
- at(9900,()=>revealEl('letterWish'));
- at(11800,()=>revealEl('letterDM'));
+ 
+ at(4500,heartOfStars);
+ at(8400,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);});
+ at(9000,()=>revealEl('letterWish'));
+ at(10800,()=>revealEl('letterSign'));
+ at(12400,()=>revealEl('letterDM'));
 }
 function finishLetter(){
  clearLetterTimer();
