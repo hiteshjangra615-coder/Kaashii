@@ -1,5 +1,5 @@
-KAASHII — HEADINGS FONT UPDATE
+KAASHII — CURSIVE HEADINGS UPDATE
 
-This update starts from the original index.html you supplied and only adds the Allura script font to h1/h2 headings. Existing layout, colors, content, buttons, navigation, background and JavaScript are preserved.
+This update applies the Allura cursive font to h1 and h2 headings throughout the 8 chapters in index.html. Heading sizes are kept clearly readable on mobile and desktop. Other page content, colors, background, buttons, navigation, animations, and JavaScript are preserved from the supplied source file.
 
-Keep index.html and purple-sky.jpg in the same published folder. Upload/replace only index.html in the existing GitHub Pages repository. Do not upload this ZIP itself.
+To apply: replace the repository's index.html with this index.html. Keep your existing purple-sky.jpg if it is already in the repository. Make a backup of the current file before committing.
