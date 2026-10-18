@@ -235,7 +235,7 @@ h2{font-size:clamp(34px,7.2vw,42px);margin-bottom:18px;}
 /* ==========================================================
    COVER PAGE + MUSIC BUTTON
    ========================================================== */
-.shell{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity 1.3s ease .5s,transform 1.3s cubic-bezier(.22,1,.36,1) .5s}
+.shell{opacity:0;transform:translateY(26px) scale(.95);pointer-events:none;transition:opacity 1.3s ease .5s,transform 1.3s cubic-bezier(.22,1,.36,1) .5s}
 body.opened .shell{opacity:1;transform:none;pointer-events:auto}
 .cover{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,rgba(60,20,110,.10),rgba(14,4,38,.58) 85%);transition:opacity 1.3s ease,visibility 1.3s}
 .cover.gone{opacity:0;visibility:hidden;pointer-events:none}
@@ -276,6 +276,73 @@ body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 .qual span{font-size:22px;line-height:1.4;flex:none}
 @keyframes qualIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.qual{animation:none}}
+
+/* ---- chapter 1: a more special welcome ---- */
+.hero-orb{position:relative;width:104px;height:104px;margin:22px 0 30px 12px;display:grid;place-items:center;font-size:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.6),rgba(255,160,225,.45) 45%,rgba(160,120,255,.35) 75%);box-shadow:0 0 30px rgba(255,150,225,.55),0 0 70px rgba(180,130,255,.4),inset 0 0 18px rgba(255,255,255,.35);animation:orbPop 1.3s cubic-bezier(.34,1.56,.64,1) .7s both,orbFloat 5s ease-in-out 2.2s infinite}
+.hero-orb::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(255,200,240,.6);animation:orbRing 3.4s ease-out infinite}
+.hero-orb i{position:absolute;width:11px;height:11px;background:#fff;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 5px rgba(255,200,245,.95));animation:twinkle 3.4s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes orbFloat{50%{transform:translateY(-9px)}}
+@keyframes orbRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+h1.hero-h{font-size:clamp(40px,10.5vw,56px);line-height:1.08;animation:heroGlow 4s ease-in-out infinite alternate}
+@keyframes heroGlow{from{filter:drop-shadow(0 0 4px rgba(255,150,220,.25))}to{filter:drop-shadow(0 0 14px rgba(255,150,220,.7))}}
+.hl{animation:heroLine 1.4s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(2s + var(--i)*.9s)}
+@keyframes heroLine{from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+.hero-hint{margin-top:14px;text-align:center;font-size:12.5px;color:#f0ddff;text-shadow:0 1px 3px rgba(14,3,42,.95);animation:heroLine 1.4s ease both;animation-delay:5.4s}
+.hero-hint b{display:inline-block;color:#ffb5e6;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(6px)}}
+@media(prefers-reduced-motion:reduce){.hl,.hero-hint,.hero-orb,.hero-orb i,.hero-orb::before,h1.hero-h{animation:none!important}}
+
+/* ---- premium entry: light bloom, orb ignite, word-by-word heading ---- */
+.bloom{position:fixed;left:50%;top:46%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;z-index:21;pointer-events:none;background:radial-gradient(circle,rgba(255,240,252,.95),rgba(255,160,225,.55) 40%,rgba(170,120,255,0) 70%);opacity:0;animation:bloomOut 2s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes bloomOut{0%{transform:scale(.4);opacity:0}18%{opacity:.9}100%{transform:scale(42);opacity:0}}
+@keyframes orbPop{0%{transform:scale(.15);opacity:0;filter:brightness(2.2)}60%{opacity:1}100%{transform:scale(1);opacity:1;filter:brightness(1)}}
+.hw{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(14px);animation:wordIn 1.1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.7s + var(--w)*.15s)}
+@keyframes wordIn{to{opacity:1;filter:blur(0);transform:none}}
+@media(prefers-reduced-motion:reduce){.bloom{display:none}.hw{opacity:1;filter:none;transform:none;animation:none}}
+
+/* ==========================================================
+   EVERY CHAPTER GETS ITS OWN ENTRY
+   ========================================================== */
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:not(.final-heart):not(.message){animation:calmIn 1.8s ease calc(var(--d,0)*1s) both}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(1){--d:0.1}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(2){--d:0.45}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(3){--d:0.8}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(4){--d:1.15}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(5){--d:1.5}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(6){--d:1.85}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(7){--d:2.2}
+.panel.panel[data-ch="4"]:is(.turn-next,.turn-prev)>*:nth-child(8){--d:2.55}
+
+@keyframes paperIn{from{opacity:0;clip-path:inset(-12px -12px 100% -12px);transform:translateY(-8px)}to{opacity:1;clip-path:inset(-12px);transform:none}}
+@keyframes calmIn{from{opacity:0;transform:translateY(8px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes popIn{from{opacity:0;transform:scale(.6) translateY(10px)}to{opacity:1;transform:none}}
+@keyframes giftDrop{0%{opacity:0;transform:translateY(-80px) scale(.85) rotate(-6deg)}60%{opacity:1;transform:translateY(6px) rotate(2deg)}100%{opacity:1;transform:none}}
+@keyframes unroll{from{opacity:.2;clip-path:inset(-4px 100% -4px -4px)}to{opacity:1;clip-path:inset(-4px)}}
+@keyframes boxGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,160,230,0)}50%{box-shadow:0 0 22px 3px rgba(255,160,230,.5)}}
+@keyframes finalIn{0%{opacity:0;transform:scale(.2) rotate(-14deg);filter:brightness(3)}55%{opacity:1;transform:scale(1.18) rotate(4deg);filter:brightness(1.4)}100%{opacity:1;transform:none;filter:brightness(1)}}
+@keyframes heartGlow{from{filter:drop-shadow(0 0 4px rgba(255,200,120,.3))}to{filter:drop-shadow(0 0 18px rgba(255,200,120,.9))}}
+@keyframes orbGrow{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+/* ch3 mood buttons pop in */
+.panel[data-ch="2"] .choice{animation:popIn .8s cubic-bezier(.34,1.56,.64,1) calc(.55s + var(--i,0)*.13s) backwards}
+.panel[data-ch="2"] .choice:nth-child(1){--i:0}.panel[data-ch="2"] .choice:nth-child(2){--i:1}.panel[data-ch="2"] .choice:nth-child(3){--i:2}.panel[data-ch="2"] .choice:nth-child(4){--i:3}
+/* ch4 gifts drop in */
+.panel[data-ch="3"] .gift{animation:giftDrop 1s cubic-bezier(.3,1.2,.5,1) calc(.5s + var(--i,0)*.14s) backwards}
+.panel[data-ch="3"] .gift:nth-child(1){--i:0}.panel[data-ch="3"] .gift:nth-child(2){--i:1}.panel[data-ch="3"] .gift:nth-child(3){--i:2}.panel[data-ch="3"] .gift:nth-child(4){--i:3}.panel[data-ch="3"] .gift:nth-child(5){--i:4}.panel[data-ch="3"] .gift:nth-child(6){--i:5}
+/* ch5 orb grows slowly */
+.panel[data-ch="4"] .breath-orb{animation:orbGrow 2.4s cubic-bezier(.22,1,.36,1) .5s backwards,breathe 5s ease-in-out 2.9s infinite}
+/* ch7 notebook unrolls + soft glow */
+.panel[data-ch="6"] .thoughts{animation:unroll 1.1s cubic-bezier(.22,1,.36,1) .6s backwards,boxGlow 2.2s ease-in-out 1.7s 2}
+/* ch8 last note: glowing heart */
+.panel[data-ch="7"] .final-heart{animation:finalIn 1.7s cubic-bezier(.22,1,.36,1) .3s both,heartGlow 3s ease-in-out 2s infinite alternate}
+/* falling / rising particles */
+.fxrain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:8}
+.fxp{position:absolute;opacity:0;will-change:transform;text-shadow:0 0 10px rgba(255,190,240,.7)}
+.fxp.gold{color:#ffe2a0;text-shadow:0 0 10px rgba(255,210,130,.95),0 0 20px rgba(255,190,120,.6)}
+.fxp.down{top:-8vh;animation:fxDown linear both}
+.fxp.up{bottom:-8vh;animation:fxUp linear both}
+@keyframes fxDown{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.95}85%{opacity:.9}100%{transform:translate(var(--sx,20px),112vh) rotate(260deg);opacity:0}}
+@keyframes fxUp{0%{transform:translate(0,0) scale(.7);opacity:0}12%{opacity:.9}100%{transform:translate(var(--sx,-18px),-112vh) scale(1.1);opacity:0}}
+@media(prefers-reduced-motion:reduce){.fxrain{display:none}.panel[data-ch] .choice,.panel[data-ch] .gift,.panel[data-ch] .breath-orb,.panel[data-ch] .thoughts{animation:none}}
 </style>
 </head>
 <body>
@@ -302,18 +369,16 @@ body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 (() => {
 const chapters = [
 {label:"A soft beginning", render:()=>`
-<div class="eyebrow">a tiny pause, just for you</div><div class="hero-emoji">🌷☁️</div>
-<h1>Kaashi, welcome to your little corner. 💗</h1>
-<p>Yeh koi aisi jagah nahi jahan aapko khush dikhna ho, sab explain karna ho, ya har baat ka answer pata hona chahiye.</p>
-<p>Bas kuch chhote messages, cute surprises aur thodi si narmi — jab aapka mann ho.</p>
-<div class="soft-note">Aap jaisa mehsoos kar rahi hain, woh matter karta hai. Aapko abhi kuch prove karne ki zaroorat nahi. 🌙</div>
-<div class="actions"><button class="btn" data-action="sparkle">A little sparkle ✨</button></div>`},
-{label:"A letter for you",render:()=>`
-<div class="eyebrow">opened with care 💌</div><h2>Kaashi ke naam ek chhota sa letter</h2>
-<p>Kabhi-kabhi life mein itni saari baatein ek saath ho jaati hain ki samajh hi nahi aata pehle kis cheez ko sambhalein. Agar aap bhi aisa feel kar rahi hain, toh aapko har cheez akele sort out karne ki zaroorat nahi.</p>
-<p>Aapko har waqt strong rehna, sabke saamne theek dikhna, ya jaldi se better feel karna zaroori nahi hai. Thak jaana, confuse hona, ro lena — feelings ka hona aapki weakness nahi.</p>
-<p>Aapki baat important hai, chahe woh poori tarah words mein na bhi aa paaye. Kabhi share karna chahein, toh jitna comfortable lage utna hi kehna kaafi hai. Aur agar abhi baat nahi karni, woh bhi bilkul okay hai. 🤍</p>
-<div class="soft-note">Aaj bas agla chhota step kaafi hai. Poori life ka solution aaj hi dhoondhna zaroori nahi.</div>`},
+<div class="eyebrow">a tiny pause, just for you</div>
+<div class="hero-orb" aria-hidden="true">🌷<i style="left:-14px;top:18px;--d:0s"></i><i style="right:-12px;top:6px;--d:-1.2s"></i><i style="right:-22px;bottom:22px;--d:-2.1s"></i><i style="left:6px;bottom:-12px;--d:-.7s"></i><i style="left:46%;top:-20px;--d:-1.7s"></i></div>
+<h1 class="hero-h">Kaashi, welcome to your little corner. 💗</h1>
+<div class="hero-lines">
+<p class="hl" style="--i:0">Yeh koi aisi jagah nahi jahan aapko khush dikhna ho, sab explain karna ho, ya har baat ka answer pata hona chahiye.</p>
+<p class="hl" style="--i:1">Bas kuch chhote messages, cute surprises aur thodi si narmi — jab aapka mann ho.</p>
+<div class="soft-note hl" style="--i:2">Aap jaisa mehsoos kar rahi hain, woh matter karta hai. Aapko abhi kuch prove karne ki zaroorat nahi. 🌙</div>
+</div>
+<div class="actions"><button class="btn" data-action="sparkle">A little sparkle ✨</button></div>
+<div class="hero-hint">jab ready ho, <b>Next →</b> dabaiye</div>`},
 {label:"Aap jaisi ho",render:()=>`
 <div class="eyebrow">sirf aapke liye likha hai ✨</div><h2>Kaashi, ye baatein sirf aapke liye 💜</h2>
 <div class="qual-list">
@@ -393,16 +458,11 @@ happy:"Aaj cute mode activated! 🐣 Imagine ek chhota sa strawberry wearing a t
 };
 const letterParagraphs = [
 `Kaashi,`,
-`Pata hai, zindagi mein kabhi-kabhi itni saari cheezein ek saath chal rahi hoti hain ki insaan ko khud samajh nahi aata ki woh pehle kis cheez ko sambhale. Kabhi ghar ki baatein, kabhi future ki tension, kabhi aisi pareshaniyan jinhe kisi ko samjhana bhi mushkil lagta hai.`,
-`Aur sabse ajeeb baat pata hai kya hai? Duniya aksar bas yahi poochti hai ki sab theek hai ya nahi, lekin har baar koi itna waqt nahi deta ki insaan sach mein bata sake ki uske andar kya chal raha hai.`,
-`Isliye aaj aapko yeh nahi kehna ki bas smile kar lijiye, sab theek ho jayega. Kyunki sirf itna keh dene se har pareshani khatam nahi hoti. Main bas chahta hoon ki aapko yaad rahe — aapki pareshaniyan sach hain, aapki feelings bhi important hain, aur aapko har baar yeh dikhane ki zaroorat nahi ki aap sab kuch sambhaal sakti hain.`,
-`Agar kabhi kisi din kuch karne ka mann na ho, toh khud ko thoda waqt dijiye. Agar kisi din future bahut confusing lage, toh poori zindagi ka answer aaj hi dhoondhne ki zaroorat nahi. Ek chhota sa step bhi step hota hai. Aapko har cheez ek hi din mein theek nahi karni.`,
-`Aur Kaashi, please apni achhai ko un bure dino ke hisaab se mat naapna. Kisi din aap udaas hon, thak jaayein ya khud par doubt karein, toh iska matlab yeh nahi ki aap mein kuch kami hai. Aap bhi ek insaan hain — aapko bhi aaram, samajh aur thodi si khushi milni chahiye.`,
-`Ek din jab aap peeche mudkar aaj ke waqt ko dekhein, toh umeed hai aapko sirf yeh yaad na aaye ki kitni mushkilein thi. Shayad yeh bhi yaad aaye ki dheere-dheere aapne kitni cheezein seekhin, kitne chhote moments mein muskuraayi, aur kitni baar phir se ek naya din shuru kiya.`,
-`Aur Kaashi, aap sabke liye itna kuch karti hain, sabki fikr, sabki care, meri bhi. Lekin kabhi-kabhi lagta hai ki aapke liye utna kisi ne nahi kiya jitna aap deserve karti hain. Isliye ye chhoti si jagah ek chhoti si koshish hai ki aapko bhi koi sambhale, aur aapko ye yaad dilaye ki aap kitni achhi hain. 💜`,
-`Aur jab kabhi aapka mann kare, toh bina kisi pressure ke apni baat keh sakti hain. Har baat ka solution dena zaroori nahi hota; kabhi-kabhi bas dhyaan se sunna bhi kaafi hota hai.`,
-`Aapki kahaani abhi chal rahi hai. Yeh mushkil waqt aapki poori kahaani nahi hai, aur aaj ka din aapke aane wale saare dino ka faisla nahi karta.`,
-`Jab bhi sab kuch thoda zyada lage, ek pal ke liye rukiyega, gehri saans lijiye aur khud ke saath thoda naram rahiye.`
+`Pata hai, zindagi me kabhi-kabhi itna kuch ek saath chal raha hota hai ki insaan khud nahi samajh paata ki pehle kya sambhale. Aur duniya aksar poochti hai "sab theek hai?", par sach me sunne ka waqt kam hi log nikalte hain.`,
+`Isliye main aapse ye nahi kahunga ki bas smile kar lo, sab theek ho jayega. Main bas itna chahta hoon ki aapko yaad rahe: aapki pareshaniyan sach hain, aapki feelings important hain, aur aapko har baar ye dikhana zaroori nahi ki aap sab sambhaal sakti ho.`,
+`Kisi din kuch karne ka mann na ho, toh khud ko thoda waqt dena. Aaj bas agla chhota sa step kaafi hai, poori life ka solution aaj hi dhoondhna zaroori nahi.`,
+`Aur apni achhai ko un bure dinon se mat naapna. Udaas hona, thak jaana ya khud par doubt karna, iska matlab ye nahi ki aap me kuch kami hai. Aap bhi ek insaan ho, aur aapko bhi aaram aur khushi milni chahiye.`,
+`Aapki kahaani abhi chal rahi hai, aur ye mushkil waqt uski poori kahaani nahi hai. Jab bhi sab thoda zyada lage, ek pal ruk kar gehri saans lena, aur khud ke saath thoda naram rehna.`
 ];
 let letterTimer = null;
 let letterStarted = false;
@@ -478,10 +538,37 @@ function startLetter(){
 }
 /* ---- page-turn animation (feature 1) ---- */
 let turnTimer=null;
+function orbBurst(){
+ if(!document.body.classList.contains('opened')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const orb=panel.querySelector('.hero-orb');if(!orb)return;
+ const r=orb.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,cols=['#ffffff','#ffd0f0','#e6d4ff','#ffb8e6'];let h='';const n=18;
+ for(let i=0;i<n;i++){const a=Math.PI*2*i/n+Math.random()*.3,d=70+Math.random()*60,sz=8+Math.random()*9;
+  h+=`<span class="tapspark" style="left:${cx}px;top:${cy}px;--dx:${(Math.cos(a)*d).toFixed(1)}px;--dy:${(Math.sin(a)*d).toFixed(1)}px;--s:${sz.toFixed(0)}px;--c:${cols[i%cols.length]}"><i></i></span>`;}
+ const box=document.createElement('div');box.className='tapburst';box.innerHTML=h;document.body.appendChild(box);setTimeout(()=>box.remove(),900);
+}
+let fxTimers=[],rainBox=null;
+function clearFx(){fxTimers.forEach(clearTimeout);fxTimers=[];if(rainBox){rainBox.remove();rainBox=null;}}
+function rain(chars,n,dir,gold){
+ const R=(a,b)=>a+Math.random()*(b-a);const box=document.createElement('div');box.className='fxrain';
+ for(let i=0;i<n;i++){const sp=document.createElement('span');sp.className='fxp '+dir+(gold?' gold':'');sp.textContent=chars[i%chars.length];
+  sp.style.left=R(3,94).toFixed(1)+'%';sp.style.fontSize=R(15,26).toFixed(0)+'px';sp.style.animationDuration=R(4.5,7.5).toFixed(1)+'s';sp.style.animationDelay=R(0,2).toFixed(1)+'s';sp.style.setProperty('--sx',R(-40,40).toFixed(0)+'px');box.appendChild(sp);}
+ document.body.appendChild(box);rainBox=box;setTimeout(()=>{box.remove();if(rainBox===box)rainBox=null;},10500);
+}
+function chapterFx(){
+ if(!document.body.classList.contains('opened')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const at=(ms,fn)=>fxTimers.push(setTimeout(fn,ms));
+ if(index===0)at(1500,orbBurst);
+ else if(index===1)at(700,()=>rain(['💗','💜','🤍','✨'],14,'up'));
+ else if(index===3)at(1400,()=>sprinkle(['🎁','✨','🎀','💗']));
+ else if(index===5)at(500,()=>rain(['🍓','🧁','🐣','💗','🌸','✨'],16,'down'));
+ else if(index===6)at(1800,()=>sprinkle(['✏️','✨','💜']));
+ else if(index===7)at(1200,()=>rain(['✦','✧','✨'],16,'down',true));
+}
 function playTurn(dir){
+ chapterFx();
  panel.classList.remove('turn-next','turn-prev');void panel.offsetWidth;
  panel.classList.add(dir==='prev'?'turn-prev':'turn-next');
- clearTimeout(turnTimer);turnTimer=setTimeout(()=>panel.classList.remove('turn-next','turn-prev'),1100);
+ clearTimeout(turnTimer);turnTimer=setTimeout(()=>panel.classList.remove('turn-next','turn-prev'),3400);
 }
 /* ---- mood-reactive background (feature 4) ---- */
 const moodfx=document.getElementById('moodfx'), moodtop=document.getElementById('moodtop');
@@ -506,7 +593,10 @@ function setMoodFx(kind){
 }
 function render(){
  clearLetterTimer();letterStarted=false;letterComplete=false;clearMoodFx();
+ clearFx();panel.dataset.ch=index;
  const c=chapters[index]; panel.innerHTML=c.render(); panel.setAttribute('aria-label',c.label);
+ const hh=panel.querySelector('h1.hero-h');
+ if(hh){const words=hh.textContent.trim().split(' ');hh.textContent='';words.forEach((w,i)=>{const sp=document.createElement('span');sp.className='hw';sp.style.setProperty('--w',i);sp.textContent=w;hh.appendChild(sp);if(i<words.length-1)hh.appendChild(document.createTextNode(' '));});}
  /* every chapter gets the sparkle button (chapters 1, 6 and 8 already have their own) */
  if(!panel.querySelector('[data-action="sparkle"]')){
   let row=panel.querySelector('.actions');
@@ -623,6 +713,7 @@ render();playTurn('next');
  begin.addEventListener('click',()=>{
   document.body.classList.add('opened');cover.classList.add('gone');
   const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);
+  const bl=document.createElement('div');bl.className='bloom';document.body.appendChild(bl);setTimeout(()=>bl.remove(),2200);
   if(window.__kassuEnter)setTimeout(window.__kassuEnter,500);
   tryPlay();
   snd.hidden=!ok;
