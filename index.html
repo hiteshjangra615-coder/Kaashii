@@ -231,6 +231,44 @@ h2{font-size:clamp(34px,7.2vw,42px);margin-bottom:18px;}
 @keyframes kidInNext{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes kidInPrev{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
 .panel{will-change:height}
+
+/* ==========================================================
+   COVER PAGE + MUSIC BUTTON
+   ========================================================== */
+.shell{opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity 1.3s ease .5s,transform 1.3s cubic-bezier(.22,1,.36,1) .5s}
+body.opened .shell{opacity:1;transform:none;pointer-events:auto}
+.cover{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,rgba(60,20,110,.10),rgba(14,4,38,.58) 85%);transition:opacity 1.3s ease,visibility 1.3s}
+.cover.gone{opacity:0;visibility:hidden;pointer-events:none}
+.cover-moon{font-size:74px;line-height:1;opacity:0;animation:coverIn 1.4s ease .1s forwards,coverFloat 5.5s ease-in-out 1.5s infinite;filter:drop-shadow(0 0 16px rgba(255,235,200,.85)) drop-shadow(0 0 38px rgba(190,150,255,.75))}
+.cover-name{font-family:'Allura','Segoe Script','Brush Script MT',cursive;font-size:clamp(68px,21vw,118px);line-height:1.05;margin:10px 0 4px;color:#ff9edb;text-shadow:0 0 18px rgba(255,150,220,.75),0 0 44px rgba(190,130,255,.55),0 2px 4px rgba(30,6,66,.9)}
+.cover-name span{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(10px);animation:letterIn 1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.9s + var(--i)*.17s)}
+.cover-sub{max-width:300px;color:#f4e8ff;font-size:15px;line-height:1.7;margin:0 0 26px;opacity:0;animation:coverIn 1.4s ease 2.5s forwards;text-shadow:0 1px 3px rgba(14,3,42,.95),0 0 16px rgba(14,3,42,.8)}
+.cover-btn{opacity:0;animation:coverIn 1.2s ease 3.2s forwards,btnPulse 3s ease-in-out 4.4s infinite;padding:14px 26px;font-size:15px}
+.cover-hint{margin-top:16px;font-size:12px;color:#e6d6fa;opacity:0;animation:coverIn 1.2s ease 3.8s forwards;text-shadow:0 1px 3px rgba(14,3,42,.95)}
+@keyframes coverIn{to{opacity:1}}
+@keyframes letterIn{to{opacity:1;filter:blur(0);transform:none}}
+@keyframes coverFloat{50%{transform:translateY(-12px) scale(1.03)}}
+@keyframes btnPulse{0%,100%{box-shadow:0 7px 22px rgba(220,95,221,.28),0 0 0 0 rgba(255,150,220,.45)}50%{box-shadow:0 7px 26px rgba(220,95,221,.4),0 0 0 11px rgba(255,150,220,0)}}
+.cover.gone .cover-moon{animation:none;opacity:1;transform:translateY(-30px) scale(1.15);transition:transform 1.3s ease}
+.shoot-open{position:fixed;z-index:19;top:12vh;left:100%;width:150px;height:2px;border-radius:2px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0));box-shadow:0 0 10px 2px rgba(255,255,255,.7);pointer-events:none;opacity:0;animation:shootOpen 1.5s ease-out .15s forwards}
+@keyframes shootOpen{0%{transform:translate(0,0) rotate(-24deg);opacity:0}10%{opacity:1}100%{transform:translate(-125vw,56vw) rotate(-24deg);opacity:0}}
+.topright{display:flex;align-items:center;gap:8px}.sound{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:16px;padding:0;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(140,100,230,.30));border:1px solid rgba(232,208,255,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px rgba(190,130,255,.3);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity 1s ease 1s,visibility 1s,transform .16s}
+body.opened .sound:not([hidden]){opacity:1;visibility:visible}
+.sound:active{transform:scale(.92)}.sound[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.cover-moon,.cover-sub,.cover-btn,.cover-hint,.cover-name span{opacity:1!important;filter:none!important;transform:none!important}.shoot-open{display:none}}
+
+/* ==========================================================
+   ENDING — promise, signature, heart of stars, wish
+   ========================================================== */
+.letter-promise{margin:18px 0 6px;padding:15px 17px;border-radius:18px;border:1px solid rgba(232,208,255,.55);background:rgba(170,130,245,.17);font-weight:600;text-align:center;-webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px)}
+.letter-sign{margin:16px 6px 4px;text-align:right;color:#f4e8ff;font-size:15px}
+.letter-sign span{display:block;font-family:'Allura','Segoe Script','Brush Script MT',cursive;font-size:44px;line-height:1.1;color:#ff9edb;text-shadow:0 0 16px rgba(255,150,220,.7),0 2px 4px rgba(30,6,66,.9)}
+.letter-wish{margin:18px 0 4px;text-align:center;font-weight:600}
+.reveal{animation:endReveal 1.3s cubic-bezier(.22,1,.36,1) both}
+@keyframes endReveal{from{opacity:0;transform:translateY(14px);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+.heartfx{position:fixed;left:50%;top:40%;width:0;height:0;z-index:25;pointer-events:none}
+.hstar{position:absolute;left:0;top:0;background:linear-gradient(135deg,#fff,#ffc4ee);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 6px rgba(255,180,240,.95));opacity:0}
+@media(prefers-reduced-motion:reduce){.reveal{animation:none}}
 </style>
 </head>
 <body>
@@ -238,12 +276,20 @@ h2{font-size:clamp(34px,7.2vw,42px);margin-bottom:18px;}
 <div class="fx" id="fx" aria-hidden="true"></div>
 <div class="mood-fx" id="moodfx" aria-hidden="true"></div>
 <div class="mood-fx mood-top" id="moodtop" aria-hidden="true"></div>
+<div class="cover" id="cover">
+  <div class="cover-moon" aria-hidden="true">🌙</div>
+  <div class="cover-name" id="coverName" aria-label="Kaashi"></div>
+  <p class="cover-sub">ek chhoti si safe jagah, sirf aapke liye 🌷</p>
+  <button class="btn cover-btn" id="beginBtn" type="button">Tap to begin 💌</button>
+  <div class="cover-hint">🎧 halki awaaz ke saath behtar lagta hai</div>
+</div>
 <main class="shell">
-  <div class="topline"><div class="brand">a little corner of gentleness 🌷</div><div class="counter" id="counter">Chapter 1 of 8</div></div>
+  <div class="topline"><div class="brand">a little corner of gentleness 🌷</div><div class="topright"><div class="counter" id="counter">Chapter 1 of 8</div><button class="sound" id="soundBtn" type="button" aria-label="Music on/off" hidden>🔊</button></div></div>
   <div class="track" role="progressbar" aria-label="Journey progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1" id="progress"><div id="bar"></div></div>
   <section class="panel" id="panel" aria-live="polite"></section>
   <div class="nav"><button class="btn secondary" id="prev" type="button">← Previous</button><button class="btn" id="next" type="button">Next →</button></div>
   <div class="footnote">A small reminder, with no pressure to feel any particular way. 💗</div>
+  <div class="footnote" style="margin-top:6px;font-size:10px;opacity:.75">Music: “Clair de Lune” (Debussy), piano by Podington Bear · CC BY-NC 3.0</div>
 </main>
 <script>
 (() => {
@@ -300,6 +346,9 @@ const chapters = [
 <h2>Kaashi, please read this slowly… 💜</h2>
 <div id="letterParagraphs"></div>
 <p class="letter-final" id="letterFinal" hidden>You deserve gentle days, genuine smiles, peaceful moments, and reasons to look forward to tomorrow. 💜</p>
+<p class="letter-promise" id="letterPromise" hidden>Jab bhi mann ho, mujhse baat kar sakti ho. Main yahin hoon. 🤍</p>
+<p class="letter-sign" id="letterSign" hidden>— tumhara dost,<span>Hitesh</span></p>
+<p class="letter-wish" id="letterWish" hidden>Ek shooting star guzra hai… ek chhoti si wish maang lijiye. 🌠</p>
 </div>
 <div class="actions"><button class="btn secondary" data-action="restart">Start again ↻</button><button class="btn secondary" data-action="sparkle">A final sparkle ✨</button></div>`}
 ];
@@ -340,7 +389,36 @@ const letterParagraphs = [
 let letterTimer = null;
 let letterStarted = false;
 let letterComplete = false;
-function clearLetterTimer(){ if(letterTimer!==null){clearTimeout(letterTimer);letterTimer=null;} }
+let endTimers=[];
+function clearLetterTimer(){ if(letterTimer!==null){clearTimeout(letterTimer);letterTimer=null;} endTimers.forEach(clearTimeout);endTimers=[]; }
+/* ---- ending: promise, signature, heart of stars, shooting star, wish ---- */
+function heartOfStars(){
+ const box=document.createElement('div');box.className='heartfx';document.body.appendChild(box);
+ const unit=Math.min(innerWidth,innerHeight)*0.021,N=40,vw=innerWidth,vh=innerHeight;
+ for(let i=0;i<N;i++){
+  const t=i/N*Math.PI*2;
+  const ex=16*Math.pow(Math.sin(t),3)*unit, ey=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*unit;
+  const sx=(Math.random()-.5)*vw*1.3, sy=(Math.random()-.5)*vh*1.1, size=8+Math.random()*9;
+  const el=document.createElement('i');el.className='hstar';el.style.width=el.style.height=size+'px';el.style.margin=(-size/2)+'px 0 0 '+(-size/2)+'px';
+  box.appendChild(el);
+  el.animate([{transform:`translate(${sx}px,${sy}px) scale(.3) rotate(0deg)`,opacity:0},{transform:`translate(${ex}px,${ey}px) scale(1) rotate(90deg)`,opacity:1}],{duration:1700,delay:i*40,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'});
+ }
+ endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.07)'},{transform:'scale(1)'}],{duration:1400,easing:'ease-in-out'});},3300));
+ endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:1400,fill:'forwards'});a.onfinish=()=>box.remove();},5200));
+ endTimers.push(setTimeout(()=>box.remove(),7000));
+}
+function revealEl(id){const el=document.getElementById(id);if(!el)return;el.hidden=false;el.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)el.scrollIntoView({behavior:'smooth',block:'center'});}
+function endingSequence(){
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reduce){['letterPromise','letterSign','letterWish'].forEach(id=>{const e=document.getElementById(id);if(e)e.hidden=false;});return;}
+ const at=(ms,fn)=>endTimers.push(setTimeout(()=>{if(document.getElementById('letterContent'))fn();},ms));
+ at(300,()=>sprinkle(['✦','✧','💜','✨']));
+ at(1200,()=>revealEl('letterPromise'));
+ at(3200,()=>revealEl('letterSign'));
+ at(5000,heartOfStars);
+ at(9200,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);});
+ at(9900,()=>revealEl('letterWish'));
+}
 function finishLetter(){
  clearLetterTimer();
  const holder=document.getElementById('letterParagraphs');
@@ -350,7 +428,7 @@ function finishLetter(){
  letterParagraphs.forEach((text,i)=>{const p=document.createElement('p');p.className='letter-paragraph';p.textContent=text;holder.appendChild(p);});
  finalLine.hidden=false;letterComplete=true;
  const skip=document.querySelector('[data-action="skipLetter"]');if(skip)skip.hidden=true;
- sprinkle(['✦','✧','💜','✨']);
+ endingSequence();
 }
 function startLetter(){
  if(letterStarted||letterComplete)return;
@@ -367,7 +445,7 @@ function startLetter(){
   if(!document.getElementById('letterContent')){clearLetterTimer();return;}
   if(paragraphIndex>=letterParagraphs.length){
    const finalLine=document.getElementById('letterFinal');if(finalLine)finalLine.hidden=false;
-   letterComplete=true;if(skip)skip.hidden=true;sprinkle(['✦','✧','💜','✨']);return;
+   letterComplete=true;if(skip)skip.hidden=true;endingSequence();return;
   }
   const p=document.createElement('p');p.className='letter-paragraph';holder.appendChild(p);
   const text=letterParagraphs[paragraphIndex];let charIndex=0;
@@ -463,7 +541,8 @@ panel.addEventListener('click',e=>{
  if(b.dataset.action==='restart')go(0);
 });
 function sprinkle(chars){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<12;i++){const s=document.createElement('span');s.className='sprinkle';s.textContent=chars[Math.floor(Math.random()*chars.length)];s.style.left=(8+Math.random()*84)+'vw';s.style.top=(48+Math.random()*30)+'vh';document.body.appendChild(s);setTimeout(()=>s.remove(),1400);}}
-document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'&&index<chapters.length-1)go(index+1);if(e.key==='ArrowLeft'&&index>0)go(index-1);});
+document.addEventListener('keydown',e=>{if(!document.body.classList.contains('opened'))return;if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'&&index<chapters.length-1)go(index+1);if(e.key==='ArrowLeft'&&index>0)go(index-1);});
+window.__kassuEnter=()=>playTurn('next');
 render();playTurn('next');
 })();
 </script>
@@ -496,6 +575,49 @@ render();playTurn('next');
   const box=document.createElement('div');box.className='tapburst';box.innerHTML=h;document.body.appendChild(box);setTimeout(()=>box.remove(),800);
   if(t.closest&&t.closest('button')&&navigator.vibrate){try{navigator.vibrate(12)}catch(_){}}
  },{passive:true});
+})();
+</script>
+<script>
+/* Cover page + music */
+(()=>{
+ const cover=document.getElementById('cover'), nameEl=document.getElementById('coverName'), begin=document.getElementById('beginBtn'), snd=document.getElementById('soundBtn');
+ 'Kaashi'.split('').forEach((ch,i)=>{const sp=document.createElement('span');sp.textContent=ch;sp.style.setProperty('--i',i);nameEl.appendChild(sp);});
+ const TARGET=1; /* music volume: 0 to 1 (1 = full, same as the phone's own volume) */
+ const audio=new Audio('music.mp3');audio.loop=true;audio.preload='auto';audio.volume=0;
+ let ok=true,muted=false,started=false,fadeT=null;
+ audio.addEventListener('error',()=>{ok=false;snd.hidden=true;});
+ function fadeTo(v,ms,done){
+  clearInterval(fadeT);const from=audio.volume,t0=performance.now();
+  fadeT=setInterval(()=>{const k=Math.min(1,(performance.now()-t0)/ms);audio.volume=Math.max(0,Math.min(1,from+(v-from)*k));if(k>=1){clearInterval(fadeT);if(done)done();}},40);
+ }
+ /* Music starts on the very first page. Browsers only allow sound after a touch/click,
+    so we try right away, and if blocked, start on the first tap anywhere on the cover. */
+ const unlockEvents=['pointerup','touchend','click','keydown'];
+ function unlock(){unlockEvents.forEach(ev=>document.removeEventListener(ev,tryPlay,true));}
+ function tryPlay(){
+  if(started||!ok||muted)return;
+  const p=audio.play();
+  const good=()=>{started=true;unlock();fadeTo(TARGET,1200);if(document.body.classList.contains('opened'))snd.hidden=false;};
+  if(p&&p.then)p.then(good).catch(()=>{});else good();
+ }
+ unlockEvents.forEach(ev=>document.addEventListener(ev,tryPlay,true));
+ tryPlay();
+ begin.addEventListener('click',()=>{
+  document.body.classList.add('opened');cover.classList.add('gone');
+  const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2000);
+  if(window.__kassuEnter)setTimeout(window.__kassuEnter,500);
+  tryPlay();
+  snd.hidden=!ok;
+ });
+ snd.addEventListener('click',()=>{
+  if(!started)return;
+  muted=!muted;snd.textContent=muted?'🔇':'🔊';snd.setAttribute('aria-pressed',muted);
+  if(muted)fadeTo(0,600,()=>audio.pause());else{audio.play().catch(()=>{});fadeTo(TARGET,1200);}
+ });
+ document.addEventListener('visibilitychange',()=>{
+  if(!started||muted)return;
+  if(document.hidden)audio.pause();else audio.play().catch(()=>{});
+ });
 })();
 </script>
 </body>
