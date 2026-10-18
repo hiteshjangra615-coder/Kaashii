@@ -164,11 +164,80 @@ h2{font-size:clamp(34px,7.2vw,42px);margin-bottom:18px;}
 .glint i{display:block;width:100%;height:100%;background:linear-gradient(135deg,#fff,#ffd9ff);clip-path:polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%)}
 @keyframes twinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1.1) rotate(12deg)}}
 @media(prefers-reduced-motion:reduce){.fx{display:none}}
+
+/* ==========================================================
+   FEATURE 1 — PAGE-TURN ANIMATION (slide + glass shimmer + soft cascade)
+   ========================================================== */
+.panel{animation:none}
+.panel.turn-next{animation:turnNext .55s cubic-bezier(.2,.8,.2,1) both}
+.panel.turn-prev{animation:turnPrev .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes turnNext{from{opacity:0;transform:translateX(38px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes turnPrev{from{opacity:0;transform:translateX(-38px) scale(.985)}to{opacity:1;transform:none}}
+.panel::after{content:"";position:absolute;top:-10%;bottom:-10%;left:-60%;width:42%;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent,rgba(255,255,255,.26),rgba(255,210,255,.14),transparent);transform:skewX(-18deg)}
+.panel.turn-next::after,.panel.turn-prev::after{animation:glassShimmer 1s ease-out .05s both}
+@keyframes glassShimmer{0%{left:-60%;opacity:0}15%{opacity:1}100%{left:125%;opacity:0}}
+.panel.turn-next>*:not(.final-heart):not(.message),.panel.turn-prev>*:not(.final-heart):not(.message){animation:kidIn .6s cubic-bezier(.2,.8,.2,1) both}
+.panel.turn-next>*:nth-child(2),.panel.turn-prev>*:nth-child(2){animation-delay:.06s}
+.panel.turn-next>*:nth-child(3),.panel.turn-prev>*:nth-child(3){animation-delay:.12s}
+.panel.turn-next>*:nth-child(4),.panel.turn-prev>*:nth-child(4){animation-delay:.18s}
+.panel.turn-next>*:nth-child(5),.panel.turn-prev>*:nth-child(5){animation-delay:.24s}
+.panel.turn-next>*:nth-child(6),.panel.turn-prev>*:nth-child(6){animation-delay:.3s}
+.panel.turn-next>*:nth-child(n+7),.panel.turn-prev>*:nth-child(n+7){animation-delay:.36s}
+@keyframes kidIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ==========================================================
+   FEATURE 4 — MOOD-REACTIVE BACKGROUND (chapter 3: tap a mood)
+   ========================================================== */
+.mood-fx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;opacity:0;transition:opacity .8s ease}
+.mood-fx.on{opacity:1}
+.mood-fx.mood-top{z-index:2}
+.mood-fx::before{content:"";position:absolute;inset:0}
+.mood-heavy::before{background:linear-gradient(180deg,rgba(30,50,130,.30),rgba(20,30,90,.18))}
+.mood-tired::before{background:radial-gradient(120% 70% at 50% 105%,rgba(255,176,140,.22),transparent 60%),rgba(15,8,50,.26)}
+.mood-alone::before{background:radial-gradient(60% 40% at 82% 8%,rgba(205,220,255,.26),transparent 70%)}
+.mood-happy::before{background:radial-gradient(90% 60% at 50% 100%,rgba(255,140,200,.22),transparent 65%)}
+.mood-fx .drop{position:absolute;top:-8vh;width:1.5px;height:20px;background:linear-gradient(to bottom,transparent,rgba(196,214,255,.95));animation:rain linear infinite}
+@keyframes rain{to{transform:translateY(115vh)}}
+.mood-fx .zzz{position:absolute;bottom:-6vh;font-style:normal;font-weight:700;color:rgba(232,216,255,.85);text-shadow:0 0 12px rgba(190,150,255,.85);animation:zRise linear infinite}
+@keyframes zRise{0%{transform:translate(0,0) rotate(-8deg);opacity:0}15%{opacity:.9}100%{transform:translate(26px,-108vh) rotate(10deg);opacity:0}}
+.mood-fx .moon{position:absolute;right:8%;top:86px;font-size:40px;filter:drop-shadow(0 0 14px rgba(255,240,200,.9)) drop-shadow(0 0 30px rgba(190,170,255,.7));animation:moonGlow 4s ease-in-out infinite alternate}
+@keyframes moonGlow{from{transform:scale(.95);opacity:.85}to{transform:scale(1.07);opacity:1}}
+.mood-fx .shoot{position:absolute;left:100%;width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0));transform-origin:left center;opacity:0;animation:shootAcross linear infinite}
+@keyframes shootAcross{0%{transform:translate(0,0) rotate(-32deg);opacity:0}3%{opacity:1}20%{transform:translate(-115vw,70vw) rotate(-32deg);opacity:0}100%{transform:translate(-115vw,70vw) rotate(-32deg);opacity:0}}
+.mood-fx .fl{position:absolute;bottom:-8vh;font-style:normal;filter:drop-shadow(0 0 6px rgba(255,170,220,.6));animation:flRise linear infinite}
+@keyframes flRise{0%{transform:translate(0,0) rotate(-10deg) scale(.8);opacity:0}12%{opacity:.95}50%{transform:translate(18px,-55vh) rotate(8deg) scale(1)}100%{transform:translate(-14px,-112vh) rotate(-8deg) scale(1.05);opacity:0}}
+@media(prefers-reduced-motion:reduce){.mood-fx{display:none}}
+
+/* ==========================================================
+   FEATURE 5 — TAP SPARKLES (anywhere you tap)
+   ========================================================== */
+.tapburst{position:fixed;inset:0;pointer-events:none;z-index:30}
+.tapspark{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);filter:drop-shadow(0 0 4px var(--c));animation:tapOut .7s cubic-bezier(.2,.7,.3,1) forwards}
+.tapspark i{display:block;width:100%;height:100%;background:var(--c);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+@keyframes tapOut{0%{transform:translate(0,0) scale(.3) rotate(0deg);opacity:1}70%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1) rotate(90deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.tapburst{display:none}}
+
+/* ==========================================================
+   SMOOTH CHAPTER TRANSITION — old content fades out, card height glides, new content slides in
+   ========================================================== */
+.panel.turn-next,.panel.turn-prev{animation:none}
+.panel.leave-next>*,.panel.leave-prev>*{pointer-events:none}
+.panel.leave-next>*{animation:kidOutNext .26s cubic-bezier(.4,0,.8,.6) both}
+.panel.leave-prev>*{animation:kidOutPrev .26s cubic-bezier(.4,0,.8,.6) both}
+@keyframes kidOutNext{to{opacity:0;transform:translateX(-22px)}}
+@keyframes kidOutPrev{to{opacity:0;transform:translateX(22px)}}
+.panel.turn-next>*:not(.final-heart):not(.message){animation-name:kidInNext;animation-duration:.7s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+.panel.turn-prev>*:not(.final-heart):not(.message){animation-name:kidInPrev;animation-duration:.7s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+@keyframes kidInNext{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes kidInPrev{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+.panel{will-change:height}
 </style>
 </head>
 <body>
 <div class="floaties" aria-hidden="true"><span>♡</span><span>✦</span><span>🌷</span><span>♡</span><span>✧</span></div>
 <div class="fx" id="fx" aria-hidden="true"></div>
+<div class="mood-fx" id="moodfx" aria-hidden="true"></div>
+<div class="mood-fx mood-top" id="moodtop" aria-hidden="true"></div>
 <main class="shell">
   <div class="topline"><div class="brand">a little corner of gentleness 🌷</div><div class="counter" id="counter">Chapter 1 of 8</div></div>
   <div class="track" role="progressbar" aria-label="Journey progress" aria-valuemin="1" aria-valuemax="8" aria-valuenow="1" id="progress"><div id="bar"></div></div>
@@ -311,8 +380,36 @@ function startLetter(){
  }
  typeParagraph();
 }
+/* ---- page-turn animation (feature 1) ---- */
+let turnTimer=null;
+function playTurn(dir){
+ panel.classList.remove('turn-next','turn-prev');void panel.offsetWidth;
+ panel.classList.add(dir==='prev'?'turn-prev':'turn-next');
+ clearTimeout(turnTimer);turnTimer=setTimeout(()=>panel.classList.remove('turn-next','turn-prev'),1100);
+}
+/* ---- mood-reactive background (feature 4) ---- */
+const moodfx=document.getElementById('moodfx'), moodtop=document.getElementById('moodtop');
+function clearMoodFx(){[moodfx,moodtop].forEach(el=>{if(el){el.className=el.id==='moodtop'?'mood-fx mood-top':'mood-fx';el.innerHTML='';}});}
+function setMoodFx(kind){
+ if(!moodfx||!moodtop)return;
+ clearMoodFx();
+ const R=(a,b)=>a+Math.random()*(b-a);let h='';
+ if(kind==='heavy'){
+  for(let i=0;i<36;i++)h+=`<i class="drop" style="left:${R(0,100).toFixed(1)}%;animation-duration:${R(.8,1.5).toFixed(2)}s;animation-delay:${(-R(0,1.5)).toFixed(2)}s;opacity:${R(.35,.85).toFixed(2)}"></i>`;
+ }else if(kind==='tired'){
+  for(let i=0;i<9;i++)h+=`<b class="zzz" style="left:${R(5,90).toFixed(1)}%;font-size:${R(15,28).toFixed(0)}px;animation-duration:${R(9,15).toFixed(1)}s;animation-delay:${(-R(0,12)).toFixed(1)}s">${i%3===0?'Z':'z'}</b>`;
+ }else if(kind==='alone'){
+  h+='<span class="moon">🌙</span>';
+  for(let i=0;i<3;i++)h+=`<s class="shoot" style="top:${R(3,38).toFixed(0)}%;animation-duration:${R(5,8).toFixed(1)}s;animation-delay:${(-R(0,6)).toFixed(1)}s"></s>`;
+ }else if(kind==='happy'){
+  const e=['🍓','🌸','🐣','🧁','💗','✨'];
+  for(let i=0;i<14;i++)h+=`<em class="fl" style="left:${R(4,92).toFixed(1)}%;font-size:${R(18,30).toFixed(0)}px;animation-duration:${R(8,14).toFixed(1)}s;animation-delay:${(-R(0,12)).toFixed(1)}s">${e[i%e.length]}</em>`;
+ }
+ moodtop.innerHTML=h;
+ requestAnimationFrame(()=>{moodfx.classList.add('on','mood-'+kind);moodtop.classList.add('on');});
+}
 function render(){
- clearLetterTimer();letterStarted=false;letterComplete=false;
+ clearLetterTimer();letterStarted=false;letterComplete=false;clearMoodFx();
  const c=chapters[index]; panel.innerHTML=c.render(); panel.setAttribute('aria-label',c.label);
  /* every chapter gets the sparkle button (chapters 1, 6 and 8 already have their own) */
  if(!panel.querySelector('[data-action="sparkle"]')){
@@ -324,11 +421,38 @@ function render(){
  counter.textContent=`Chapter ${index+1} of ${chapters.length}`;bar.style.width=((index+1)/chapters.length*100)+'%';progress.setAttribute('aria-valuenow',index+1);
  prev.disabled=index===0;next.textContent=index===chapters.length-1?'Back to start ↻':'Next →';
 }
-function go(n){index=Math.max(0,Math.min(chapters.length-1,n));render();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+let busy=false;
+function go(n){
+ if(busy)return;
+ const target=Math.max(0,Math.min(chapters.length-1,n));
+ if(target===index&&n!==0)return;
+ const dir=target>=index?'next':'prev';
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const swap=()=>{
+  const h0=panel.offsetHeight;
+  index=target;render();
+  panel.style.transition='none';panel.style.height='auto';
+  const h1=panel.offsetHeight;
+  playTurn(dir);
+  if(!reduce&&Math.abs(h1-h0)>2){
+   panel.style.height=h0+'px';void panel.offsetHeight;
+   panel.style.transition='height .55s cubic-bezier(.22,1,.36,1)';
+   panel.style.height=h1+'px';
+   setTimeout(()=>{panel.style.transition='';panel.style.height='';busy=false;},580);
+  }else{panel.style.transition='';panel.style.height='';setTimeout(()=>{busy=false;},reduce?0:350);}
+  window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+ };
+ if(reduce){busy=true;swap();return;}
+ busy=true;
+ clearTimeout(turnTimer);
+ panel.classList.remove('turn-next','turn-prev');
+ panel.classList.add(dir==='next'?'leave-next':'leave-prev');
+ setTimeout(()=>{panel.classList.remove('leave-next','leave-prev');swap();},260);
+}
 prev.addEventListener('click',()=>go(index-1));next.addEventListener('click',()=>go(index===chapters.length-1?0:index+1));
 panel.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b)return;
- if(b.dataset.mood){const el=document.getElementById('moodMessage');el.textContent=moodText[b.dataset.mood];el.classList.add('show');return;}
+ if(b.dataset.mood){const el=document.getElementById('moodMessage');el.textContent=moodText[b.dataset.mood];el.classList.add('show');setMoodFx(b.dataset.mood);return;}
  if(b.dataset.gift!==undefined){const n=Number(b.dataset.gift), el=document.getElementById('giftMessage');el.textContent=gifts[n];el.classList.add('show');b.classList.add('opened');b.querySelector('small').textContent='opened with care 💗';sprinkle(['💗','✨','🌷']);return;}
  if(b.dataset.action==='openLetter'){startLetter();return;}
   if(b.dataset.action==='skipLetter'){finishLetter();return;}
@@ -340,7 +464,7 @@ panel.addEventListener('click',e=>{
 });
 function sprinkle(chars){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<12;i++){const s=document.createElement('span');s.className='sprinkle';s.textContent=chars[Math.floor(Math.random()*chars.length)];s.style.left=(8+Math.random()*84)+'vw';s.style.top=(48+Math.random()*30)+'vh';document.body.appendChild(s);setTimeout(()=>s.remove(),1400);}}
 document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey)return;if(e.key==='ArrowRight'&&index<chapters.length-1)go(index+1);if(e.key==='ArrowLeft'&&index>0)go(index-1);});
-render();
+render();playTurn('next');
 })();
 </script>
 <script>
@@ -355,6 +479,23 @@ render();
  glints.forEach(g=>{h+=`<span class="glint" style="--x:${g[0]}%;--y:${g[1]}%;--s:${g[2]}px;--d:${g[3]}s;--dl:${g[4]}s"><i></i></span>`;});
  petals.forEach(p=>{h+=`<span class="petal" style="--x:${p[0]}%;--w:${p[1]}px;--d:${p[2]}s;--dx:${p[3]}vw;--dl:${p[4]}s"></span>`;});
  fx.innerHTML=h;
+})();
+/* Tap sparkles + tiny vibration on buttons (feature 5) */
+(()=>{
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const cols=['#ffffff','#ffd0f0','#e6d4ff','#ffb8e6'];let last=0;
+ document.addEventListener('click',e=>{
+  if(!e.clientX&&!e.clientY)return;
+  const t=e.target;if(t.closest&&t.closest('textarea'))return;
+  const now=performance.now();if(now-last<90)return;last=now;
+  let h='';const n=6;
+  for(let i=0;i<n;i++){
+   const a=(Math.PI*2*i/n)+Math.random()*.8,d=22+Math.random()*26,s=7+Math.random()*7;
+   h+=`<span class="tapspark" style="left:${e.clientX}px;top:${e.clientY}px;--dx:${(Math.cos(a)*d).toFixed(1)}px;--dy:${(Math.sin(a)*d).toFixed(1)}px;--s:${s.toFixed(0)}px;--c:${cols[i%cols.length]}"><i></i></span>`;
+  }
+  const box=document.createElement('div');box.className='tapburst';box.innerHTML=h;document.body.appendChild(box);setTimeout(()=>box.remove(),800);
+  if(t.closest&&t.closest('button')&&navigator.vibrate){try{navigator.vibrate(12)}catch(_){}}
+ },{passive:true});
 })();
 </script>
 </body>
