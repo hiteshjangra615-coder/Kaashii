@@ -243,6 +243,7 @@ body.opened .shell{opacity:1;transform:none;pointer-events:auto}
 .cover-name{font-family:'Allura','Segoe Script','Brush Script MT',cursive;font-size:clamp(68px,21vw,118px);line-height:1.05;margin:10px 0 4px;color:#ff9edb;text-shadow:0 0 18px rgba(255,150,220,.75),0 0 44px rgba(190,130,255,.55),0 2px 4px rgba(30,6,66,.9)}
 .cover-name span{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(10px);animation:letterIn 1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.9s + var(--i)*.17s)}
 .cover-sub{max-width:300px;color:#f4e8ff;font-size:15px;line-height:1.7;margin:0 0 26px;opacity:0;animation:coverIn 1.4s ease 2.5s forwards;text-shadow:0 1px 3px rgba(14,3,42,.95),0 0 16px rgba(14,3,42,.8)}
+.cover-from{margin:-14px 0 24px;font-size:13px;letter-spacing:.06em;color:#ffcdee;opacity:0;animation:coverIn 1.4s ease 2.9s forwards;text-shadow:0 1px 3px rgba(14,3,42,.95),0 0 14px rgba(255,150,220,.5)}
 .cover-btn{opacity:0;animation:coverIn 1.2s ease 3.2s forwards,btnPulse 3s ease-in-out 4.4s infinite;padding:14px 26px;font-size:15px}
 .cover-hint{margin-top:16px;font-size:12px;color:#e6d6fa;opacity:0;animation:coverIn 1.2s ease 3.8s forwards;text-shadow:0 1px 3px rgba(14,3,42,.95)}
 @keyframes coverIn{to{opacity:1}}
@@ -255,7 +256,7 @@ body.opened .shell{opacity:1;transform:none;pointer-events:auto}
 .topright{display:flex;align-items:center;gap:8px}.sound{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:16px;padding:0;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(140,100,230,.30));border:1px solid rgba(232,208,255,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 0 14px rgba(190,130,255,.3);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity 1s ease 1s,visibility 1s,transform .16s}
 body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 .sound:active{transform:scale(.92)}.sound[hidden]{display:none}
-@media(prefers-reduced-motion:reduce){.cover-moon,.cover-sub,.cover-btn,.cover-hint,.cover-name span{opacity:1!important;filter:none!important;transform:none!important}.shoot-open{display:none}}
+@media(prefers-reduced-motion:reduce){.cover-moon,.cover-sub,.cover-from,.cover-btn,.cover-hint,.cover-name span{opacity:1!important;filter:none!important;transform:none!important}.shoot-open{display:none}}
 
 /* ==========================================================
    ENDING — promise, signature, heart of stars, wish
@@ -269,6 +270,12 @@ body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 .heartfx{position:fixed;left:50%;top:40%;width:0;height:0;z-index:25;pointer-events:none}
 .hstar{position:absolute;left:0;top:0;background:linear-gradient(135deg,#fff,#ffc4ee);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 6px rgba(255,180,240,.95));opacity:0}
 @media(prefers-reduced-motion:reduce){.reveal{animation:none}}
+
+.qual-list{display:grid;gap:10px;margin:8px 0 16px}
+.qual{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border-radius:18px;border:1px solid rgba(232,208,255,.5);background:rgba(170,130,245,.15);line-height:1.65;font-weight:500;color:#fff;text-shadow:0 1px 2px rgba(14,3,42,.95),0 0 10px rgba(14,3,42,.7);animation:qualIn .9s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(.5s + var(--i)*.16s)}
+.qual span{font-size:22px;line-height:1.4;flex:none}
+@keyframes qualIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.qual{animation:none}}
 </style>
 </head>
 <body>
@@ -307,6 +314,15 @@ const chapters = [
 <p>Aapko har waqt strong rehna, sabke saamne theek dikhna, ya jaldi se better feel karna zaroori nahi hai. Thak jaana, confuse hona, ro lena — feelings ka hona aapki weakness nahi.</p>
 <p>Aapki baat important hai, chahe woh poori tarah words mein na bhi aa paaye. Kabhi share karna chahein, toh jitna comfortable lage utna hi kehna kaafi hai. Aur agar abhi baat nahi karni, woh bhi bilkul okay hai. 🤍</p>
 <div class="soft-note">Aaj bas agla chhota step kaafi hai. Poori life ka solution aaj hi dhoondhna zaroori nahi.</div>`},
+{label:"Aap jaisi ho",render:()=>`
+<div class="eyebrow">sirf aapke liye likha hai ✨</div><h2>Kaashi, ye baatein sirf aapke liye 💜</h2>
+<div class="qual-list">
+<div class="qual" style="--i:0"><span>💗</span><div>Aap dil ki bohot zyada achhi ho. Sabka sochti ho, sabki fikr karti ho.</div></div>
+<div class="qual" style="--i:1"><span>🫶</span><div>Aap meri bhi care karti ho, mujhse baatein karti ho, aur mujhe achha lagta hai. Ye bohot badi baat hai.</div></div>
+<div class="qual" style="--i:2"><span>🎶</span><div>Aapse baat karna achha lagta hai. Aapki awaaz bohot pyari hai, sunne se alag hi sukoon milta hai. Aapse baat karke mujhe achha lagta hai.</div></div>
+<div class="qual" style="--i:3"><span>🌱</span><div>Bachpan se abhi tak itna kuch jhelne aur sahne ke baad bhi aap sabke liye sab kuch karti ho, itna sochti ho. Ye bohot badi baat hai. Ye koi kamzori ya galti nahi hai, ye sirf aapki achhai hai.</div></div>
+</div>
+<div class="soft-note">Aapne sabke liye sab kuch kiya, ab aapki baari hai. Aap bhi khushiyan deserve karti ho, care deserve karti ho, aapko bhi apnapan milna chahiye. Toh ab aap apne upar dhyan dena aur bas khush rehna. Ab thodi der kisi ke baare me kuch mat sochna. 💜</div>`},
 {label:"Mood check-in",render:()=>`
 <div class="eyebrow">what kind of moment is it?</div><h2>Kaashi, abhi dil kaisa feel kar raha hai? 🫂</h2><p>Koi right ya wrong answer nahi. Jo option thoda sa bhi aapke kareeb lage, us par tap kar sakti hain.</p>
 <div class="mood-grid">
@@ -319,9 +335,9 @@ const chapters = [
 <div class="eyebrow">tap to unwrap 🎁</div><h2>Chhote-chhote gifts, sirf aapke liye</h2><p>Har box mein ek alag baat chhupi hai. Aap sab khol sakti hain, ya bas apna favourite choose kar sakti hain.</p>
 <div class="gift-grid">
 <button class="gift" data-gift="0"><span class="emoji">💌</span><strong>Kind words</strong><small>tap to open</small></button>
-<button class="gift" data-gift="1"><span class="emoji">🍪</span><strong>Cookie break</strong><small>tap to open</small></button>
-<button class="gift" data-gift="2"><span class="emoji">🌟</span><strong>Star reminder</strong><small>tap to open</small></button>
-<button class="gift" data-gift="3"><span class="emoji">🐣</span><strong>Tiny giggle</strong><small>tap to open</small></button>
+<button class="gift" data-gift="1"><span class="emoji">🍛</span><strong>Biryani break</strong><small>tap to open</small></button>
+<button class="gift" data-gift="2"><span class="emoji">💜</span><strong>Purple &amp; green</strong><small>tap to open</small></button>
+<button class="gift" data-gift="3"><span class="emoji">🌿</span><strong>Ghumne ka mood</strong><small>tap to open</small></button>
 <button class="gift" data-gift="4"><span class="emoji">🌷</span><strong>Soft day</strong><small>tap to open</small></button>
 <button class="gift" data-gift="5"><span class="emoji">🫶</span><strong>Care note</strong><small>tap to open</small></button>
 </div><div class="message" id="giftMessage" role="status"></div>`},
@@ -356,17 +372,17 @@ let index=0;
 const panel=document.getElementById('panel'), counter=document.getElementById('counter'), bar=document.getElementById('bar'), progress=document.getElementById('progress'), prev=document.getElementById('prev'), next=document.getElementById('next');
 const gifts=[
 "Kaashi, aapko har waqt sab kuch sambhalne ki zaroorat nahi. Aap bhi care deserve karti hain. 💌",
-"Official tiny reminder: paani ka sip aur ek snack break approved hai. Cookie committee ne unanimous decision diya hai. 🍪😂",
-"Aapki value kisi ek difficult din, ek result, ya kisi aur ke behaviour se decide nahi hoti. 🌟",
-"Ek chhota sa penguin aapko yaad dilane aaya hai: aaj bas waddling pace par chalna bhi progress hai. 🐧",
+"Aapki bio wali line yaad hai? Khana waste nahi karna. Toh official permission mil gayi hai: biryani ki plate poori finish karni hai. 🍛😂",
+"Purple aapka favourite hai, isliye ye poora aasman purple hai 💜 Aur green ke liye ek tiny plant 🪴 aapke naam. Bina shikayat ke bas muskuraata rehta hai.",
+"Aapko ghumna pasand hai na? Kabhi mann ho toh naye raaste, khuli hawa aur dher saari photos. Jab aapka mood bole, tab. 🌿🚗",
 "Aapko har din productive ya cheerful hona zaroori nahi. Soft day bhi valid day hai. 🌷",
 "Aapki baat sunne layak hai. Aap jitna share karna chahein, utna hi kaafi hai. 🫶"
 ];
 const lines=[
 "Aapko sab kuch aaj hi solve karna zaroori nahi. 🌷","Aapka rest bhi important hai, sirf responsibilities nahi. ☁️",
 "Reminder: aap kisi ke liye burden nahi hain sirf isliye ki aapka din difficult hai. 💗","Aapko apni feelings ko justify karne ki zaroorat nahi. 🌙",
-"Ek tiny virtual cupcake aapke naam… calories nahi, sirf cuteness. 🧁","Aapko aaj bas apne saath thoda gentle rehna hai. 🫶",
-"Plot twist: aapko abhi sab answers pata hona bilkul zaroori nahi. ✨","Aapki worth ko aaj ka mood decide nahi karta. 🌼"
+"Biryani ki khushbu ke saamne koi tension zyada der tik nahi sakti. 🍛","Aapko aaj bas apne saath thoda gentle rehna hai. 🫶",
+"Jo duniya ko itna deti hai, usse bhi kabhi-kabhi wapas milna chahiye. 💜","Aapki worth ko aaj ka mood decide nahi karta. 🌼"
 ];
 const moodText={
 heavy:"Kaashi, agar dil heavy hai toh aapko abhi sab kuch explain karne ki zaroorat nahi. Jo feel ho raha hai, use thodi jagah dijiye. Ek-ek moment karke chalna bhi theek hai. 🤍",
@@ -382,6 +398,7 @@ const letterParagraphs = [
 `Agar kabhi kisi din kuch karne ka mann na ho, toh khud ko thoda waqt dijiye. Agar kisi din future bahut confusing lage, toh poori zindagi ka answer aaj hi dhoondhne ki zaroorat nahi. Ek chhota sa step bhi step hota hai. Aapko har cheez ek hi din mein theek nahi karni.`,
 `Aur Kaashi, please apni achhai ko un bure dino ke hisaab se mat naapna. Kisi din aap udaas hon, thak jaayein ya khud par doubt karein, toh iska matlab yeh nahi ki aap mein kuch kami hai. Aap bhi ek insaan hain — aapko bhi aaram, samajh aur thodi si khushi milni chahiye.`,
 `Ek din jab aap peeche mudkar aaj ke waqt ko dekhein, toh umeed hai aapko sirf yeh yaad na aaye ki kitni mushkilein thi. Shayad yeh bhi yaad aaye ki dheere-dheere aapne kitni cheezein seekhin, kitne chhote moments mein muskuraayi, aur kitni baar phir se ek naya din shuru kiya.`,
+`Aur Kaashi, aap sabke liye itna kuch karti hain, sabki fikr, sabki care, meri bhi. Lekin kabhi-kabhi lagta hai ki aapke liye utna kisi ne nahi kiya jitna aap deserve karti hain. Isliye ye chhoti si jagah ek chhoti si koshish hai ki aapko bhi koi sambhale, aur aapko ye yaad dilaye ki aap kitni achhi hain. 💜`,
 `Aur jab kabhi aapka mann kare, toh bina kisi pressure ke apni baat keh sakti hain. Har baat ka solution dena zaroori nahi hota; kabhi-kabhi bas dhyaan se sunna bhi kaafi hota hai.`,
 `Aapki kahaani abhi chal rahi hai. Yeh mushkil waqt aapki poori kahaani nahi hai, aur aaj ka din aapke aane wale saare dino ka faisla nahi karta.`,
 `Jab bhi sab kuch thoda zyada lage, ek pal ke liye rukiyega, gehri saans lijiye aur khud ke saath thoda naram rahiye.`
