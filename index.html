@@ -356,7 +356,7 @@ body:not(.opened) .hero-orb,
 body:not(.opened) .hero-orb::before,
 body:not(.opened) .hero-orb i{animation-play-state:paused!important}
 .soft-note a{color:#ff9edb;font-weight:700;text-decoration:underline}.letter-dm{margin:18px 0 6px;text-align:center}.letter-dm p{margin:0 0 10px}.letter-dm .btn{display:inline-block;text-decoration:none}
-.song-card{margin:12px 0 4px;padding:14px 14px 12px;border-radius:18px;text-align:center;background:rgba(183,139,255,.19);border:1px solid rgba(230,203,255,.55);animation:pop .3s ease}.song-card[hidden]{display:none}.song-title{font-weight:700;margin-bottom:10px;color:#fff4ff}.song-title span{font-weight:500;opacity:.8;font-size:13px}.song-embed{width:100%;height:152px;border:0;border-radius:12px;display:block}.song-note{font-size:12px;margin-top:8px;opacity:.85}
+.song-card{margin:12px 0 4px;padding:14px 14px 12px;border-radius:18px;text-align:center;background:rgba(183,139,255,.19);border:1px solid rgba(230,203,255,.55);animation:pop .3s ease}.song-card[hidden]{display:none}.song-title{font-weight:700;margin-bottom:10px;color:#fff4ff}.song-title span{font-weight:500;opacity:.8;font-size:13px}.song-embed{width:100%;height:152px;border:0;border-radius:12px;display:block}#songHost iframe{width:100%;height:152px;border:0;border-radius:12px;display:block}#songHost.yt{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}#songHost.yt iframe{position:absolute;inset:0;width:100%;height:100%}.song-note{font-size:12px;margin-top:8px;opacity:.85}
 html,body{touch-action:pan-y pinch-zoom}
 
 .letter-dm[hidden]{display:none!important}
@@ -437,7 +437,7 @@ const chapters = [
 <button class="gift" data-gift="6"><span class="emoji">🐱</span><strong>Cute cats</strong><small>tap to open</small></button>
 <button class="gift" data-gift="7"><span class="emoji">🎶</span><strong>Sirf Aapka Raaz</strong><small>tap to open</small></button>
 </div><div class="message" id="giftMessage" role="status"></div>
-<div class="song-card" id="songCard" hidden><div class="song-title">🤫 Sirf Aapka Raaz</div><iframe class="song-embed" title="Sirf aapka raaz" src="https://open.spotify.com/embed/track/7pkQKhYd7YH1s4ocurkVKG?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe><div class="song-note">mushkil waqt mein, play dabaiye 🤍</div></div>`},
+<div class="song-card" id="songCard" hidden><div class="song-title">🤫 Sirf Aapka Raaz</div><div id="songHost"><iframe class="song-embed" title="Sirf aapka raaz" src="https://open.spotify.com/embed/track/7pkQKhYd7YH1s4ocurkVKG?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div><div class="song-note">mushkil waqt mein, play dabaiye 🤍</div></div>`},
 {label:"Peaceful care corner",render:()=>`
 <div class="eyebrow">slow down, if you want 🌙</div><h2>Abhi bas ek chhota sa pause</h2><p>Aap chahein toh is soft circle ke saath aaram se saans lene ki rhythm follow kar sakti hain. Koi target nahi, koi perfect technique nahi — uncomfortable lage toh normal breathing par laut aayein.</p>
 <div class="breath-wrap"><div class="breath-orb" aria-hidden="true"><span>☁️</span></div><p><strong>Saans andar… aur dheere se bahar.</strong></p><p class="tiny">Circle sirf ek gentle visual hai. Apni natural pace par hi rahein.</p></div>
@@ -627,7 +627,36 @@ function setMoodFx(kind){
  moodtop.innerHTML=h;
  requestAnimationFrame(()=>{moodfx.classList.add('on','mood-'+kind);moodtop.classList.add('on');});
 }
-function showSong(){const card=document.getElementById('songCard');if(card)card.hidden=false;if(window.__kassuBg)window.__kassuBg.duck();}
+const SONG_ID='7pkQKhYd7YH1s4ocurkVKG';   /* Spotify track: used only as backup */
+const YT_ID='c4YI39LgRVQ';                 /* YouTube video: plays full song on the page, no login needed. Swap this ID to change the version. */
+const SONG_START=20;                       /* seconds: skips the slow intro. Change this number to pick another start point. */
+function songFallback(host){host.classList.remove('yt');host.innerHTML='<iframe class="song-embed" title="Sirf aapka raaz" src="https://open.spotify.com/embed/track/'+SONG_ID+'?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>';}
+function loadYouTubeApi(cb){
+ if(window.YT&&window.YT.Player){cb(true);return;}
+ (window.__ytCbs=window.__ytCbs||[]).push(cb);
+ if(window.__ytLoading)return;window.__ytLoading=true;
+ window.onYouTubeIframeAPIReady=function(){window.__ytCbs.splice(0).forEach(function(f){f(true);});};
+ const sc=document.createElement('script');sc.src='https://www.youtube.com/iframe_api';sc.async=true;
+ sc.onerror=function(){window.__ytLoading=false;window.__ytCbs.splice(0).forEach(function(f){f(false);});};
+ document.head.appendChild(sc);
+}
+function showSong(){
+ const card=document.getElementById('songCard');if(card)card.hidden=false;if(window.__kassuBg)window.__kassuBg.duck();
+ const host=document.getElementById('songHost');if(!host||host.dataset.ready)return;host.dataset.ready='1';
+ let settled=false;
+ const tm=setTimeout(function(){if(!settled){settled=true;songFallback(host);}},7000);
+ loadYouTubeApi(function(ok){
+  if(settled||!host.isConnected)return;
+  if(!ok){settled=true;clearTimeout(tm);songFallback(host);return;}
+  host.classList.add('yt');host.innerHTML='<div id="songMount"></div>';
+  new YT.Player('songMount',{width:'100%',height:'100%',videoId:YT_ID,
+   playerVars:{start:SONG_START,playsinline:1,rel:0,modestbranding:1},
+   events:{
+    onReady:function(){settled=true;clearTimeout(tm);},
+    onError:function(){settled=true;clearTimeout(tm);if(host.isConnected)songFallback(host);}
+   }});
+ });
+}
 function stopSong(){
  const a=document.getElementById('songAudio');
  if(a&&!a.paused)a.pause();
