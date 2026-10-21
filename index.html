@@ -273,7 +273,7 @@ body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 .letter-wish{margin:18px 0 4px;text-align:center;font-weight:600}
 .reveal{animation:endReveal 1.3s cubic-bezier(.22,1,.36,1) both}
 @keyframes endReveal{from{opacity:0;transform:translateY(14px);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
-.heartfx{position:fixed;left:50%;top:40%;width:0;height:0;z-index:25;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,70,200,.95)) drop-shadow(0 0 16px rgba(255,70,200,.6))}
+.heartfx{position:fixed;left:50%;top:40%;width:0;height:0;z-index:25;pointer-events:none;filter:drop-shadow(0 0 5px rgba(255,70,200,.62)) drop-shadow(0 0 13px rgba(255,70,200,.36))}
 .hstar{position:absolute;left:0;top:0;background:radial-gradient(circle,#fff 0%,#ffe9f8 26%,#ff8fd8 64%,#ff3fb0 100%);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:0}
 .hshape{position:absolute;left:0;top:0;overflow:visible;opacity:0}
 @media(prefers-reduced-motion:reduce){.reveal{animation:none}}
@@ -292,9 +292,9 @@ body.opened .sound:not([hidden]){opacity:1;visibility:visible}
 @keyframes orbRing{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.55);opacity:0}}
 h1.hero-h{font-size:clamp(40px,10.5vw,56px);line-height:1.08;animation:heroGlow 4s ease-in-out infinite alternate}
 @keyframes heroGlow{from{filter:drop-shadow(0 0 4px rgba(255,150,220,.25))}to{filter:drop-shadow(0 0 14px rgba(255,150,220,.7))}}
-.hl{animation:heroLine 1.4s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(2s + var(--i)*.9s)}
+.hl{animation:heroLine 1.1s cubic-bezier(.22,1,.36,1) both;animation-delay:calc(1.6s + var(--i)*.65s)}
 @keyframes heroLine{from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
-.hero-hint{margin-top:14px;text-align:center;font-size:12.5px;color:#f0ddff;text-shadow:0 1px 3px rgba(14,3,42,.95);animation:heroLine 1.4s ease both;animation-delay:5.4s}
+.hero-hint{margin-top:14px;text-align:center;font-size:12.5px;color:#f0ddff;text-shadow:0 1px 3px rgba(14,3,42,.95);animation:heroLine 1.1s ease both;animation-delay:4.5s}
 .hero-hint b{display:inline-block;color:#ffb5e6;animation:nudge 1.8s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateX(6px)}}
 @media(prefers-reduced-motion:reduce){.hl,.hero-hint,.hero-orb,.hero-orb i,.hero-orb::before,h1.hero-h{animation:none!important}}
@@ -719,6 +719,56 @@ body::before,body::after,.fx,.floaties,.mood-fx,.cover,.fxrain,.tapburst{top:0;l
 @media(prefers-reduced-motion:reduce){#letterFinal .wd,#letterPromise .wd{opacity:1!important;transform:none!important;animation:none!important}#letterFinal::before,#letterPromise::before{display:none!important}}
 
 
+/* ==========================================================
+   LAST CHAPTER — "Main hoon sunne ke liye 💌"
+   Border: two lights leave the top-left corner the moment the paragraph appears, meet at the
+   bottom-right, then come back (11 s loop, endless). Colours are deliberately NOT pink/lavender
+   so they never vanish into the border: gold + cyan going, orange + lime coming back.
+   Last line: highlighted, with a rainbow light running under it and back.
+   (No animated filters / backdrop-blur here — keeps text from flickering on phones.)
+   ========================================================== */
+#letterPromise{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+#letterPromise .lp-run{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:hidden;border-radius:inherit}
+#letterPromise .lp-run rect{fill:none;stroke-linecap:round;stroke-dasharray:16 184;opacity:0;stroke:currentColor;stroke-width:3.6;animation-timing-function:ease-in-out}
+#letterPromise .lp-run .h{stroke-width:9;stroke-opacity:.24}
+#letterPromise .lp-run .rg{stroke:url(#lpRingGrad);stroke-width:2.2;stroke-dasharray:none;opacity:.9;animation:lpFade 2s ease both}
+#letterPromise .lp-run .r1{color:#ffe066}
+#letterPromise .lp-run .r2{color:#4de1ff}
+#letterPromise .lp-run .rf{color:#fff6d8;stroke-dasharray:none;stroke-width:2.4}
+#letterPromise.lp-go .lp-run .r1{animation:lpA 11s ease-in-out infinite}
+#letterPromise.lp-go .lp-run .r2{animation:lpB 11s ease-in-out infinite}
+#letterPromise.lp-go .lp-run .rf{animation:snPulse 11s ease-in-out infinite}
+@keyframes lpFade{from{opacity:0}to{opacity:.9}}
+@keyframes lpA{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
+  9%{opacity:1;color:#ffe066}
+  45%{stroke-dashoffset:-32;opacity:1;color:#ffe066}
+  50%{stroke-dashoffset:-32;opacity:.35;color:#ff9a3c}
+  55%{stroke-dashoffset:-32;opacity:1;color:#ff9a3c}
+  91%{opacity:1;color:#ff9a3c}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
+}
+@keyframes lpB{
+  0%,5%{stroke-dashoffset:-84;opacity:0;color:#7dff8a}
+  9%{opacity:1;color:#4de1ff}
+  45%{stroke-dashoffset:-50;opacity:1;color:#4de1ff}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#7dff8a}
+  55%{stroke-dashoffset:-50;opacity:1;color:#7dff8a}
+  91%{opacity:1;color:#7dff8a}
+  95%,100%{stroke-dashoffset:-84;opacity:0;color:#7dff8a}
+}
+/* last line "Main hoon sunne ke liye 💌": stays inside the paragraph (like chapter 1 & 2).
+   Coloured line drawn under it the moment the paragraph appears, with a soft light running along that same line. */
+#letterPromise .pm-k2{padding-bottom:3px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 50%,rgba(255,255,255,0)) no-repeat -60% 100%/32% 2px,
+    linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#7dffd0 100%) no-repeat 0 100%/0% 2px}
+#letterPromise .wd.pm-hl{font-weight:800;color:#fff4fc;text-shadow:0 0 10px rgba(255,150,220,.8)}
+#letterPromise.lp-go .pm-k2{animation:pmDraw 1.8s cubic-bezier(.22,1,.36,1) .3s forwards,pmRun 4.2s ease-in-out 2.3s infinite}
+@keyframes pmDraw{to{background-size:32% 2px,100% 2px}}
+@keyframes pmRun{0%,100%{background-position:-60% 100%,0 100%}50%{background-position:160% 100%,0 100%}}
+@media(prefers-reduced-motion:reduce){#letterPromise .lp-run .r1,#letterPromise .lp-run .r2,#letterPromise .lp-run .rf{display:none}#letterPromise .pm-k2{animation:none!important;background-size:32% 2px,100% 2px}#letterPromise .lp-run .rg{animation:none}}
+
 /* CRISP GLASS — blur removed, see-through card stays sharp */
 .panel,.counter,.btn.secondary,.soft-note,.message,.privacy,.choice,.gift,.thoughts,.letter-final{-webkit-backdrop-filter:none !important;backdrop-filter:none !important}
 .panel{-webkit-backdrop-filter:saturate(125%) !important;backdrop-filter:saturate(125%) !important}
@@ -856,6 +906,236 @@ body.opened .chap-bg{opacity:1}
 .np-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);transition:all .3s}
 .np-dots i.on{width:22px;border-radius:6px;background:linear-gradient(90deg,#ff9ee0,#b794ff);box-shadow:0 0 10px rgba(255,150,225,.8)}
 @media(prefers-reduced-motion:reduce){.np-stage .np-page,.np-stage .np-page.on{transition:none}}
+
+/* ==========================================================
+   CHAPTER 1 GIFT NOTE — "Moon glow" + "Key line highlight"
+   Moon glow: silver-blue moonlight in the corner, a soft moonbeam
+   that drifts across every few seconds, 3 tiny twinkling stars,
+   silver-lavender border.
+   Key line: "woh matter karta hai." gets a gentle shine, and
+   "Aapko abhi kuch prove karne ki zaroorat nahi." gets a glowing
+   line drawn under it (pink -> aqua).
+   Only this one box is changed. Text, layout, buttons are untouched.
+   ========================================================== */
+.soft-note.moon-note{position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(255,214,140,.42) 0,rgba(255,170,200,.18) 34%,rgba(255,170,200,0) 64%),
+    linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.015)) !important;
+  border:1px solid rgba(255,208,160,.55) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 0 22px rgba(255,190,140,.42),0 0 44px rgba(255,150,220,.12),inset 0 0 22px rgba(255,200,170,.16),inset 0 1px 0 rgba(255,255,255,.42) !important}
+/* breathing moon glow in the top-right corner */
+.moon-note::before{content:"";position:absolute;top:-46px;right:-46px;width:130px;height:130px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(255,228,160,.62) 0,rgba(255,176,196,.26) 40%,rgba(255,176,196,0) 70%);
+  opacity:.55;animation:mnGlow 4.8s ease-in-out 5s infinite}
+/* moonbeam that passes over the box every few seconds */
+.moon-note::after{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:34%;pointer-events:none;z-index:1;
+  background:linear-gradient(100deg,rgba(255,240,205,0) 0%,rgba(255,240,205,.32) 50%,rgba(255,240,205,0) 100%);
+  transform:translateX(-140%) skewX(-18deg);animation:mnBeam 7s ease-in-out 5.6s infinite}
+.moon-note .mn-text{position:relative;z-index:2}
+.moon-note .mn-star{position:absolute;z-index:1;width:var(--s);height:var(--s);pointer-events:none;background:#fff0c4;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);
+  filter:drop-shadow(0 0 4px rgba(255,215,140,.95));opacity:.15;animation:mnTwinkle 3.6s ease-in-out infinite;animation-delay:var(--d)}
+.moon-note .mn-moon{display:inline-block;filter:drop-shadow(0 0 5px rgba(255,225,150,.85));animation:mnMoon 4.8s ease-in-out 5s infinite}
+/* key line 1: "woh matter karta hai." — a light shine passes over it */
+.moon-note .mn-k1{animation:mnShine 6s ease-in-out 5.8s infinite}
+/* key line 2: glowing line drawn under it, pink -> aqua */
+.moon-note .mn-k2{padding-bottom:2px;
+  background:linear-gradient(90deg,#ff8fd0 0%,#c9a4ff 50%,#8fe9ff 100%) no-repeat 0 100%/0% 2px;
+  animation:mnDraw 1.9s cubic-bezier(.22,1,.36,1) 5.4s forwards}
+@keyframes mnGlow{0%,100%{opacity:.45;transform:scale(.94)}50%{opacity:.95;transform:scale(1.08)}}
+@keyframes mnBeam{0%{transform:translateX(-140%) skewX(-18deg)}30%,100%{transform:translateX(420%) skewX(-18deg)}}
+@keyframes mnTwinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:.95;transform:scale(1.1) rotate(12deg)}}
+@keyframes mnMoon{0%,100%{filter:drop-shadow(0 0 3px rgba(255,225,150,.55))}50%{filter:drop-shadow(0 0 9px rgba(255,235,170,1))}}
+@keyframes mnShine{0%,62%,100%{color:inherit;text-shadow:0 1px 3px rgba(20,5,70,.60),0 0 10px rgba(20,5,70,.35)}
+  80%{color:#fff;text-shadow:0 0 5px rgba(255,255,255,.95),0 0 14px rgba(255,170,230,.95),0 0 22px rgba(150,230,255,.7)}}
+@keyframes mnDraw{to{background-size:100% 2px}}
+/* wait for the cover tap, like the other chapter-1 intro animations */
+body:not(.opened) .moon-note::before,
+body:not(.opened) .moon-note::after,
+body:not(.opened) .moon-note .mn-star,
+body:not(.opened) .moon-note .mn-moon,
+body:not(.opened) .moon-note .mn-k1,
+body:not(.opened) .moon-note .mn-k2{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){
+  .moon-note::before,.moon-note::after,.moon-note .mn-star,.moon-note .mn-moon,.moon-note .mn-k1{animation:none!important}
+  .moon-note::after{display:none}.moon-note .mn-star{opacity:.7}
+  .moon-note .mn-k2{animation:none!important;background-size:100% 2px}}
+
+/* border light: one runner laps the box, a second comes back the other way
+   to the first corner, then two meet at one point (plays once, ~4 s) */
+.moon-note .mn-run{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:hidden}
+.moon-note .mn-run rect{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-dasharray:18 182;opacity:0;stroke:currentColor;animation-timing-function:ease-in-out}
+/* outer ring: warm gold -> pink -> aqua, always visible, drifts gently */
+.moon-note .mn-run .rg{stroke:url(#mnRingGrad);stroke-width:2.6;stroke-dasharray:none;opacity:.92;
+  filter:hue-rotate(-12deg) drop-shadow(0 0 5px rgba(255,200,150,.7));animation:mnRingHue 9s ease-in-out infinite alternate}
+/* two runners (clockwise + anti-clockwise) meet at the opposite corner, then go back; loops forever */
+.moon-note .mn-run .r1{color:#7ff6ff;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);animation:mnLoopA 7.6s ease-in-out 4.3s infinite}
+.moon-note .mn-run .r2{color:#ff86d6;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);animation:mnLoopB 7.6s ease-in-out 4.3s infinite}
+.moon-note .mn-run .rf{color:#fff3c9;stroke-dasharray:none;stroke-width:2.6;filter:drop-shadow(0 0 8px #ffd98a);animation:snPulse 7.6s ease-in-out 4.3s infinite}
+@keyframes mnLoopA{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#ffe08a}
+  9%{opacity:1;color:#7ff6ff}
+  45%{stroke-dashoffset:-32;opacity:1;color:#7ff6ff}
+  50%{stroke-dashoffset:-32;opacity:.35;color:#ffe08a}
+  55%{stroke-dashoffset:-32;opacity:1;color:#ffe08a}
+  91%{opacity:1;color:#ffe08a}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#ffe08a}
+}
+@keyframes mnLoopB{
+  0%,5%{stroke-dashoffset:-82;opacity:0;color:#c9a0ff}
+  9%{opacity:1;color:#ff86d6}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ff86d6}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#c9a0ff}
+  55%{stroke-dashoffset:-50;opacity:1;color:#c9a0ff}
+  91%{opacity:1;color:#c9a0ff}
+  95%,100%{stroke-dashoffset:-82;opacity:0;color:#c9a0ff}
+}
+@keyframes mnRingHue{from{filter:hue-rotate(-12deg) drop-shadow(0 0 4px rgba(255,200,150,.55))}to{filter:hue-rotate(28deg) drop-shadow(0 0 9px rgba(255,155,216,.85))}}
+@keyframes mnR1{0%{stroke-dashoffset:20;opacity:0}6%{opacity:1}90%{opacity:1}100%{stroke-dashoffset:-85;opacity:0}}
+@keyframes mnR2{0%{stroke-dashoffset:-50;opacity:0}8%{opacity:1}90%{opacity:1}100%{stroke-dashoffset:5;opacity:0}}
+@keyframes mnR3{0%{stroke-dashoffset:20;opacity:0}10%{opacity:1}88%{opacity:1}100%{stroke-dashoffset:-25;opacity:0}}
+@keyframes mnR4{0%{stroke-dashoffset:-50;opacity:0}10%{opacity:1}88%{opacity:1}100%{stroke-dashoffset:-25;opacity:0}}
+@keyframes mnFlash{0%{opacity:0}30%{opacity:.85}100%{opacity:0}}
+body:not(.opened) .moon-note .mn-run rect{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.moon-note .mn-run .r1,.moon-note .mn-run .r2,.moon-note .mn-run .rf{display:none}.moon-note .mn-run .rg{animation:none!important}}
+
+/* ==========================================================
+   CHAPTER 2 — "ek aakhri baat": the 🌱 line gets its own glowing box
+   (lavender-pink + mint colours, same border-light pattern as chapter 1;
+   it starts only when the box scrolls into view)
+   ========================================================== */
+.lw-label{margin-top:6px}
+.qual.star-note .sn-text span{font-size:inherit;line-height:inherit;flex:none}
+.qual.star-note{position:relative;overflow:hidden;margin:6px 0 18px;
+  background:
+    radial-gradient(circle at 0% 0%,rgba(96,226,146,.38) 0,rgba(96,226,146,.15) 34%,rgba(96,226,146,0) 64%),
+    linear-gradient(135deg,rgba(96,226,146,.16),rgba(96,226,146,.05)) !important;
+  border:1px solid rgba(96,226,146,.95) !important;
+  box-shadow:0 0 22px rgba(96,226,146,.55),inset 0 0 30px rgba(96,226,146,.30),inset 0 1px 0 rgba(255,255,255,.30) !important}
+.star-note::before{content:"";position:absolute;top:-46px;left:-46px;width:130px;height:130px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(170,255,200,.62) 0,rgba(96,226,146,.28) 40%,rgba(96,226,146,0) 70%);opacity:.5}
+.star-note::after{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:34%;pointer-events:none;z-index:1;
+  background:linear-gradient(100deg,rgba(220,255,232,0) 0%,rgba(220,255,232,.28) 50%,rgba(220,255,232,0) 100%);
+  transform:translateX(-140%) skewX(-18deg)}
+.star-note .sn-emoji,.star-note .sn-text{position:relative;z-index:2}
+.star-note .sn-star{position:absolute;z-index:1;width:var(--s);height:var(--s);pointer-events:none;background:#e2ffec;opacity:.15;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 4px rgba(190,150,255,.95))}
+.star-note .sn-run{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:hidden}
+.star-note .sn-run rect{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-dasharray:18 182;opacity:0;stroke:currentColor;animation-timing-function:ease-in-out}
+/* outer ring: green (same as the "Purple & green" gift in chapter 4) */
+.star-note .sn-run .rg{stroke:url(#snRingGrad);stroke-width:2.6;stroke-dasharray:none;opacity:.92;
+  filter:drop-shadow(0 0 5px rgba(96,226,146,.8))}
+/* two runners: one clockwise, one anti-clockwise, they meet at the opposite corner */
+.star-note .sn-run .r1{color:#ff6fc4;stroke-width:4;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor)}
+.star-note .sn-run .r2{color:#ffa05a;stroke-width:4;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor)}
+.star-note .sn-run .rf{color:#fff0f8;stroke-dasharray:none;stroke-width:2.6;filter:drop-shadow(0 0 8px #ff9bd8)}
+/* "ye sirf aapki achhai hai." — line drawn lavender -> pink -> mint */
+.star-note .sn-k2{padding-bottom:2px;background:linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#7dffd0 100%) no-repeat 0 100%/0% 2px}
+/* everything below starts only after the box has been seen (.go) */
+.star-note.go::before{animation:mnGlow 4.8s ease-in-out 1s infinite}
+.star-note.go::after{animation:mnBeam 7s ease-in-out 4.6s infinite}
+.star-note.go .sn-star{animation:mnTwinkle 3.6s ease-in-out infinite;animation-delay:var(--d)}
+.star-note.go .sn-emoji{display:inline-block;animation:snEmoji 4.8s ease-in-out 1s infinite}
+/* border light never stops: corner -> opposite corner, then back, new colours each way (7.6 s loop) */
+.star-note.go .sn-run .r1{animation:snRunA 7.6s ease-in-out infinite}
+.star-note.go .sn-run .r2{animation:snRunB 7.6s ease-in-out infinite}
+.star-note.go .sn-run .rf{animation:snPulse 7.6s ease-in-out infinite}
+@keyframes snRunA{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#c9a0ff}
+  9%{opacity:1;color:#ff6fc4}
+  45%{stroke-dashoffset:-32;opacity:1;color:#ff6fc4}
+  50%{stroke-dashoffset:-32;opacity:.35;color:#c9a0ff}
+  55%{stroke-dashoffset:-32;opacity:1;color:#c9a0ff}
+  91%{opacity:1;color:#c9a0ff}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#c9a0ff}
+}
+@keyframes snRunB{
+  0%,5%{stroke-dashoffset:-82;opacity:0;color:#5fb8ff}
+  9%{opacity:1;color:#ffa05a}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ffa05a}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#5fb8ff}
+  55%{stroke-dashoffset:-50;opacity:1;color:#5fb8ff}
+  91%{opacity:1;color:#5fb8ff}
+  95%,100%{stroke-dashoffset:-82;opacity:0;color:#5fb8ff}
+}
+@keyframes snPulse{0%{opacity:.5}8%{opacity:0}46%{opacity:0}50%{opacity:.55}58%{opacity:0}92%{opacity:0}100%{opacity:.5}}
+@keyframes snRingHue{from{filter:hue-rotate(-18deg) drop-shadow(0 0 4px rgba(201,160,255,.6))}to{filter:hue-rotate(32deg) drop-shadow(0 0 9px rgba(255,155,216,.85))}}
+.star-note.go .sn-k1{animation:mnShine 6s ease-in-out 4.4s infinite}
+.star-note.go .sn-k2{animation:mnDraw 1.9s cubic-bezier(.22,1,.36,1) 3.4s forwards}
+@keyframes snEmoji{0%,100%{filter:drop-shadow(0 0 3px rgba(125,255,208,.5))}50%{filter:drop-shadow(0 0 9px rgba(160,255,225,1))}}
+@media(prefers-reduced-motion:reduce){
+  .star-note::before,.star-note::after,.star-note .sn-star,.star-note .sn-emoji,.star-note .sn-k1{animation:none!important}
+  .star-note::after,.star-note .sn-run .r1,.star-note .sn-run .r2,.star-note .sn-run .rf{display:none}.star-note .sn-star{opacity:.7}.star-note .sn-run .rg{animation:none!important}
+  .star-note .sn-k2{animation:none!important;background-size:100% 2px}}
+
+/* ==========================================================
+   TIMING FIX (chapter 1, 2 + last chapter paragraph)
+   1) Border light starts the SAME moment the paragraph appears (no waiting).
+   2) Highlight line under the key words comes ~0.8 s AFTER the border light has started.
+   3) Chapter 2 last paragraph (green): no more "appear -> vanish -> appear again".
+   ========================================================== */
+/* ---- chapter 1 (moon note): paragraph appears at --st, border runs from --st, highlight at --st + .8s ---- */
+.moon-note{--st:calc(1.6s + var(--i)*.65s)}
+.moon-note .mn-run .r1,.moon-note .mn-run .r2,.moon-note .mn-run .rf{animation-delay:calc(var(--st) - .55s)}
+.moon-note .mn-k2{animation:mnDraw 1.4s cubic-bezier(.22,1,.36,1) calc(var(--st) + .8s) forwards}
+.moon-note .mn-k1{animation-delay:calc(var(--st) + 2.2s)}
+@media(prefers-reduced-motion:reduce){.moon-note .mn-k2{animation:none!important;background-size:100% 2px}}
+
+/* ---- chapter 2 (green note): border starts the moment it comes on screen, highlight .8 s later ---- */
+.qual.star-note{animation:none}                 /* stops the old qualIn replay that made it vanish and come back */
+.star-note.go .sn-run .r1,.star-note.go .sn-run .r2,.star-note.go .sn-run .rf{animation-delay:-.55s}
+.star-note.go .sn-k2{animation:mnDraw 1.4s cubic-bezier(.22,1,.36,1) .8s forwards}
+.star-note.go .sn-k1{animation-delay:2.2s}
+.star-note.go::before{animation-delay:0s}
+.star-note.go::after{animation-delay:1.6s}
+@media(prefers-reduced-motion:reduce){.star-note .sn-k2{animation:none!important;background-size:100% 2px}}
+
+/* ---- last chapter ("Main hoon sunne ke liye"): border immediately, highlight when its words are in ---- */
+#letterPromise .lp-run .rg{animation:lpFade .45s ease both}
+#letterPromise.lp-go .lp-run .r1,#letterPromise.lp-go .lp-run .r2,#letterPromise.lp-go .lp-run .rf{animation-delay:-.55s}
+#letterPromise.lp-go .pm-k2{animation:pmDraw 1.4s cubic-bezier(.22,1,.36,1) var(--hd,.8s) forwards,pmRun 4.2s ease-in-out calc(var(--hd,.8s) + 1.6s) infinite}
+@media(prefers-reduced-motion:reduce){#letterPromise .pm-k2{animation:none!important;background-size:32% 2px,100% 2px}}
+
+/* ==========================================================
+   LAST CHAPTER — two paragraphs, two DIFFERENT looks (border + glow)
+   Both used to share the card's lavender border, so the border vanished into the background.
+   Upper  (#letterFinal  "You deserve...")        : warm GOLD border + golden glow
+   Lower  (#letterPromise "Main hoon sunne ke..."): AQUA border + aqua glow, runners in pink / gold / orange
+   To change a colour: edit the r,g,b numbers below.
+   ========================================================== */
+#letterFinal{--tc:255,200,80}
+#letterPromise{--tc:70,225,255}
+#letterFinal,#letterFinal[data-fx]{
+  border:2px solid rgba(255,205,90,.98) !important;
+  box-shadow:0 0 0 1px rgba(255,225,150,.30),0 0 14px rgba(255,200,80,.75),0 0 34px rgba(255,170,60,.50),inset 0 0 22px rgba(255,200,90,.22),inset 0 1px 0 rgba(255,255,255,.40) !important}
+#letterPromise,#letterPromise[data-fx]{
+  border:2px solid rgba(90,232,255,.98) !important;
+  box-shadow:0 0 0 1px rgba(170,245,255,.30),0 0 14px rgba(70,225,255,.75),0 0 34px rgba(40,190,255,.50),inset 0 0 22px rgba(70,225,255,.22),inset 0 1px 0 rgba(255,255,255,.40) !important}
+#letterPromise .lp-run .rg{stroke-width:2.6;opacity:1;filter:drop-shadow(0 0 5px rgba(90,232,255,.9))}
+#letterPromise .lp-run .r1{color:#ffd84d}
+#letterPromise .lp-run .r2{color:#ff5fb0}
+#letterPromise .lp-run .rf{color:#ffffff}
+#letterPromise.lp-go .lp-run .r1{animation:lpA2 11s ease-in-out -.55s infinite}
+#letterPromise.lp-go .lp-run .r2{animation:lpB2 11s ease-in-out -.55s infinite}
+/* going: gold + hot pink  |  coming back: orange + white  (none of them is aqua, so they always show on the border) */
+@keyframes lpA2{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
+  9%{opacity:1;color:#ffd84d}
+  45%{stroke-dashoffset:-32;opacity:1;color:#ffd84d}
+  50%{stroke-dashoffset:-32;opacity:.35;color:#ff9a3c}
+  55%{stroke-dashoffset:-32;opacity:1;color:#ff9a3c}
+  91%{opacity:1;color:#ff9a3c}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
+}
+@keyframes lpB2{
+  0%,5%{stroke-dashoffset:-84;opacity:0;color:#ffffff}
+  9%{opacity:1;color:#ff5fb0}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ff5fb0}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#ffffff}
+  55%{stroke-dashoffset:-50;opacity:1;color:#ffffff}
+  91%{opacity:1;color:#ffffff}
+  95%,100%{stroke-dashoffset:-84;opacity:0;color:#ffffff}
+}
 </style>
 </head>
 <body>
@@ -898,7 +1178,7 @@ const chapters = [
 <div class="hero-lines">
 <p class="hl" style="--i:0">Yeh koi aisi jagah nahi jahan aapko khush dikhna ho, sab explain karna ho, ya har baat ka answer pata hona chahiye.</p>
 <p class="hl" style="--i:1">Bas kuch chhote messages, cute surprises aur thodi si narmi — jab aapka mann ho.</p>
-<div class="soft-note hl" style="--i:2">Aap jaisa mehsoos kar rahi hain, woh matter karta hai. Aapko abhi kuch prove karne ki zaroorat nahi. 🌙</div>
+<div class="soft-note hl moon-note" style="--i:2"><i class="mn-star" style="top:10px;right:14px;--s:9px;--d:0s" aria-hidden="true"></i><i class="mn-star" style="top:34px;right:38px;--s:6px;--d:-1.3s" aria-hidden="true"></i><i class="mn-star" style="bottom:12px;right:20px;--s:7px;--d:-2.2s" aria-hidden="true"></i><svg class="mn-run" aria-hidden="true" focusable="false"><defs><linearGradient id="mnRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd98a"/><stop offset=".5" stop-color="#ff9bd8"/><stop offset="1" stop-color="#8fe9ff"/></linearGradient></defs><rect class="rg" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r1" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r2" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="rf" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/></svg><span class="mn-text">Aap jaisa mehsoos kar rahi hain, <span class="mn-k1">woh matter karta hai.</span> <span class="mn-k2">Aapko abhi kuch prove karne ki zaroorat nahi.</span> <span class="mn-moon">🌙</span></span></div>
 </div>
 <div class="actions"><button class="btn" data-action="sparkle">A little sparkle ✨</button></div>
 <div class="hero-hint">jab ready ho, <b>Next →</b> dabaiye</div>`},
@@ -908,9 +1188,8 @@ const chapters = [
 <div class="qual" style="--i:0"><span>💗</span><div>Aap dil ki bohot zyada achhi ho. Sabka sochti ho, sabki fikr karti ho.</div></div>
 <div class="qual" style="--i:1"><span>🫶</span><div>Aap meri bhi care karti ho, mujhse baatein karti ho, aur mujhe achha lagta hai. Ye bohot badi baat hai.</div></div>
 <div class="qual" style="--i:2"><span>🎶</span><div>Aapse baat karna achha lagta hai. Aapki awaaz bohot pyari hai, sunne se alag hi sukoon milta hai. Aapse baat karke mujhe achha lagta hai.</div></div>
-<div class="qual" style="--i:3"><span>🌱</span><div>Bachpan se abhi tak itna kuch jhelne ke baad bhi aap sabke liye sab kuch karti ho, itna sochti ho. Ye kamzori ya galti nahi hai, ye sirf aapki achhai hai.</div></div>
 </div>
-<div class="note-pager" id="notePager"><div class="np-stage" aria-live="polite"><div class="soft-note np-page on" data-p="0">Aapne sabke liye sab kuch kiya, ab aapki baari hai. Aap bhi khushiyan, care aur apnapan deserve karti ho. Ab thoda apne upar dhyan dena aur bas khush rehna. 💜</div><div class="soft-note np-page" data-p="1" aria-hidden="true">Ab kaun kya kehta hai, uski itni fikr mat karna. Bas apne mann ki karna. Aur agar kabhi kuch achha na lage ya pareshaan ho jao, toh mujhe zaroor batana. Main hoon aapke liye. 🤍</div></div><div class="np-nav"><button type="button" class="np-btn" data-np="prev" aria-label="Pehli baat" disabled>←</button><span class="np-dots" aria-hidden="true"><i class="on"></i><i></i></span><button type="button" class="np-btn np-next" data-np="next" aria-label="Agli baat">agla →</button></div></div>`},
+<div class="note-pager" id="notePager"><div class="np-stage" aria-live="polite"><div class="soft-note np-page on" data-p="0">Aapne sabke liye sab kuch kiya, ab aapki baari hai. Aap bhi khushiyan, care aur apnapan deserve karti ho. Ab thoda apne upar dhyan dena aur bas khush rehna. 💜</div><div class="soft-note np-page" data-p="1" aria-hidden="true">Ab kaun kya kehta hai, uski itni fikr mat karna. Bas apne mann ki karna. Aur agar kabhi kuch achha na lage ya pareshaan ho jao, toh mujhe zaroor batana. Main hoon aapke liye. 🤍</div></div><div class="np-nav"><button type="button" class="np-btn" data-np="prev" aria-label="Pehli baat" disabled>←</button><span class="np-dots" aria-hidden="true"><i class="on"></i><i></i></span><button type="button" class="np-btn np-next" data-np="next" aria-label="Agli baat">agla →</button></div></div><div class="eyebrow lw-label">ek aakhri baat 💜</div><div class="qual star-note" style="--i:5"><i class="sn-star" style="top:9px;right:12px;--s:9px;--d:0s" aria-hidden="true"></i><i class="sn-star" style="top:30px;right:34px;--s:6px;--d:-1.4s" aria-hidden="true"></i><i class="sn-star" style="bottom:10px;right:18px;--s:7px;--d:-2.3s" aria-hidden="true"></i><svg class="sn-run" aria-hidden="true" focusable="false"><defs><linearGradient id="snRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60e292"/><stop offset=".5" stop-color="#7dffb0"/><stop offset="1" stop-color="#60e292"/></linearGradient></defs><rect class="rg" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r1" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r2" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="rf" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/></svg><span class="sn-emoji">🌱</span><div class="sn-text">Bachpan se abhi tak itna kuch jhelne ke baad bhi aap sabke liye sab kuch karti ho, itna sochti ho. <span class="sn-k1">Ye kamzori ya galti nahi hai,</span> <span class="sn-k2">ye sirf aapki achhai hai.</span></div></div>`},
 {label:"Mood check-in",render:()=>`
 <div class="eyebrow">what kind of moment is it?</div><h2>Kaashi, abhi dil kaisa feel kar raha hai? 🫂</h2><p>Koi right ya wrong answer nahi. Jo option thoda sa bhi aapke kareeb lage, us par tap kar sakti hain.</p>
 <div class="mood-grid">
@@ -1008,7 +1287,7 @@ function heartOfStars(){
  const W=unit*40;
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','hshape');svg.setAttribute('width',W);svg.setAttribute('height',W);
  svg.setAttribute('viewBox',(-W/2)+' '+(-W/2)+' '+W+' '+W);svg.style.margin=(-W/2)+'px 0 0 '+(-W/2)+'px';
- svg.innerHTML='<defs><radialGradient id="hgrad" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#ffb3e8" stop-opacity=".2"/><stop offset="1" stop-color="#ff4fb8" stop-opacity=".1"/></radialGradient></defs><path d="'+d+'Z" fill="url(#hgrad)" stroke="#ffc2ee" stroke-width="2.5" stroke-opacity=".9" stroke-linejoin="round"/>';
+ svg.innerHTML='<defs><radialGradient id="hgrad" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#ffb3e8" stop-opacity=".15"/><stop offset="1" stop-color="#ff4fb8" stop-opacity=".07"/></radialGradient></defs><path d="'+d+'Z" fill="url(#hgrad)" stroke="#ffc2ee" stroke-width="2.5" stroke-opacity=".72" stroke-linejoin="round"/>';
  box.appendChild(svg);
  svg.animate([{opacity:0,transform:'scale(.85)'},{opacity:1,transform:'scale(1)'}],{duration:1400,delay:1000,easing:'ease-out',fill:'forwards'});
  const rings=[{N:64,k:1,size:[12,12],delay:16},{N:26,k:.56,size:[9,8],delay:25}];
@@ -1026,13 +1305,20 @@ function heartOfStars(){
  endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:900,fill:'forwards'});a.onfinish=()=>box.remove();},4100));
  endTimers.push(setTimeout(()=>box.remove(),5400));
 }
+function promiseGlow(){
+ const el=document.getElementById('letterPromise');
+ if(!el||el.hidden||el.querySelector('.lp-run'))return;
+ const r=c=>'<rect class="'+c+'" x="0" y="0" width="100%" height="100%" rx="17" pathLength="100"/>';
+ el.insertAdjacentHTML('beforeend','<svg class="lp-run" aria-hidden="true" focusable="false"><defs><linearGradient id="lpRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7df3ff"/><stop offset=".5" stop-color="#c4fff0"/><stop offset="1" stop-color="#4de1ff"/></linearGradient></defs>'+r('rg')+r('r1 h')+r('r2 h')+r('r1')+r('r2')+r('rf')+'</svg>');
+ requestAnimationFrame(()=>el.classList.add('lp-go'));
+}
 function revealEl(id){const el=document.getElementById(id);if(!el)return;el.hidden=false;el.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)el.scrollIntoView({behavior:'smooth',block:'center'});}
 function endingSequence(){
  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(reduce){fxPara('letterFinal');fxPara('letterPromise');['letterSign','letterWish','letterDM'].forEach(id=>{const e=document.getElementById(id);if(e)e.hidden=false;});return;}
+ if(reduce){fxPara('letterFinal');fxPara('letterPromise');['letterSign','letterWish','letterDM'].forEach(id=>{const e=document.getElementById(id);if(e)e.hidden=false;});promiseGlow();return;}
  const at=(ms,fn)=>endTimers.push(setTimeout(()=>{if(document.getElementById('letterContent'))fn();},ms));
  at(300,()=>sprinkle(['✨','✨','💜','✨']));
- at(2900,()=>{fxPara('letterPromise');const e=document.getElementById('letterPromise');if(e){e.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)e.scrollIntoView({behavior:'smooth',block:'center'});}});
+ at(2900,()=>{fxPara('letterPromise');promiseGlow();const e=document.getElementById('letterPromise');if(e){e.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)e.scrollIntoView({behavior:'smooth',block:'center'});}});
  
  at(4500,heartOfStars);
  at(7100,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2800);});
@@ -1047,6 +1333,15 @@ function fxPara(id){
  el.removeAttribute('data-fx');void el.offsetWidth;
  el.setAttribute('data-fx','1');
  revealWords(el,el.dataset.t,true);
+ if(id==='letterPromise')promiseLast(el);
+}
+function promiseLast(el){
+ const w=[...el.querySelectorAll('.wd')];if(w.length<6)return;
+ const first=w[w.length-6],wrap=document.createElement('span');wrap.className='pm-k2';wrap.style.setProperty('--hd',Math.max(.8,(w.length-6)*.1+.6).toFixed(2)+'s');
+ el.insertBefore(wrap,first);
+ const nodes=[];for(let n=first;n;n=n.nextSibling)nodes.push(n);
+ nodes.forEach(x=>wrap.appendChild(x));
+ w.slice(-6).forEach(x=>x.classList.add('pm-hl'));
 }
 function finishLetter(){
  clearLetterTimer();
@@ -1216,6 +1511,8 @@ function render(){
   if(!row){row=document.createElement('div');row.className='actions';panel.appendChild(row);}
   row.insertAdjacentHTML('beforeend','<button class="btn'+(hasOthers?' secondary':'')+'" data-action="sparkle">A little sparkle ✨</button>');
  }
+ const sn=panel.querySelector('.star-note');
+ if(sn){if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){sn.classList.add('go');io.disconnect();}});},{threshold:.3});io.observe(sn);}else{setTimeout(()=>sn.classList.add('go'),1200);}}
  counter.textContent=`Chapter ${index+1} of ${chapters.length}`;bar.style.width=((index+1)/chapters.length*100)+'%';progress.setAttribute('aria-valuenow',index+1);
  prev.disabled=index===0;next.textContent=index===chapters.length-1?'Back to start 🔄':'Next →';
 }
