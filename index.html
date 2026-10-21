@@ -733,15 +733,15 @@ body::before,body::after,.fx,.floaties,.mood-fx,.cover,.fxrain,.tapburst{top:0;l
 #letterPromise .lp-run .h{stroke-width:9;stroke-opacity:.24}
 #letterPromise .lp-run .rg{stroke:url(#lpRingGrad);stroke-width:2.2;stroke-dasharray:none;opacity:.9;animation:lpFade 2s ease both}
 #letterPromise .lp-run .r1{color:#ffe066}
-#letterPromise .lp-run .r2{color:#4de1ff}
+#letterPromise .lp-run .r2{color:#ff4fc8}
 #letterPromise .lp-run .rf{color:#fff6d8;stroke-dasharray:none;stroke-width:2.4}
 #letterPromise.lp-go .lp-run .r1{animation:lpA 11s ease-in-out infinite}
 #letterPromise.lp-go .lp-run .r2{animation:lpB 11s ease-in-out infinite}
 #letterPromise.lp-go .lp-run .rf{animation:snPulse 11s ease-in-out infinite}
 @keyframes lpFade{from{opacity:0}to{opacity:.9}}
 @keyframes lpA{
-  0%,5%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
-  9%{opacity:1;color:#ffe066}
+  0%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
+  3%{opacity:1;color:#ffe066}
   45%{stroke-dashoffset:-32;opacity:1;color:#ffe066}
   50%{stroke-dashoffset:-32;opacity:.35;color:#ff9a3c}
   55%{stroke-dashoffset:-32;opacity:1;color:#ff9a3c}
@@ -749,13 +749,13 @@ body::before,body::after,.fx,.floaties,.mood-fx,.cover,.fxrain,.tapburst{top:0;l
   95%,100%{stroke-dashoffset:0;opacity:0;color:#ff9a3c}
 }
 @keyframes lpB{
-  0%,5%{stroke-dashoffset:-84;opacity:0;color:#7dff8a}
-  9%{opacity:1;color:#4de1ff}
-  45%{stroke-dashoffset:-50;opacity:1;color:#4de1ff}
-  50%{stroke-dashoffset:-50;opacity:.35;color:#7dff8a}
-  55%{stroke-dashoffset:-50;opacity:1;color:#7dff8a}
-  91%{opacity:1;color:#7dff8a}
-  95%,100%{stroke-dashoffset:-84;opacity:0;color:#7dff8a}
+  0%{stroke-dashoffset:-84;opacity:0;color:#ff6a5c}
+  3%{opacity:1;color:#ff4fc8}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ff4fc8}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#ff6a5c}
+  55%{stroke-dashoffset:-50;opacity:1;color:#ff6a5c}
+  91%{opacity:1;color:#ff6a5c}
+  95%,100%{stroke-dashoffset:-84;opacity:0;color:#ff6a5c}
 }
 /* last line "Main hoon sunne ke liye 💌": stays inside the paragraph (like chapter 1 & 2).
    Coloured line drawn under it the moment the paragraph appears, with a soft light running along that same line. */
@@ -764,7 +764,7 @@ body::before,body::after,.fx,.floaties,.mood-fx,.cover,.fxrain,.tapburst{top:0;l
     linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 50%,rgba(255,255,255,0)) no-repeat -60% 100%/32% 2px,
     linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#7dffd0 100%) no-repeat 0 100%/0% 2px}
 #letterPromise .wd.pm-hl{font-weight:800;color:#fff4fc;text-shadow:0 0 10px rgba(255,150,220,.8)}
-#letterPromise.lp-go .pm-k2{animation:pmDraw 1.8s cubic-bezier(.22,1,.36,1) .3s forwards,pmRun 4.2s ease-in-out 2.3s infinite}
+#letterPromise.lp-go .pm-k2{animation:pmDraw 1.8s cubic-bezier(.22,1,.36,1) calc(var(--hd,1s) + 1.7s) forwards,pmRun 4.2s ease-in-out calc(var(--hd,1s) + 3.7s) infinite}
 @keyframes pmDraw{to{background-size:32% 2px,100% 2px}}
 @keyframes pmRun{0%,100%{background-position:-60% 100%,0 100%}50%{background-position:160% 100%,0 100%}}
 @media(prefers-reduced-motion:reduce){#letterPromise .lp-run .r1,#letterPromise .lp-run .r2,#letterPromise .lp-run .rf{display:none}#letterPromise .pm-k2{animation:none!important;background-size:32% 2px,100% 2px}#letterPromise .lp-run .rg{animation:none}}
@@ -1093,7 +1093,7 @@ body:not(.opened) .moon-note .mn-run rect{animation-play-state:paused!important}
 /* ---- last chapter ("Main hoon sunne ke liye"): border immediately, highlight when its words are in ---- */
 #letterPromise .lp-run .rg{animation:lpFade .45s ease both}
 #letterPromise.lp-go .lp-run .r1,#letterPromise.lp-go .lp-run .r2,#letterPromise.lp-go .lp-run .rf{animation-delay:-.55s}
-#letterPromise.lp-go .pm-k2{animation:pmDraw 1.4s cubic-bezier(.22,1,.36,1) var(--hd,.8s) forwards,pmRun 4.2s ease-in-out calc(var(--hd,.8s) + 1.6s) infinite}
+#letterPromise.lp-go .pm-k2{animation:pmDraw 1.4s cubic-bezier(.22,1,.36,1) calc(var(--hd,.8s) + .9s) forwards,pmRun 4.2s ease-in-out calc(var(--hd,.8s) + 2.9s) infinite}
 @media(prefers-reduced-motion:reduce){#letterPromise .pm-k2{animation:none!important;background-size:32% 2px,100% 2px}}
 
 /* ==========================================================
@@ -1136,6 +1136,261 @@ body:not(.opened) .moon-note .mn-run rect{animation-play-state:paused!important}
   91%{opacity:1;color:#ffffff}
   95%,100%{stroke-dashoffset:-84;opacity:0;color:#ffffff}
 }
+
+/* ==========================================================
+   CHAPTER 8 colour match
+   "Main hoon sunne ke liye": border cyan-blue hai -> andar/bahar ka glow bhi wahi cyan-blue.
+   Border par chalne wali lights (gold, hot-pink, orange, coral) cyan se alag rang ki hain, isliye saaf dikhti hain.
+   "You deserve...": andar pink glow hai -> border bhi wahi pink.
+   ========================================================== */
+#letterPromise{--tc:77,225,255}
+#letterPromise[data-fx]{box-shadow:0 0 24px rgba(77,225,255,.50),inset 0 0 32px rgba(77,225,255,.32),inset 0 1px 0 rgba(255,255,255,.30) !important}
+#letterFinal{--tc:255,150,215}
+#letterFinal[data-fx]{border:1.5px solid rgba(255,150,215,.95) !important;box-shadow:0 0 24px rgba(255,150,215,.50),inset 0 0 30px rgba(255,150,215,.30),inset 0 1px 0 rgba(255,255,255,.30) !important}
+
+/* ==========================================================
+   LAST CHAPTER — "Main hoon sunne ke liye 💌" paragraph
+   1) Border + glow (andar bhi, bahar bhi) sab BLUE. Pink glow hata diya
+      (highlight line ka text-glow + underline bhi blue ho gaye).
+   2) Border par chalti lights ab border ke upar (uske center par) chalti hain,
+      moti + glow ke saath, aur colours cute + clearly visible hain:
+      jaate waqt  : butter-yellow + bubblegum-pink
+      wapas aate  : peach-orange + lilac
+   To change a colour: edit the hex values in lpA3 / lpB3 below.
+   ========================================================== */
+#letterPromise{--tc:77,225,255}
+#letterPromise,#letterPromise[data-fx]{
+  border:2px solid rgba(110,228,255,.98) !important;
+  box-shadow:0 0 0 1px rgba(170,240,255,.28),0 0 14px rgba(77,225,255,.70),0 0 34px rgba(60,190,255,.45),inset 0 0 28px rgba(77,225,255,.32),inset 0 1px 0 rgba(255,255,255,.35) !important}
+#letterPromise::before,#letterPromise[data-fx]::before{border-color:rgba(110,228,255,.95) !important;background:linear-gradient(135deg,rgba(77,225,255,.34),rgba(77,225,255,.16)) !important}
+#letterPromise .wd.pm-hl{color:#effcff;text-shadow:0 0 10px rgba(77,225,255,.9),0 0 18px rgba(77,225,255,.45)}
+#letterPromise .pm-k2{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 50%,rgba(255,255,255,0)) no-repeat -60% 100%/32% 2px,
+    linear-gradient(90deg,#ffffff 0%,#b8a2ff 55%,#8fb4ff 100%) no-repeat 0 100%/0% 2px;box-shadow:0 2px 8px -2px rgba(170,150,255,.65)}
+/* runner layer now covers the whole border box, so the lights ride ON the border (not hidden under it) */
+#letterPromise .lp-run{top:-1px;left:-1px;right:auto;bottom:auto;width:calc(100% + 2px);height:calc(100% + 2px);overflow:visible;border-radius:0}
+#letterPromise .lp-run rect{stroke-width:2}
+#letterPromise .lp-run .h{stroke-width:8;stroke-opacity:.5}
+#letterPromise .lp-run .rg{stroke-width:2.6;opacity:.95;filter:drop-shadow(0 0 5px rgba(90,232,255,.9))}
+#letterPromise .lp-run .r1:not(.h),#letterPromise .lp-run .r2:not(.h){filter:none}
+#letterPromise .lp-run .rf{color:#e9fdff;stroke-width:2;filter:none}
+#letterPromise.lp-go .lp-run .r1{animation:lpA3 11s ease-in-out -.55s infinite}
+#letterPromise.lp-go .lp-run .r2{animation:lpB3 11s ease-in-out -.55s infinite}
+@keyframes lpA3{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#ff8a3d}
+  9%{opacity:1;color:#ffe14d}
+  45%{stroke-dashoffset:-32;opacity:1;color:#ffe14d}
+  50%{stroke-dashoffset:-32;opacity:.4;color:#ff8a3d}
+  55%{stroke-dashoffset:-32;opacity:1;color:#ff8a3d}
+  91%{opacity:1;color:#ff8a3d}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#ff8a3d}
+}
+@keyframes lpB3{
+  0%,5%{stroke-dashoffset:-84;opacity:0;color:#ffffff}
+  9%{opacity:1;color:#ff3fa4}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ff3fa4}
+  50%{stroke-dashoffset:-50;opacity:.4;color:#ffffff}
+  55%{stroke-dashoffset:-50;opacity:1;color:#ffffff}
+  91%{opacity:1;color:#ffffff}
+  95%,100%{stroke-dashoffset:-84;opacity:0;color:#ffffff}
+}
+
+/* smoother last paragraph: runner layer + underline get their own layer, no per-frame blur filters */
+#letterPromise .lp-run{transform:translateZ(0);will-change:transform}
+#letterPromise .pm-k2{will-change:background-position}
+
+/* ==========================================================
+   SMOOTH SCROLLING (poori website)
+   - big card ke peeche live backdrop-filter hata diya (scroll me sabse bhaari cheez yahi thi)
+   - fixed background layers apni GPU layer par, taaki scroll me dobara paint na ho
+   - scroll ke dauraan sirf bhaari glow/filter animations ruk jaati hain, scroll rukte hi wapas chalti hain
+   ========================================================== */
+html{scroll-behavior:auto;-webkit-overflow-scrolling:touch}
+.panel,.panel:is(.turn-next,.turn-prev){-webkit-backdrop-filter:none !important;backdrop-filter:none !important}
+.sky-shade,.sky-vig,.chap-bg,body::before,body::after{transform:translateZ(0);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+body.is-scrolling h1.hero-h,
+body.is-scrolling .mn-run *,
+body.is-scrolling .sn-run *,
+body.is-scrolling .lp-run *,
+body.is-scrolling .moon-note::before,body.is-scrolling .moon-note::after,
+body.is-scrolling .star-note::before,body.is-scrolling .star-note::after,
+body.is-scrolling .mn-star,body.is-scrolling .sn-star,
+body.is-scrolling .floaties span{animation-play-state:paused !important}
+
+/* ==========================================================
+   LAST CHAPTER — "Main hoon sunne ke liye 💌" paragraph
+   Chapter 1 jaisa hi style, par PURPLE: purple border + glow, violet->lilac->pink ring,
+   2 chalti lights (gold + pink jaate, aqua + white aate), beam, twinkle stars, glowing line.
+   Rang badalne ho toh neeche ke hex / rgba numbers badlo.
+   ========================================================== */
+#letterPromise,#letterPromise[data-fx]{position:relative;overflow:hidden;
+  background:radial-gradient(circle at 100% 0%,rgba(190,140,255,.42) 0,rgba(150,110,255,.18) 34%,rgba(150,110,255,0) 64%),linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.015)) !important;
+  border:1px solid rgba(196,160,255,.80) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 0 22px rgba(165,110,255,.50),0 0 44px rgba(130,90,255,.18),inset 0 0 22px rgba(175,140,255,.20),inset 0 1px 0 rgba(255,255,255,.42) !important}
+#letterPromise::before,#letterPromise[data-fx]::before{content:"";position:absolute;top:-46px;right:-46px;left:auto;bottom:auto;width:130px;height:130px;border-radius:50% !important;border:0 !important;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(220,190,255,.62) 0,rgba(170,120,255,.26) 40%,rgba(170,120,255,0) 70%) !important;opacity:.55;animation:none}
+#letterPromise::after{content:"";position:absolute;top:-10%;bottom:-10%;left:0;width:34%;pointer-events:none;z-index:1;
+  background:linear-gradient(100deg,rgba(235,220,255,0) 0%,rgba(235,220,255,.30) 50%,rgba(235,220,255,0) 100%);transform:translateX(-140%) skewX(-18deg)}
+#letterPromise.lp-go::before,#letterPromise.lp-go[data-fx]::before{animation:mnGlow 4.8s ease-in-out infinite}
+#letterPromise.lp-go::after{animation:mnBeam 7s ease-in-out 4.6s infinite}
+#letterPromise .lp-star{position:absolute;z-index:1;width:var(--s);height:var(--s);pointer-events:none;background:#f1e6ff;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);filter:drop-shadow(0 0 4px rgba(190,150,255,.95));opacity:.15}
+#letterPromise.lp-go .lp-star{animation:mnTwinkle 3.6s ease-in-out infinite;animation-delay:var(--d)}
+#letterPromise .lp-run{top:0;left:0;right:0;bottom:0;width:100%;height:100%;overflow:hidden;border-radius:inherit}
+#letterPromise .lp-run rect{stroke-width:3.4;stroke-dasharray:18 182}
+#letterPromise .lp-run .rg{stroke:url(#lpRingGrad);stroke-width:2.6;stroke-dasharray:none;opacity:.95;animation:none;filter:drop-shadow(0 0 5px rgba(180,140,255,.8))}
+#letterPromise .lp-run .r1{color:#ffe27a;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor)}
+#letterPromise .lp-run .r2{color:#ff8fd0;filter:drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor)}
+#letterPromise .lp-run .rf{color:#f3e6ff;stroke-dasharray:none;stroke-width:2.6;filter:drop-shadow(0 0 8px #c9a0ff)}
+#letterPromise.lp-go .lp-run .r1{animation:lpLoopA 7.6s ease-in-out -.55s infinite}
+#letterPromise.lp-go .lp-run .r2{animation:lpLoopB 7.6s ease-in-out -.55s infinite}
+#letterPromise.lp-go .lp-run .rf{animation:snPulse 7.6s ease-in-out -.55s infinite}
+/* jaate waqt: soft gold + pink | aate waqt: aqua + white (purple border pe dono clearly dikhte hain) */
+@keyframes lpLoopA{
+  0%,5%{stroke-dashoffset:0;opacity:0;color:#7ff6ff}
+  9%{opacity:1;color:#ffe27a}
+  45%{stroke-dashoffset:-32;opacity:1;color:#ffe27a}
+  50%{stroke-dashoffset:-32;opacity:.35;color:#7ff6ff}
+  55%{stroke-dashoffset:-32;opacity:1;color:#7ff6ff}
+  91%{opacity:1;color:#7ff6ff}
+  95%,100%{stroke-dashoffset:0;opacity:0;color:#7ff6ff}
+}
+@keyframes lpLoopB{
+  0%,5%{stroke-dashoffset:-82;opacity:0;color:#ffffff}
+  9%{opacity:1;color:#ff8fd0}
+  45%{stroke-dashoffset:-50;opacity:1;color:#ff8fd0}
+  50%{stroke-dashoffset:-50;opacity:.35;color:#ffffff}
+  55%{stroke-dashoffset:-50;opacity:1;color:#ffffff}
+  91%{opacity:1;color:#ffffff}
+  95%,100%{stroke-dashoffset:-82;opacity:0;color:#ffffff}
+}
+#letterPromise .wd.pm-hl{font-weight:800;color:#fff;text-shadow:0 0 10px rgba(190,150,255,.85)}
+#letterPromise .pm-k2{padding-bottom:2px;box-shadow:none;background:linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#8fd0ff 100%) no-repeat 0 100%/0% 2px}
+#letterPromise.lp-go .pm-k2{animation:mnDraw 1.4s cubic-bezier(.22,1,.36,1) calc(var(--hd,.8s) + .9s) forwards}
+@media(prefers-reduced-motion:reduce){#letterPromise .pm-k2{animation:none!important;background-size:100% 2px}}
+
+/* ==========================================================
+   LOOKS SWAPPED
+   Chapter 8 "Main hoon sunne ke liye" paragraph  -> ab chapter 2 wala GREEN look
+   Chapter 2 "Bachpan se abhi tak..." paragraph    -> ab chapter 8 wala PURPLE look
+   ========================================================== */
+
+/* ---------- chapter 8 paragraph (#letterPromise): green + mint, pink/orange runners ---------- */
+#letterPromise,#letterPromise[data-fx]{
+  background:radial-gradient(circle at 0% 0%,rgba(96,226,146,.38) 0,rgba(96,226,146,.15) 34%,rgba(96,226,146,0) 64%),linear-gradient(135deg,rgba(96,226,146,.16),rgba(96,226,146,.05)) !important;
+  border:1px solid rgba(96,226,146,.95) !important;
+  box-shadow:0 0 22px rgba(96,226,146,.55),inset 0 0 30px rgba(96,226,146,.30),inset 0 1px 0 rgba(255,255,255,.30) !important}
+#letterPromise::before,#letterPromise[data-fx]::before{left:-46px;right:auto;
+  background:radial-gradient(circle,rgba(170,255,200,.62) 0,rgba(96,226,146,.28) 40%,rgba(96,226,146,0) 70%) !important;opacity:.5}
+#letterPromise::after{background:linear-gradient(100deg,rgba(220,255,232,0) 0%,rgba(220,255,232,.28) 50%,rgba(220,255,232,0) 100%)}
+#letterPromise .lp-star{background:#e2ffec;filter:drop-shadow(0 0 4px rgba(190,150,255,.95))}
+#letterPromise .lp-run .rg{filter:drop-shadow(0 0 5px rgba(96,226,146,.8))}
+#letterPromise .lp-run .r1{color:#ff6fc4;stroke-width:4}
+#letterPromise .lp-run .r2{color:#ffa05a;stroke-width:4}
+#letterPromise .lp-run .rf{color:#fff0f8;filter:drop-shadow(0 0 8px #ff9bd8)}
+#letterPromise.lp-go .lp-run .r1{animation:snRunA 7.6s ease-in-out -.55s infinite}
+#letterPromise.lp-go .lp-run .r2{animation:snRunB 7.6s ease-in-out -.55s infinite}
+#letterPromise .wd.pm-hl{text-shadow:0 0 10px rgba(125,255,190,.8)}
+#letterPromise .pm-k2{background:linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#7dffd0 100%) no-repeat 0 100%/0% 2px}
+
+/* ---------- chapter 2 paragraph (.star-note): purple border + glow, gold/pink/aqua/white runners ---------- */
+.qual.star-note{
+  background:radial-gradient(circle at 0% 0%,rgba(190,140,255,.42) 0,rgba(150,110,255,.18) 34%,rgba(150,110,255,0) 64%),linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.015)) !important;
+  border:1px solid rgba(196,160,255,.80) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05),0 0 22px rgba(165,110,255,.50),0 0 44px rgba(130,90,255,.18),inset 0 0 22px rgba(175,140,255,.20),inset 0 1px 0 rgba(255,255,255,.42) !important}
+.star-note::before{background:radial-gradient(circle,rgba(220,190,255,.62) 0,rgba(170,120,255,.26) 40%,rgba(170,120,255,0) 70%);opacity:.55}
+.star-note::after{background:linear-gradient(100deg,rgba(235,220,255,0) 0%,rgba(235,220,255,.30) 50%,rgba(235,220,255,0) 100%)}
+.star-note .sn-star{background:#f1e6ff;filter:drop-shadow(0 0 4px rgba(190,150,255,.95))}
+.star-note .sn-run .rg{filter:drop-shadow(0 0 5px rgba(180,140,255,.8))}
+.star-note .sn-run .r1{color:#ffe27a;stroke-width:3.4}
+.star-note .sn-run .r2{color:#ff8fd0;stroke-width:3.4}
+.star-note .sn-run .rf{color:#f3e6ff;filter:drop-shadow(0 0 8px #c9a0ff)}
+.star-note.go .sn-run .r1{animation:lpLoopA 7.6s ease-in-out -.55s infinite}
+.star-note.go .sn-run .r2{animation:lpLoopB 7.6s ease-in-out -.55s infinite}
+.star-note .sn-k2{background:linear-gradient(90deg,#c9a0ff 0%,#ff9bd8 50%,#8fd0ff 100%) no-repeat 0 100%/0% 2px}
+.star-note .sn-emoji{filter:drop-shadow(0 0 3px rgba(190,150,255,.5))}
+@keyframes snEmoji{0%,100%{filter:drop-shadow(0 0 3px rgba(190,150,255,.5))}50%{filter:drop-shadow(0 0 9px rgba(215,185,255,1))}}
+
+/* ==========================================================
+   CHAPTER 2 paragraph — border ab background se alag dikhta hai
+   - border thoda moti + bright lilac-white (purple sky me ghulta nahi)
+   - bahar halka rose-pink halo, andar lighter lavender fill (box upar uthta hai)
+   - andar ek patli dotted line (letter/stationery jaisa design)
+   - ring + chalti lights zyada bright
+   Badalna ho toh neeche ke rgba numbers badlo.
+   ========================================================== */
+.qual.star-note{
+  background:radial-gradient(circle at 0% 0%,rgba(225,195,255,.55) 0,rgba(190,150,255,.24) 36%,rgba(190,150,255,0) 66%),linear-gradient(135deg,rgba(255,238,255,.22),rgba(205,175,255,.10)) !important;
+  border:1.5px solid rgba(240,222,255,.98) !important;
+  box-shadow:0 0 0 3px rgba(255,150,225,.16),0 0 26px rgba(255,150,230,.50),0 0 46px rgba(170,120,255,.35),inset 0 0 26px rgba(215,185,255,.30),inset 0 1px 0 rgba(255,255,255,.55) !important;
+  outline:1px dotted rgba(255,225,248,.55);outline-offset:-6px}
+.star-note .sn-text{text-shadow:0 1px 3px rgba(40,10,90,.55)}
+.star-note .sn-run .rg{stroke-width:3;opacity:1;filter:drop-shadow(0 0 6px rgba(255,190,240,.85))}
+.star-note .sn-run .r1,.star-note .sn-run .r2{stroke-width:4}
+
+/* ==========================================================
+   CHAPTER 2 — PHOOL KHILNA 🌷
+   Pehle emoji ek chhoti glowing kali ki tarah pop hota hai, phir usi emoji ke andar se
+   card gol ghoom kar khulta hai (jaise phool khil raha ho), aur ek pink lehar phailti hai.
+   Teeno paragraphs dheere dheere, ek ke baad ek. Reduced-motion me band.
+   ========================================================== */
+.qual-list .qual{position:relative;--bd:calc(.6s + var(--i,0)*1s);
+  animation:blBud .5s ease-out var(--bd) backwards,blOpen 1.3s cubic-bezier(.22,1,.36,1) calc(var(--bd) + .4s) backwards}
+.qual-list .qual>span{animation:blEmoji .9s cubic-bezier(.34,1.56,.64,1) var(--bd) backwards}
+.qual-list .qual>div{animation:blText .9s ease-out calc(var(--bd) + .85s) backwards}
+.qual-list .qual::after{content:"";position:absolute;left:28px;top:28px;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;pointer-events:none;z-index:2;
+  background:radial-gradient(circle,rgba(255,235,250,.95) 0,rgba(255,150,225,.55) 45%,rgba(255,150,225,0) 72%);
+  opacity:0;animation:blWave 1.6s ease-out calc(var(--bd) + .3s) backwards}
+@keyframes blBud{from{opacity:0}to{opacity:1}}
+@keyframes blOpen{from{clip-path:circle(19px at 28px 28px)}to{clip-path:circle(180% at 28px 28px)}}
+@keyframes blEmoji{0%{opacity:0;transform:scale(.2) rotate(-25deg)}60%{opacity:1;transform:scale(1.35) rotate(8deg)}100%{opacity:1;transform:none}}
+@keyframes blText{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes blWave{0%{opacity:.95;transform:scale(.3)}100%{opacity:0;transform:scale(5.5)}}
+@media(prefers-reduced-motion:reduce){.qual-list .qual,.qual-list .qual>span,.qual-list .qual>div{animation:none!important}.qual-list .qual::after{display:none!important}}
+
+/* chapter 2: 4th paragraph (page-type pager) gets the same bloom as the 3 above, one beat after them */
+.panel[data-ch="1"] .note-pager{position:relative;--bd:calc(.6s + 3*1s);
+  animation:blBud .5s ease-out var(--bd) backwards,blOpen 1.3s cubic-bezier(.22,1,.36,1) calc(var(--bd) + .4s) backwards}
+.panel[data-ch="1"] .note-pager .np-stage{animation:blText .9s ease-out calc(var(--bd) + .85s) backwards}
+.panel[data-ch="1"] .note-pager .np-nav{animation:blText .9s ease-out calc(var(--bd) + 1.15s) backwards}
+.panel[data-ch="1"] .note-pager::after{content:"";position:absolute;left:28px;top:28px;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;pointer-events:none;z-index:2;
+  background:radial-gradient(circle,rgba(255,235,250,.95) 0,rgba(255,150,225,.55) 45%,rgba(255,150,225,0) 72%);
+  opacity:0;animation:blWave 1.6s ease-out calc(var(--bd) + .3s) backwards}
+.panel[data-ch="1"] .note-pager .np-emoji{position:absolute;left:15px;top:13px;z-index:3;font-size:22px;line-height:1.4;pointer-events:none;animation:blEmoji .9s cubic-bezier(.34,1.56,.64,1) var(--bd) backwards}
+.panel[data-ch="1"] .note-pager .np-page{padding-left:56px}
+.panel[data-ch="1"] .qual-list{margin-bottom:10px}
+.panel[data-ch="1"] .note-pager{margin-top:0}
+/* the chapter-turn rule (.panel.turn-next>*) was overriding the pager's animation for 3.4s, then restarting it late; this keeps the same bloom running on the same clock */
+.panel.panel[data-ch="1"]:is(.turn-next,.turn-prev)>.note-pager{animation:blBud .5s ease-out var(--bd) backwards,blOpen 1.3s cubic-bezier(.22,1,.36,1) calc(var(--bd) + .4s) backwards}
+@media(prefers-reduced-motion:reduce){.panel[data-ch="1"] .note-pager,.panel[data-ch="1"] .note-pager .np-stage,.panel[data-ch="1"] .note-pager .np-nav,.panel[data-ch="1"] .note-pager .np-emoji,.panel.panel[data-ch="1"]:is(.turn-next,.turn-prev)>.note-pager{animation:none!important}.panel[data-ch="1"] .note-pager::after{display:none!important}}
+
+/* ==========================================================
+   CHAPTER 2 — "ek aakhri baat": ANKUR UGNA 🌱
+   Box scroll karke dikhte hi: pehle ek chhota hara beej-glow, phir 🌱 uggta hai,
+   phir usi 🌱 ke andar se box khulta hai, text aata hai, patte upar tairte hain.
+   Border lights / beam / highlight lines box khulne ke BAAD shuru hoti hain.
+   ========================================================== */
+.qual.star-note:not(.go){opacity:0}
+.qual.star-note.go{animation:spBud .4s ease-out backwards,spOpen 1.5s cubic-bezier(.22,1,.36,1) .95s backwards}
+.star-note.go .sn-emoji{animation:spEmoji 1s cubic-bezier(.34,1.56,.64,1) .45s backwards,snEmoji 4.8s ease-in-out 1.8s infinite}
+.star-note.go .sn-text{animation:blText .9s ease-out 1.8s backwards}
+.star-note.go .sn-run .r1,.star-note.go .sn-run .r2,.star-note.go .sn-run .rf{animation-delay:1.9s}
+.star-note.go::after{animation-delay:3.6s}
+.star-note.go .sn-k2{animation:mnDraw 1.4s cubic-bezier(.22,1,.36,1) 3.3s forwards}
+.star-note.go .sn-k1{animation-delay:4.6s}
+.sp-seed{position:absolute;left:28px;top:30px;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;pointer-events:none;z-index:2;opacity:0;
+  background:radial-gradient(circle,#eaffef 0,#7dffb0 38%,rgba(96,226,146,0) 72%);box-shadow:0 0 16px 4px rgba(96,226,146,.6)}
+.star-note.go .sp-seed{animation:spSeed 1.1s ease-out backwards}
+.sp-leaf{position:absolute;left:28px;top:26px;width:11px;height:15px;border-radius:85% 0 85% 0;pointer-events:none;z-index:1;opacity:0;
+  background:linear-gradient(135deg,#e3ffec,#4fd98a);box-shadow:0 0 8px rgba(125,255,190,.8)}
+.star-note.go .sp-leaf{animation:spLeaf 2.8s ease-out calc(1.45s + var(--ld,0s)) both}
+@keyframes spBud{from{opacity:0}to{opacity:1}}
+@keyframes spOpen{from{clip-path:circle(19px at 28px 28px)}to{clip-path:circle(180% at 28px 28px)}}
+@keyframes spSeed{0%{opacity:0;transform:scale(.2)}45%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2.2)}}
+@keyframes spEmoji{0%{opacity:0;transform:translateY(12px) scale(.15)}55%{opacity:1;transform:translateY(-4px) scale(1.4)}100%{opacity:1;transform:none}}
+@keyframes spLeaf{0%{opacity:0;transform:translate(0,6px) scale(.3) rotate(0deg)}25%{opacity:.95}100%{opacity:0;transform:translate(var(--lx),var(--ly)) scale(1) rotate(var(--lr))}}
+@media(prefers-reduced-motion:reduce){.qual.star-note,.qual.star-note.go{opacity:1!important;animation:none!important}.star-note.go .sn-text{animation:none!important}.sp-seed,.sp-leaf{display:none!important}}
 </style>
 </head>
 <body>
@@ -1189,7 +1444,7 @@ const chapters = [
 <div class="qual" style="--i:1"><span>🫶</span><div>Aap meri bhi care karti ho, mujhse baatein karti ho, aur mujhe achha lagta hai. Ye bohot badi baat hai.</div></div>
 <div class="qual" style="--i:2"><span>🎶</span><div>Aapse baat karna achha lagta hai. Aapki awaaz bohot pyari hai, sunne se alag hi sukoon milta hai. Aapse baat karke mujhe achha lagta hai.</div></div>
 </div>
-<div class="note-pager" id="notePager"><div class="np-stage" aria-live="polite"><div class="soft-note np-page on" data-p="0">Aapne sabke liye sab kuch kiya, ab aapki baari hai. Aap bhi khushiyan, care aur apnapan deserve karti ho. Ab thoda apne upar dhyan dena aur bas khush rehna. 💜</div><div class="soft-note np-page" data-p="1" aria-hidden="true">Ab kaun kya kehta hai, uski itni fikr mat karna. Bas apne mann ki karna. Aur agar kabhi kuch achha na lage ya pareshaan ho jao, toh mujhe zaroor batana. Main hoon aapke liye. 🤍</div></div><div class="np-nav"><button type="button" class="np-btn" data-np="prev" aria-label="Pehli baat" disabled>←</button><span class="np-dots" aria-hidden="true"><i class="on"></i><i></i></span><button type="button" class="np-btn np-next" data-np="next" aria-label="Agli baat">agla →</button></div></div><div class="eyebrow lw-label">ek aakhri baat 💜</div><div class="qual star-note" style="--i:5"><i class="sn-star" style="top:9px;right:12px;--s:9px;--d:0s" aria-hidden="true"></i><i class="sn-star" style="top:30px;right:34px;--s:6px;--d:-1.4s" aria-hidden="true"></i><i class="sn-star" style="bottom:10px;right:18px;--s:7px;--d:-2.3s" aria-hidden="true"></i><svg class="sn-run" aria-hidden="true" focusable="false"><defs><linearGradient id="snRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60e292"/><stop offset=".5" stop-color="#7dffb0"/><stop offset="1" stop-color="#60e292"/></linearGradient></defs><rect class="rg" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r1" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r2" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="rf" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/></svg><span class="sn-emoji">🌱</span><div class="sn-text">Bachpan se abhi tak itna kuch jhelne ke baad bhi aap sabke liye sab kuch karti ho, itna sochti ho. <span class="sn-k1">Ye kamzori ya galti nahi hai,</span> <span class="sn-k2">ye sirf aapki achhai hai.</span></div></div>`},
+<div class="note-pager" id="notePager"><span class="np-emoji" aria-hidden="true">💌</span><div class="np-stage" aria-live="polite"><div class="soft-note np-page on" data-p="0">Aapne sabke liye sab kuch kiya, ab aapki baari hai. Aap bhi khushiyan, care aur apnapan deserve karti ho. Ab thoda apne upar dhyan dena aur bas khush rehna. 💜</div><div class="soft-note np-page" data-p="1" aria-hidden="true">Ab kaun kya kehta hai, uski itni fikr mat karna. Bas apne mann ki karna. Aur agar kabhi kuch achha na lage ya pareshaan ho jao, toh mujhe zaroor batana. Main hoon aapke liye. 🤍</div></div><div class="np-nav"><button type="button" class="np-btn" data-np="prev" aria-label="Pehli baat" disabled>←</button><span class="np-dots" aria-hidden="true"><i class="on"></i><i></i></span><button type="button" class="np-btn np-next" data-np="next" aria-label="Agli baat">agla →</button></div></div><div class="eyebrow lw-label">ek aakhri baat 💜</div><div class="qual star-note" style="--i:5"><i class="sn-star" style="top:9px;right:12px;--s:9px;--d:0s" aria-hidden="true"></i><i class="sn-star" style="top:30px;right:34px;--s:6px;--d:-1.4s" aria-hidden="true"></i><i class="sn-star" style="bottom:10px;right:18px;--s:7px;--d:-2.3s" aria-hidden="true"></i><svg class="sn-run" aria-hidden="true" focusable="false"><defs><linearGradient id="snRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8bcff"/><stop offset=".5" stop-color="#fff0ff"/><stop offset="1" stop-color="#ff9bd8"/></linearGradient></defs><rect class="rg" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r1" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="r2" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/><rect class="rf" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/></svg><span class="sn-emoji">🌱</span><div class="sn-text">Bachpan se abhi tak itna kuch jhelne ke baad bhi aap sabke liye sab kuch karti ho, itna sochti ho. <span class="sn-k1">Ye kamzori ya galti nahi hai,</span> <span class="sn-k2">ye sirf aapki achhai hai.</span></div></div>`},
 {label:"Mood check-in",render:()=>`
 <div class="eyebrow">what kind of moment is it?</div><h2>Kaashi, abhi dil kaisa feel kar raha hai? 🫂</h2><p>Koi right ya wrong answer nahi. Jo option thoda sa bhi aapke kareeb lage, us par tap kar sakti hain.</p>
 <div class="mood-grid">
@@ -1289,8 +1544,8 @@ function heartOfStars(){
  svg.setAttribute('viewBox',(-W/2)+' '+(-W/2)+' '+W+' '+W);svg.style.margin=(-W/2)+'px 0 0 '+(-W/2)+'px';
  svg.innerHTML='<defs><radialGradient id="hgrad" cx="50%" cy="40%" r="65%"><stop offset="0" stop-color="#ffb3e8" stop-opacity=".15"/><stop offset="1" stop-color="#ff4fb8" stop-opacity=".07"/></radialGradient></defs><path d="'+d+'Z" fill="url(#hgrad)" stroke="#ffc2ee" stroke-width="2.5" stroke-opacity=".72" stroke-linejoin="round"/>';
  box.appendChild(svg);
- svg.animate([{opacity:0,transform:'scale(.85)'},{opacity:1,transform:'scale(1)'}],{duration:1400,delay:1000,easing:'ease-out',fill:'forwards'});
- const rings=[{N:64,k:1,size:[12,12],delay:16},{N:26,k:.56,size:[9,8],delay:25}];
+ svg.animate([{opacity:0,transform:'scale(.85)'},{opacity:1,transform:'scale(1)'}],{duration:1000,delay:500,easing:'ease-out',fill:'forwards'});
+ const rings=[{N:64,k:1,size:[12,12],delay:9},{N:26,k:.56,size:[9,8],delay:14}];
  rings.forEach(r=>{
   for(let i=0;i<r.N;i++){
    const t=i/r.N*Math.PI*2,ex=hx(t,r.k),ey=hy(t,r.k);
@@ -1300,17 +1555,19 @@ function heartOfStars(){
    el.animate([{transform:`translate(${sx}px,${sy}px) scale(.3) rotate(0deg)`,opacity:0},{transform:`translate(${ex}px,${ey}px) scale(1) rotate(90deg)`,opacity:1}],{duration:1000,delay:i*r.delay,easing:'cubic-bezier(.22,1,.36,1)',fill:'forwards'});
   }
  });
- endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:900,easing:'ease-in-out'});},2000));
- endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],{duration:800,easing:'ease-in-out'});},2950));
- endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:900,fill:'forwards'});a.onfinish=()=>box.remove();},4100));
- endTimers.push(setTimeout(()=>box.remove(),5400));
+ endTimers.push(setTimeout(()=>{box.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:800,easing:'ease-in-out'});},1600));
+  endTimers.push(setTimeout(()=>{const a=box.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'});a.onfinish=()=>box.remove();},3400));
+ endTimers.push(setTimeout(()=>box.remove(),4200));
 }
 function promiseGlow(){
- const el=document.getElementById('letterPromise');
- if(!el||el.hidden||el.querySelector('.lp-run'))return;
- const r=c=>'<rect class="'+c+'" x="0" y="0" width="100%" height="100%" rx="17" pathLength="100"/>';
- el.insertAdjacentHTML('beforeend','<svg class="lp-run" aria-hidden="true" focusable="false"><defs><linearGradient id="lpRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7df3ff"/><stop offset=".5" stop-color="#c4fff0"/><stop offset="1" stop-color="#4de1ff"/></linearGradient></defs>'+r('rg')+r('r1 h')+r('r2 h')+r('r1')+r('r2')+r('rf')+'</svg>');
- requestAnimationFrame(()=>el.classList.add('lp-go'));
+  const el=document.getElementById('letterPromise');
+  if(!el||el.hidden||el.querySelector('.lp-run'))return;
+  const r=c=>'<rect class="'+c+'" x="0" y="0" width="100%" height="100%" rx="18" pathLength="100"/>';
+  el.insertAdjacentHTML('beforeend','<svg class="lp-run" aria-hidden="true" focusable="false"><defs><linearGradient id="lpRingGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#60e292"/><stop offset=".5" stop-color="#7dffb0"/><stop offset="1" stop-color="#60e292"/></linearGradient></defs>'+r('rg')+r('r1')+r('r2')+r('rf')+'</svg>');
+  [['8%','16%',9,'0s'],['91%','68%',8,'.7s'],['72%','10%',7,'1.4s'],['16%','82%',7,'2.1s'],['52%','90%',6,'.35s'],['38%','8%',6,'1.1s']].forEach(a=>{
+    el.insertAdjacentHTML('beforeend','<i class="lp-star" aria-hidden="true" style="left:'+a[0]+';top:'+a[1]+';--s:'+a[2]+'px;--d:'+a[3]+'"></i>');
+  });
+  requestAnimationFrame(()=>el.classList.add('lp-go'));
 }
 function revealEl(id){const el=document.getElementById(id);if(!el)return;el.hidden=false;el.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)el.scrollIntoView({behavior:'smooth',block:'center'});}
 function endingSequence(){
@@ -1318,13 +1575,13 @@ function endingSequence(){
  if(reduce){fxPara('letterFinal');fxPara('letterPromise');['letterSign','letterWish','letterDM'].forEach(id=>{const e=document.getElementById(id);if(e)e.hidden=false;});promiseGlow();return;}
  const at=(ms,fn)=>endTimers.push(setTimeout(()=>{if(document.getElementById('letterContent'))fn();},ms));
  at(300,()=>sprinkle(['✨','✨','💜','✨']));
- at(2900,()=>{fxPara('letterPromise');promiseGlow();const e=document.getElementById('letterPromise');if(e){e.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)e.scrollIntoView({behavior:'smooth',block:'center'});}});
+ at(2100,()=>{fxPara('letterPromise');promiseGlow();const e=document.getElementById('letterPromise');if(e){e.classList.add('reveal');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)e.scrollIntoView({behavior:'smooth',block:'center'});}});
  
- at(4500,heartOfStars);
- at(7100,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2800);});
- at(7800,()=>revealEl('letterWish'));
- at(9600,()=>revealEl('letterSign'));
- at(11200,()=>revealEl('letterDM'));
+ at(7000,heartOfStars);  /* dil: paragraph padhne ke baad (2 sec jaldi) */
+ at(8300,()=>{const st=document.createElement('div');st.className='shoot-open';document.body.appendChild(st);setTimeout(()=>st.remove(),2800);});
+ at(11200,()=>revealEl('letterWish'));
+ at(13000,()=>revealEl('letterSign'));
+ at(14600,()=>revealEl('letterDM'));
 }
 function fxPara(id){
  const el=document.getElementById(id);if(!el)return;
@@ -1512,7 +1769,8 @@ function render(){
   row.insertAdjacentHTML('beforeend','<button class="btn'+(hasOthers?' secondary':'')+'" data-action="sparkle">A little sparkle ✨</button>');
  }
  const sn=panel.querySelector('.star-note');
- if(sn){if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){sn.classList.add('go');io.disconnect();}});},{threshold:.3});io.observe(sn);}else{setTimeout(()=>sn.classList.add('go'),1200);}}
+ if(sn){sn.insertAdjacentHTML('beforeend','<i class="sp-seed" aria-hidden="true"></i><i class="sp-leaf" aria-hidden="true" style="--lx:34px;--ly:-22px;--lr:70deg;--ld:0s"></i><i class="sp-leaf" aria-hidden="true" style="--lx:64px;--ly:-8px;--lr:110deg;--ld:.3s"></i><i class="sp-leaf" aria-hidden="true" style="--lx:16px;--ly:-24px;--lr:-65deg;--ld:.6s"></i>');}
+ if(sn){const snWait=panel.dataset.ch==='1'?5800:0;setTimeout(()=>{if(!sn.isConnected)return;if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){sn.classList.add('go');io.disconnect();}});},{threshold:.3});io.observe(sn);}else{sn.classList.add('go');}},snWait);}
  counter.textContent=`Chapter ${index+1} of ${chapters.length}`;bar.style.width=((index+1)/chapters.length*100)+'%';progress.setAttribute('aria-valuenow',index+1);
  prev.disabled=index===0;next.textContent=index===chapters.length-1?'Back to start 🔄':'Next →';
 }
@@ -1847,6 +2105,19 @@ render();playTurn('next');
   pg.querySelector('[data-np="prev"]').disabled=(nx===0);
   pg.querySelector('[data-np="next"]').disabled=(nx===pages.length-1);
  });
+})();
+</script>
+<script>
+/* smooth scroll helper: heavy glow animations pause only while the page is moving */
+(function(){
+ var t=null,b=document.body;
+ function on(){
+  if(!b.classList.contains('is-scrolling'))b.classList.add('is-scrolling');
+  clearTimeout(t);t=setTimeout(function(){b.classList.remove('is-scrolling');},140);
+ }
+ window.addEventListener('scroll',on,{passive:true});
+ window.addEventListener('touchmove',on,{passive:true});
+ window.addEventListener('wheel',on,{passive:true});
 })();
 </script>
 </body>
